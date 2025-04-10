@@ -3,11 +3,11 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createClient } from '@/utils/supabase/server'
+import { createClientServer } from '@/utils/supabase/server'
 
 // Login
 export async function login(formData: FormData) {
-  const supabase = await createClient()
+  const supabase = await createClientServer()
 
   const data = {
     email: formData.get('email') as string,
@@ -27,7 +27,7 @@ export async function login(formData: FormData) {
 
 // Sign up
 export async function signup(formData: FormData) {
-  const supabase = await createClient()
+  const supabase = await createClientServer()
 
   const userData = {
     username: formData.get('username') as string,
@@ -54,8 +54,33 @@ export async function signup(formData: FormData) {
 
 // Log out
 export async function logOut() {
-  const supabase = await createClient()
+  const supabase = await createClientServer()
   await supabase.auth.signOut()
+  
   revalidatePath('/', 'layout')
   redirect('/')
+}
+
+// Create a post
+export async function createPost(formData: FormData) {
+  const supabase = await createClientServer()
+  const { data, error } = await supabase.auth.getUser()
+
+  if (error || !data) {
+    return
+  }
+  const postData = {
+    title: formData.get('title') as string,
+    description: formData.get('description') as string
+  }
+  const { error: postsError } = await supabase.from('posts').insert([
+    {
+      user_id: data.user.id,
+      title: postData.title,
+      description: postData.description
+    }
+  ])
+  if (postsError) {
+    return
+  }
 }
