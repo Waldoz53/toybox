@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 import { createClientServer } from '@/utils/supabase/server'
 
-// Login
+// Log in
 export async function login(formData: FormData) {
   const supabase = await createClientServer()
 
@@ -61,7 +61,7 @@ export async function logOut() {
   redirect('/')
 }
 
-// Create a post
+// Creates a post
 export async function createPost(formData: FormData) {
   const supabase = await createClientServer()
   const { data, error } = await supabase.auth.getUser()
@@ -82,5 +82,44 @@ export async function createPost(formData: FormData) {
   ])
   if (postsError) {
     return
+  }
+}
+
+// Deletes a post
+export async function deletePost(postId: string) {
+  const supabase = await createClientServer()
+  const { data } = await supabase.auth.getUser()
+  const { error } = await supabase.from('posts').delete().eq('id', postId).eq('user_id', data.user?.id)
+  if (error || !data) {
+    return
+  } else {
+  }
+}
+
+// Edits a post
+export async function editPost(formData: FormData) {
+  const supabase = await createClientServer()
+  const { data, error } = await supabase.auth.getUser()
+
+  if (!data || error) {
+    return
+  }
+
+  const postData = {
+    id: formData.get('id') as string,
+    title: formData.get('title') as string,
+    description: formData.get('description') as string
+  }
+
+  const { error: postsError } = await supabase.from('posts').update({ title: postData.title, description: postData.description }).eq('id', postData.id).eq('user_id', data.user?.id)
+  if (postsError) {
+    return
+  }
+
+  const { data: profile } = await supabase.from('profiles').select('*').eq('id', data.user?.id).single()
+  if (profile?.username) {
+    redirect(`/${profile?.username}`)
+  } else {
+    redirect('/')
   }
 }

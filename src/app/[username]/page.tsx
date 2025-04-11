@@ -1,3 +1,5 @@
+import DeletePostButton from "@/components/DeletePostButton"
+import StartEditPostButton from "@/components/StartEditPostButton"
 import { createClientServer } from "@/utils/supabase/server"
 
 type Props = {
@@ -7,6 +9,7 @@ type Props = {
 export default async function UserPage({ params }: Props) {
   const { username } = await params
   let isValidUsername = false
+  let isOwner = false
   let errorMessage = ''
   const supabase = await createClientServer()
   const { data: profile, error: error } = await supabase.from('profiles').select('id, username').eq('username', username).single()
@@ -24,6 +27,12 @@ export default async function UserPage({ params }: Props) {
     errorMessage = "Error fetching posts."
   }
 
+  // check if user is logged in + their user id matches the user id of the page, then enables editing/delete buttons
+  const { data } = await supabase.auth.getUser()
+  if (data.user?.id === profile?.id) {
+    isOwner = true
+  }
+
   return (
     <div>
       {isValidUsername ? (
@@ -37,10 +46,18 @@ export default async function UserPage({ params }: Props) {
                   <h3>{post.title}</h3>
                   <p>{post.description}</p>
                   <p>Added on {new Date(post.created_at).toLocaleDateString()}</p>
+                  {isOwner ? (
+                    <>
+                      <StartEditPostButton id={post.id}/>
+                      <DeletePostButton id={post.id}/>
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </div>
               ))
             ) : (
-              <p>No items in this {username}&apos;s collection.</p>
+              <p>No items in {username}&apos;s collection.</p>
             )}
           </div>
         </>
