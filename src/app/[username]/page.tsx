@@ -37,7 +37,7 @@ export default async function UserPage({ params }: Props) {
     <div className="collection">
       {isValidUsername ? (
         <>
-          <h2>{isOwner ? (`Your collection`) : (`${username}'s Collection`)}</h2>
+          <h2>{isOwner ? (`Your collection`) : (`${username}'s collection`)}</h2>
           <p className="error">{errorMessage}</p>
           <div className="collection-container">
             {postsData && postsData.length > 0 ? (

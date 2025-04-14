@@ -115,11 +115,10 @@ a {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 300px;
+  width: 100%;
 }
 .collection-item {
   width: 100%;
-  max-width: 500px;
   border-bottom: 1px solid black;
   padding: 1em 0;
 }
@@ -139,6 +138,11 @@ a {
 }
 .collection-item .start-edit {
   margin-right: 8px;
+}
+@media screen and (min-width: 500px) {
+  .collection-container {
+    max-width: 800px;
+  }
 }
 
 /* Create/edit post css - same styles as login/signup */
