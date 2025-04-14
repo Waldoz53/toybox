@@ -13,7 +13,7 @@ export default function PostPage() {
     setMessage(result ?? "")
     console.log("Submit post error:", message)
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setMessage('')
     }, 5000)
   }

@@ -13,7 +13,7 @@ export default function EditPostForm({ id, title, description }: { id: string, t
     setMessage(result ?? "")
     console.log("Submit post error:", message)
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setMessage('')
     }, 5000)
   }

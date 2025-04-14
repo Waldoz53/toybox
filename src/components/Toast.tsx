@@ -13,7 +13,7 @@ export default function Toast({ message }: ToastProps) {
     if (message) {
       setShow(true)
 
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         setShow(false)
       }, 5000)
     }

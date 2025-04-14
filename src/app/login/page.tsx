@@ -12,7 +12,7 @@ export default function LoginPage() {
     setMessage(await login(formData))
     console.log("Login error:", message)
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setMessage('')
     }, 5000)
   }

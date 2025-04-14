@@ -12,7 +12,7 @@ export default function SignUpPage() {
     setMessage(result ?? '')
     console.log("Sign up error:", message)
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setMessage('')
     }, 5000)
   }
