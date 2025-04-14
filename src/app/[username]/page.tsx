@@ -57,7 +57,7 @@ export default async function UserPage({ params }: Props) {
                 </div>
               ))
             ) : (
-              <p>No items in {username}&apos;s collection.</p>
+              <p>No items in {isOwner ? (`your`) : (`${username}'s`)} collection.</p>
             )}
           </div>
         </>

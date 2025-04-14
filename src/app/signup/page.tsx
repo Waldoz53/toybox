@@ -1,10 +1,26 @@
+'use client'
+import { useState } from 'react'
 import { signup } from '../actions'
+import Toast from '@/components/Toast'
 
 export default function SignUpPage() {
+  const [message, setMessage] = useState('')
+  async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    const result = await signup(formData)
+    setMessage(result ?? '')
+    console.log("Sign up error:", message)
+
+    const timer = setTimeout(() => {
+      setMessage('')
+    }, 5000)
+  }
+
   return (
     <div className="signup-page">
       <h2>Sign Up</h2>
-      <form>
+      <form onSubmit={handleSignUp}>
         <label htmlFor="username">Username:</label>
         <input id="username" name="username" type="text" required />
         <label htmlFor="email">Email:</label>
@@ -12,8 +28,9 @@ export default function SignUpPage() {
         <label htmlFor="password">Password:</label>
         <input id="password" name="password" type="password" required />
         <div className="spacer"></div>
-        <button formAction={signup}>Sign Up</button>
+        <button>Sign Up</button>
       </form>
+      <Toast message={message}/>
     </div>
   )
 }

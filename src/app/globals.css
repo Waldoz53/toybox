@@ -28,6 +28,21 @@ button:hover {
 a {
   color: black;
 }
+.toast {
+  transition: all .3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  z-index: 999999;
+  background: #af1717;
+  color: white;
+  transform: translateY(-100%)
+}
+.toast.show {
+  transform: translateY(0);
+}
 
 /* Header component */
 .header {
@@ -127,7 +142,7 @@ a {
 .post-page form textarea,
 .edit-page form textarea {
   height: 100px;
-  font-family: Nunito Sans, 'Nunito Sans', sans-serif
+  font-family: Nunito Sans, 'Nunito Sans', sans-serif;
 }
 
 /* Footer component */

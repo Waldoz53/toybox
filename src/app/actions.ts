@@ -17,7 +17,8 @@ export async function login(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data)
 
   if (error) {
-    redirect('/error')
+    console.log(error.message)
+    return error.message
   }
 
   revalidatePath('/', 'layout')
@@ -38,7 +39,9 @@ export async function signup(formData: FormData) {
   const { data, error } = await supabase.auth.signUp(userData)
 
   if (error || !data.user) {
-    redirect('/error')
+    // redirect('/error')
+    console.log(error?.message)
+    return error?.message
   } else {
     await supabase.from('profiles').insert([
       {
@@ -67,7 +70,7 @@ export async function createPost(formData: FormData) {
   const { data, error } = await supabase.auth.getUser()
 
   if (error || !data) {
-    return
+    return error?.message
   }
   const postData = {
     title: formData.get('title') as string,
@@ -81,8 +84,10 @@ export async function createPost(formData: FormData) {
     }
   ])
   if (postsError) {
-    return
+    return postsError.message
   }
+
+  redirect('/profile')
 }
 
 // Deletes a post
@@ -102,7 +107,7 @@ export async function editPost(formData: FormData) {
   const { data, error } = await supabase.auth.getUser()
 
   if (!data || error) {
-    return
+    return error?.message
   }
 
   const postData = {
@@ -113,13 +118,8 @@ export async function editPost(formData: FormData) {
 
   const { error: postsError } = await supabase.from('posts').update({ title: postData.title, description: postData.description }).eq('id', postData.id).eq('user_id', data.user?.id)
   if (postsError) {
-    return
+    return postsError.message
   }
-
-  const { data: profile } = await supabase.from('profiles').select('*').eq('id', data.user?.id).single()
-  if (profile?.username) {
-    redirect(`/${profile?.username}`)
-  } else {
-    redirect('/')
-  }
+  
+  redirect('/profile')
 }

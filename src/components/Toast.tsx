@@ -1,0 +1,27 @@
+'use client'
+
+import { useState, useEffect } from "react"
+
+type ToastProps = {
+  message: string
+}
+
+export default function Toast({ message }: ToastProps) {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    if (message) {
+      setShow(true)
+
+      const timer = setTimeout(() => {
+        setShow(false)
+      }, 5000)
+    }
+  }, [message])
+
+  return (
+    <div className={`toast ${show ? "show" : ""}`}>
+      {message}
+    </div>
+  )
+}
