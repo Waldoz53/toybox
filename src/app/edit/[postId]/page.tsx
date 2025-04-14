@@ -23,8 +23,8 @@ export default async function EditPostPage({ params }: Props ) {
   }
   
   return (
-    <div>
-      <h2>Editing post {postId}</h2>
+    <div className="edit-page">
+      <h2>Editing a collection item</h2>
       {validUser ? (
         <EditPostForm id={postId} title={postData.title} description={postData.description}/>
       ) : (

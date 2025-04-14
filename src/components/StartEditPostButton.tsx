@@ -7,6 +7,6 @@ export default function StartEditPostButton({ id } : { id: string }) {
     router.push(`/edit/${id}`)
   }
   return (
-    <button onClick={startEdit}>Edit</button>
+    <button className="start-edit" onClick={startEdit}>Edit</button>
   )
 }

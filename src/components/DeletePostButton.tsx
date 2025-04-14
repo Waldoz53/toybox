@@ -9,6 +9,6 @@ export default function DeletePostButton({ id } : { id: string }) {
     router.refresh()
   }
   return (
-    <button onClick={handleDelete}>Delete</button>
+    <button className="delete-post" onClick={handleDelete}>Delete</button>
   )
 }

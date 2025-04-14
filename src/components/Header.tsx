@@ -1,5 +1,12 @@
 import Link from "next/link"
 import LogoutButton from "@/components/LogoutButton"
+import { Bebas_Neue } from "next/font/google"
+
+const bebas = Bebas_Neue({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+});
 
 type HeaderProps = {
   username: string
@@ -8,11 +15,12 @@ type HeaderProps = {
 export default async function Header({ username }: HeaderProps) {
   
   return (
-    <div>
-      <Link href="/"><h1>Header Component!</h1></Link>
+    <div className="header">
+      <Link href="/" className="title"><h1 className={bebas.className}>Toybox</h1></Link>
+      <div className="spacer"></div>
       {username ? (
         <>
-          <p>Logged in as <Link href={`/${username}`}>{username}</Link></p>
+          <Link href={`/${username}`}><p>{username}</p></Link>
           <LogoutButton/>
         </>
       ) : (

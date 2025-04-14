@@ -8,11 +8,12 @@ export default function EditPostForm({ id, title, description }: { id: string, t
   return (
     <form>
       <input type="hidden" name="id" value={id} />
-      <label htmlFor="title">Title:</label>
+      <label htmlFor="title">Figure Name:</label>
       <input id="title" name="title" type="text" required defaultValue={title}/>
-      <label htmlFor="description">Description</label>
-      <textarea id="description" name="description" required defaultValue={description}/>
-      <button formAction={editPost}>Edit Post</button>
+      <label htmlFor="description">Description:</label>
+      <textarea id="description" name="description" required defaultValue={description} placeholder="Quality, features, etc."/>
+      <div className="spacer"></div>
+      <button formAction={editPost}>Edit Item</button>
     </form>
   )
 }

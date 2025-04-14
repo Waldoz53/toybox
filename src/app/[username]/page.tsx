@@ -34,18 +34,18 @@ export default async function UserPage({ params }: Props) {
   }
 
   return (
-    <div>
+    <div className="collection">
       {isValidUsername ? (
         <>
-          <h2>{username}&apos;s Collection:</h2>
-          <p>{errorMessage}</p>
-          <div>
+          <h2>{isOwner ? (`Your collection`) : (`${username}'s Collection`)}</h2>
+          <p className="error">{errorMessage}</p>
+          <div className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map(post => (
-                <div key={post.id}>
+                <div key={post.id} className="collection-item">
                   <h3>{post.title}</h3>
-                  <p>{post.description}</p>
-                  <p>Added on {new Date(post.created_at).toLocaleDateString()}</p>
+                  <p className="description">{post.description}</p>
+                  <p className="date">Added on {new Date(post.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
                   {isOwner ? (
                     <>
                       <StartEditPostButton id={post.id}/>
@@ -62,7 +62,7 @@ export default async function UserPage({ params }: Props) {
           </div>
         </>
       ) : (
-        <h2>{errorMessage}</h2>
+        <h2 className="error">{errorMessage}</h2>
       )}
     </div>
   )

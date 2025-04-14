@@ -3,12 +3,18 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer"
 import { createClientServer } from "@/utils/supabase/server";
+import { Nunito_Sans } from "next/font/google"
 
 export const metadata: Metadata = {
   title: "Toybox",
-  description: "test",
+  description: "Keep a record of your action figure collection",
 };
 
+const nunito = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap'
+})
 
 export default async function RootLayout({
   children,
@@ -24,7 +30,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className={nunito.className}>
       <body>
         <Header username={username}/>
         {children}

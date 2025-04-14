@@ -11,8 +11,8 @@ export default async function Post() {
     redirect('/login')
   }
   return (
-    <div>
-      <h2>Create a post</h2>
+    <div className="post-page">
+      <h2>Add to your collection</h2>
       <PostPage/>
     </div>
   )
