@@ -3,11 +3,17 @@
 import { useState } from 'react'
 import { login } from '../actions'
 import Toast from '@/components/Toast'
+import useLoading from '../context/LoadingContext'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
   const [message, setMessage] = useState('')
+  const { setLoading } = useLoading()
+  const router = useRouter() 
+
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setLoading(true)
     const formData = new FormData(e.currentTarget)
     setMessage(await login(formData))
     console.log("Login error:", message)
@@ -15,6 +21,9 @@ export default function LoginPage() {
     setTimeout(() => {
       setMessage('')
     }, 5000)
+
+    setLoading(false)
+    router.push("/")
   }
 
   return (

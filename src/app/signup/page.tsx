@@ -2,11 +2,18 @@
 import { useState } from 'react'
 import { signup } from '../actions'
 import Toast from '@/components/Toast'
+import useLoading from '../context/LoadingContext'
+import { useRouter } from 'next/navigation'
+
 
 export default function SignUpPage() {
   const [message, setMessage] = useState('')
+  const { setLoading } = useLoading()
+  const router = useRouter()
+
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setLoading(true)
     const formData = new FormData(e.currentTarget)
     const result = await signup(formData)
     setMessage(result ?? '')
@@ -15,6 +22,9 @@ export default function SignUpPage() {
     setTimeout(() => {
       setMessage('')
     }, 5000)
+
+    setLoading(false)
+    router.push('/')
   }
 
   return (

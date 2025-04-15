@@ -3,11 +3,17 @@
 import { useState } from "react"
 import { createPost } from "../actions"
 import Toast from "@/components/Toast"
+import { useRouter } from "next/navigation"
+import useLoading from "../context/LoadingContext"
 
 export default function PostPage() {
   const [message, setMessage] = useState('')
+  const { setLoading } = useLoading()
+  const router = useRouter()
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setLoading(true)
     const formData = new FormData(e.currentTarget)
     const result = await createPost(formData)
     setMessage(result ?? "")
@@ -16,6 +22,9 @@ export default function PostPage() {
     setTimeout(() => {
       setMessage('')
     }, 5000)
+
+    setLoading(false)
+    router.push('/profile')
   }
   return (
     <form onSubmit={handleSubmit}>

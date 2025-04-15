@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link"
 import LogoutButton from "@/components/LogoutButton"
+import LoadingEffect from "./LoadingEffect"
 import { Bebas_Neue } from "next/font/google"
 import { useUser } from "@/app/context/UserContext";
 
@@ -20,6 +21,7 @@ export default function Header() {
   return (
     <div className="header">
       <Link href="/" className="title"><h1 className={bebas.className}>Toybox</h1></Link>
+      <LoadingEffect/>
       <div className="spacer"></div>
       {username ? (
         <>

@@ -1,6 +1,5 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClientServer } from '@/utils/supabase/server'
@@ -21,8 +20,7 @@ export async function login(formData: FormData) {
     return error.message
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/')
+  return ""
 }
 
 
@@ -39,7 +37,6 @@ export async function signup(formData: FormData) {
   const { data, error } = await supabase.auth.signUp(userData)
 
   if (error || !data.user) {
-    // redirect('/error')
     console.log(error?.message)
     return error?.message
   } else {
@@ -51,17 +48,13 @@ export async function signup(formData: FormData) {
     ])
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/')
+  return ""
 }
 
 // Log out
 export async function logOut() {
   const supabase = await createClientServer()
   await supabase.auth.signOut()
-  
-  // revalidatePath('/', 'layout')
-  // redirect('/')
 }
 
 // Creates a post
@@ -87,7 +80,7 @@ export async function createPost(formData: FormData) {
     return postsError.message
   }
 
-  redirect('/profile')
+  return ""
 }
 
 // Deletes a post

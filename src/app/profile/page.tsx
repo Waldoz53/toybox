@@ -1,19 +1,29 @@
-import { createClientServer } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+'use client'
 
-export default async function ProfileRedirectPage() {
-  const supabase = await createClientServer()
-  const { data, error } = await supabase.auth.getUser()
+import { createClientBrowser } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-  if (!data.user || error) {
-    redirect('/login')
-  }
+export default function ProfileRedirectPage() {
+  const router = useRouter()
 
-  const { data: profile } = await supabase.from('profiles').select('username').eq('id', data.user.id).single()
+  useEffect(() => {
+    const supabase = createClientBrowser()
+    async function redirectToUsername() {
+      const { data, error } = await supabase.auth.getUser()
+      if (!data.user || error) {
+        router.push('/login')
+      }
+      const { data: profile } = await supabase.from('profiles').select('username').eq('id', data.user?.id).single()
+      if (profile?.username) {
+        router.push(`/${profile.username}`)
+      } else {
+        router.push('/login')
+      }
+    }
 
-  if (!profile?.username) {
-    redirect("/")
-  }
+    redirectToUsername()
+  }, [router])
 
-  redirect(`/${profile?.username}`)
+  return <span className="loader-transition"></span>
 }
