@@ -163,4 +163,8 @@ a {
 .footer {
   margin: auto auto 0 auto;
   max-width: 1200px;
+  padding: 3em 0 1em
+}
+.footer p {
+  font-size: 12px;
 }

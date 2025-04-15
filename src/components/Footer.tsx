@@ -1,3 +1,7 @@
 export default function Footer() {
-  return(<h1 className="footer">Footer</h1>)
+  return(
+    <div className="footer">
+      <p>Any issues? Contact me <a href="">here.</a> (Doesn't link anywhere yet)</p>
+    </div>
+  )
 }
