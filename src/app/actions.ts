@@ -60,8 +60,8 @@ export async function logOut() {
   const supabase = await createClientServer()
   await supabase.auth.signOut()
   
-  revalidatePath('/', 'layout')
-  redirect('/')
+  // revalidatePath('/', 'layout')
+  // redirect('/')
 }
 
 // Creates a post
