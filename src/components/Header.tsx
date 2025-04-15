@@ -1,6 +1,8 @@
+'use client'
 import Link from "next/link"
 import LogoutButton from "@/components/LogoutButton"
 import { Bebas_Neue } from "next/font/google"
+import { useUser } from "@/app/context/UserContext";
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -8,11 +10,12 @@ const bebas = Bebas_Neue({
   display: 'swap',
 });
 
-type HeaderProps = {
-  username: string
-}
-
-export default async function Header({ username }: HeaderProps) {
+export default function Header() {
+  let username = ''
+  const { user } = useUser()
+  if (user) {
+    username = user.username
+  }
   
   return (
     <div className="header">
