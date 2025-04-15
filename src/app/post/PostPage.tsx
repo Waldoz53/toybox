@@ -22,7 +22,7 @@ export default function PostPage() {
       <label htmlFor="title">Figure Name:</label>
       <input id="title" name="title" type="text" required />
       <label htmlFor="description">Description:</label>
-      <textarea id="description" name="description" required placeholder="Quality, features, etc."/>
+      <textarea id="description" name="description" placeholder="Quality, features, etc."/>
       <div className="spacer"></div>
       <button>Add</button>
       <Toast message={message}/>
