@@ -4,6 +4,7 @@ import useLoading from "./context/LoadingContext"
 import { useEffect, useState } from "react"
 import { createClientBrowser } from "@/utils/supabase/client"
 import { getTimeAgo } from "@/utils/getTimeAgo"
+import Link from "next/link"
 
 type Post = {
   id: string,
@@ -52,7 +53,7 @@ export default function Home() {
           <>
           {posts.map((post) => (
             <div className="post" key={post.id}>
-              <p>{post.profiles?.username} added {post.title}</p>
+              <p><Link href={`/${post.profiles?.username}`}>{post.profiles?.username}</Link> added {post.title}</p>
               <span>{getTimeAgo(post.created_at)}</span>
             </div>
           ))}

@@ -109,7 +109,7 @@ a {
 }
 .home button {
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   padding: 1em 2em;
   font-size: 18px;
 }
@@ -124,9 +124,13 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 0;
+  padding: 1em 0.5em;
   border-bottom: 1px solid #bbb;
   gap: .5em;
+  cursor: pointer;
+}
+.all-posts .post:hover {
+  background: #eee;
 }
 .all-posts .post:last-child {
   border: none;
@@ -139,6 +143,7 @@ a {
 }
 .post span {
   font-size: 11px;
+  color: #bbb;
 }
 
 /* Login/Signup page -- also contains some post/edit page bits */
@@ -225,11 +230,33 @@ a {
   font-family: Nunito Sans, 'Nunito Sans', sans-serif;
 }
 
+/* Blog */
+.blog {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.blog .blog-section {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+.blog-section ul {
+  padding-left: 1em;
+}
+.blog-section li {
+  padding-bottom: .5em;
+}
+
 /* Footer component */
 .footer {
   margin: auto auto 0 auto;
   max-width: 1200px;
-  padding: 3em 0 1em
+  padding: 3em 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
 }
 .footer p {
   font-size: 12px;
