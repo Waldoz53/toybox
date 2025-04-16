@@ -13,3 +13,4 @@ Toybox is a site for action figure collectors to log and share their action figu
 5. Add ratings
 6. Create a database of items that people can add, rather than completely custom titles (like how Letterboxd works)
 7. Users should be able to like and comment on posts
+8. Run an ESLint/Prettier to make sure imports, code, etc is consistently named/typed out
