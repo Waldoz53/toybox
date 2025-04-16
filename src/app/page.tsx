@@ -19,7 +19,8 @@ export default function Home() {
   }
 
   async function fetchAllPosts() {
-    const { data, error } = await supabase.from('posts').select('id, title, created_at, profiles(username)').order("created_at", { ascending: false }).limit(10)
+    const { data, error } = await supabase.from('posts').select('id, title, created_at, profiles(username)').order("created_at", { ascending: false })
+    // add pagination
     if (error || !data) {
       console.log("Error fetching posts:", error.message)
       return <p>Error fetching posts :(</p>
