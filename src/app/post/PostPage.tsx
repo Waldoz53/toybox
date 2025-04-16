@@ -23,8 +23,10 @@ export default function PostPage() {
       setMessage('')
     }, 5000)
 
-    setLoading(false)
     router.push('/profile')
+    setTimeout(() => {
+      setLoading(false)
+    }, 200)
   }
   return (
     <form onSubmit={handleSubmit}>

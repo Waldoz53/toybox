@@ -19,6 +19,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   )
 }
 
-export function useUser() {
+export default function useUser() {
   return useContext(UserContext)
 }

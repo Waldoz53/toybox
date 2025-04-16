@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from "react"
-import { useUser } from "@/app/context/UserContext"
+import useUser from "@/app/context/UserContext"
 
 type User = {
   id: string,

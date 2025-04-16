@@ -17,14 +17,16 @@ export default function SignUpPage() {
     const formData = new FormData(e.currentTarget)
     const result = await signup(formData)
     setMessage(result ?? '')
-    console.log("Sign up error:", message)
+    console.log("Sign up message:", message)
 
     setTimeout(() => {
       setMessage('')
     }, 5000)
 
-    setLoading(false)
     router.push('/')
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
   }
 
   return (

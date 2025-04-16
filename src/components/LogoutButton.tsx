@@ -1,7 +1,7 @@
 'use client'
 import { logOut } from "@/app/actions"
 import useLoading from "@/app/context/LoadingContext"
-import { useUser } from "@/app/context/UserContext"
+import useUser from "@/app/context/UserContext"
 import { useRouter } from "next/navigation"
 
 export default function LogoutButton() {
@@ -13,8 +13,10 @@ export default function LogoutButton() {
     setLoading(true)
     await logOut()
     setUser(null)
-    setLoading(false)
     router.push('/')
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
   }
 
   return (<button onClick={handleLogout}>Log Out</button>)

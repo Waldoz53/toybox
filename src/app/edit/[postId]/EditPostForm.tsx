@@ -1,13 +1,20 @@
 'use client'
 
 import { editPost } from "@/app/actions"
+import useLoading from "@/app/context/LoadingContext"
 import Toast from "@/components/Toast"
 import { useState } from "react"
 
 export default function EditPostForm({ id, title, description }: { id: string, title: string, description: string }) {
   const [message, setMessage] = useState('')
+  const { setLoading } = useLoading()
+  
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
     const formData = new FormData(e.currentTarget)
     const result = await editPost(formData)
     setMessage(result ?? "")

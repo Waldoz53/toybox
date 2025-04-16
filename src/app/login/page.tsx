@@ -16,14 +16,16 @@ export default function LoginPage() {
     setLoading(true)
     const formData = new FormData(e.currentTarget)
     setMessage(await login(formData))
-    console.log("Login error:", message)
+    console.log("Login message:", message)
 
     setTimeout(() => {
       setMessage('')
     }, 5000)
 
-    setLoading(false)
     router.push("/")
+    setTimeout(() => {
+      setLoading(false)
+    }, 500)
   }
 
   return (

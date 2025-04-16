@@ -3,7 +3,7 @@ import Link from "next/link"
 import LogoutButton from "@/components/LogoutButton"
 import LoadingEffect from "./LoadingEffect"
 import { Bebas_Neue } from "next/font/google"
-import { useUser } from "@/app/context/UserContext";
+import useUser from "@/app/context/UserContext";
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
