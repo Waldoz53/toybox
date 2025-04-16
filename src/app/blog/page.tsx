@@ -23,7 +23,7 @@ export default function Blog() {
           <li>Likes + Comments on posts</li>
           <li>Show likes + comments icons on home page posts</li>
           <li>Optionally rating on a scale of 1-10 to your posts</li>
-          <li>Validate emails, usernames (so that they're unique), post titles, descriptions, etc so my database doesnt get absolutely fricked</li>
+          <li>Validate emails, usernames (so that theyre unique), post titles, descriptions, etc so my database doesnt get absolutely fricked</li>
         </ul>
       </div>
 

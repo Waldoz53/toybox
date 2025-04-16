@@ -19,7 +19,7 @@ export default function ProfileRedirectPage() {
     }
     
     redirectToUsername()
-  }, [user])
+  }, [user, router])
 
   return <span className="loader-transition"></span>
 }

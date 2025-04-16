@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation"
 import useLoading from "./context/LoadingContext"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { createClientBrowser } from "@/utils/supabase/client"
 import { getTimeAgo } from "@/utils/getTimeAgo"
 import Link from "next/link"
@@ -26,7 +26,7 @@ export default function Home() {
     setLoading(false)
   }
 
-  async function fetchAllPosts() {
+  const fetchAllPosts = useCallback(async () => {
     const { data, error } = await supabase.from('posts').select('id, title, created_at, profiles(username)').order("created_at", { ascending: false }).limit(100)
     // FIX: add pagination
     if (error || !data) {
@@ -37,13 +37,13 @@ export default function Home() {
       setPosts(data as unknown as Post[])
       setLoadedPosts(true)
     }
-  }
+  }, [supabase])
 
   useEffect(() => {
     if (!loadedPosts) {
       fetchAllPosts()
     }
-  }, [loadedPosts])
+  }, [loadedPosts, fetchAllPosts])
 
   return (
     <div className="home">
