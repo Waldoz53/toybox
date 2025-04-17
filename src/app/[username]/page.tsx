@@ -1,6 +1,7 @@
 import DeletePostButton from "@/components/DeletePostButton"
 import StartEditPostButton from "@/components/StartEditPostButton"
 import { createClientServer } from "@/utils/supabase/server"
+import Link from "next/link"
 
 type Props = {
   params: Promise<{username: string}>
@@ -42,7 +43,7 @@ export default async function UserPage({ params }: Props) {
           <div className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map(post => (
-                <div key={post.id} className="collection-item">
+                <Link href={`/${username}/item/${post.id}`} key={post.id} className="collection-item">
                   <h3>{post.title}</h3>
                   <p className="description">{post.description}</p>
                   <p className="date">Added on {new Date(post.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
@@ -54,7 +55,7 @@ export default async function UserPage({ params }: Props) {
                   ) : (
                     ''
                   )}
-                </div>
+                </Link>
               ))
             ) : (
               <p>No items in {isOwner ? (`your`) : (`${username}'s`)} collection.</p>

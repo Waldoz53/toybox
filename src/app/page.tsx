@@ -52,10 +52,10 @@ export default function Home() {
         {posts && posts.length > 0 && (
           <>
           {posts.map((post) => (
-            <div className="post" key={post.id}>
-              <p><Link href={`/${post.profiles?.username}`}>{post.profiles?.username}</Link> added {post.title}</p>
+            <Link href={`/${post.profiles?.username}/item/${post.id}`} key={post.id} className="post">
+              <p>{post.profiles?.username} added {post.title}</p>
               <span>{getTimeAgo(post.created_at)}</span>
-            </div>
+            </Link>
           ))}
           </>
         )}
