@@ -2,13 +2,13 @@ export default function Blog() {
   return (
     <div className="blog">
       <h2>Blog</h2>
-      {/* <div className="blog-section">
-        <h3>Latest updates only:</h3>
-        <p>April 16, 2025</p>
+      <div className="blog-section">
+        <h3>Latest updates only</h3>
+        <p>April 17, 2025</p>
         <ul>
-          <li></li>
+          <li>Added new item page routes! You should be able to view the individual pages for posts now</li>
         </ul>
-      </div> */}
+      </div>
 
       <div className="blog-section">
         <h3>Features in development:</h3>
@@ -22,6 +22,9 @@ export default function Blog() {
           <li>On the home page you can switch between a following/all posts tab</li>
           <li>Profile setting to limit who can comment on your posts</li>
           <li>Pick a colour scheme (and add dark mode)</li>
+          <li>New favicon</li>
+          <li>Change titles depending on the content being viewed</li>
+          <li>Make CSS between some sections more consistent</li>
           <li>Likely redesign how the site looks</li>
         </ul>
       </div>

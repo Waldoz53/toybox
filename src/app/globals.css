@@ -196,6 +196,7 @@ a {
   flex-wrap: wrap;
   margin: 0 auto;
   width: 100%;
+  max-width: 500px;
 }
 .collection-item {
   width: 100%;
@@ -223,11 +224,6 @@ a {
 .collection-item .start-edit {
   margin-right: 8px;
   margin-top: 8px;
-}
-@media screen and (min-width: 500px) {
-  .collection-container {
-    max-width: 800px;
-  }
 }
 
 /* Create/edit post css - same styles as login/signup */
@@ -272,7 +268,7 @@ a {
 /* Individual item post page */
 .item-page {
   width: 100%;
-  max-width: 350px;
+  max-width: 500px;
   margin: 0 auto;
 }
 .item-page h3 {
