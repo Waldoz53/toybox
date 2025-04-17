@@ -23,6 +23,7 @@ export default async function UserItem({ params }: Props) {
   
   // find valid post, if available
   const { data, error } = await supabase.from('posts').select('id, title, description, created_at, user_id, profiles(username)').eq('id', itemId).single()
+  // FIX: sanity check here
   const item = data as unknown as Item
   
   if (!data || error) {

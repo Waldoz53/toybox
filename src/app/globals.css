@@ -222,6 +222,7 @@ a {
 }
 .collection-item .start-edit {
   margin-right: 8px;
+  margin-top: 8px;
 }
 @media screen and (min-width: 500px) {
   .collection-container {
