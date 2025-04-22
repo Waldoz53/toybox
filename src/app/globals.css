@@ -282,6 +282,18 @@ a {
   min-height: 100px;
   margin-bottom: .5em;
 }
+.item-page .likes {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+.item-page .likes-button {
+  margin-bottom: .5em;
+}
+.likes-button.liked {
+  background: black;
+  color: white;
+}
 .item-page .buttons-container {
   display: flex;
   gap: .5em;

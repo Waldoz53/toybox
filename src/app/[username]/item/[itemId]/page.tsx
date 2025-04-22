@@ -1,4 +1,5 @@
 import DeletePostButton from "@/components/DeletePostButton"
+import LikesButton from "@/components/LikesButton"
 import StartEditPostButton from "@/components/StartEditPostButton"
 import { createClientServer } from "@/utils/supabase/server"
 import Link from "next/link"
@@ -20,6 +21,8 @@ export default async function UserItem({ params }: Props) {
   const { itemId } = await params
   const supabase = await createClientServer()
   let authorAuth = false
+  let realCount
+  let userLiked = false
   
   // find valid post, if available
   const { data, error } = await supabase.from('posts').select('id, title, description, created_at, user_id, profiles(username)').eq('id', itemId).single()
@@ -36,11 +39,24 @@ export default async function UserItem({ params }: Props) {
     )
   }
 
+  // check for likes count
+  const { data: count } = await supabase.from('likes').select('id').eq('post_id', item.id)
+  if (count) {
+    realCount = count?.length ?? 0
+  } else {
+    realCount = 0
+  }
+  
   // check user auth
   const { data: userData } = await supabase.auth.getUser()
   // if logged in user id = post author id, enable the edit/delete buttons
   if (userData.user?.id === data?.user_id) {
     authorAuth = true
+  }
+  // checks if logged in user has liked this post
+  const { data: like } = await supabase.from('likes').select('*').eq('user_id', userData.user?.id).eq('post_id', itemId).maybeSingle()
+  if (like) { 
+    userLiked = true
   }
 
   return (
@@ -49,6 +65,7 @@ export default async function UserItem({ params }: Props) {
         <h3>{item.title}</h3>
         <p className="description">{item.description}</p>
         <p className="author-date">Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on {new Date(item.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+        <LikesButton count={realCount} userLiked={userLiked} postId={itemId}/>
       </div>
       {authorAuth && 
         <div className="buttons-container">

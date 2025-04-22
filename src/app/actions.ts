@@ -116,3 +116,21 @@ export async function editPost(formData: FormData) {
   
   redirect('/profile')
 }
+
+// like + unlike on a post
+export async function likePost(postId: string, userId: string) {
+  const supabase = await createClientServer()
+  const { error } = await supabase.from('likes').insert([{ user_id: userId, post_id: postId }])
+
+  if (error) {
+    return error.message
+  } else return 'liked successfully!'
+}
+export async function unlikePost(postId: string, userId: string) {
+  const supabase = await createClientServer()
+  const { error } = await supabase.from('likes').delete().eq('user_id', userId).eq('post_id', postId)
+
+  if (error) {
+    return error.message
+  } else return 'unliked successfully!'
+}

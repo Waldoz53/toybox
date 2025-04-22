@@ -4,9 +4,9 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>April 17, 2025</p>
+        <p>April 22, 2025</p>
         <ul>
-          <li>Added new item page routes! You should be able to view the individual pages for posts now</li>
+          <li>Added the ability to like posts!</li>
         </ul>
       </div>
 
@@ -14,7 +14,7 @@ export default function Blog() {
         <h3>Features in development:</h3>
         <ul>
           <li>Separate dynamic pages for each post</li>
-          <li>Likes + Comments on posts</li>
+          <li>Comments on posts</li>
           <li>Optionally rating on a scale of 1-10 to your posts</li>
           <li>Show likes + comments icons on home page posts</li>
           <li>Validate emails, usernames (so that theyre unique), post titles, descriptions, etc so my database doesnt get absolutely fricked</li>
@@ -33,6 +33,7 @@ export default function Blog() {
         <h3>Known issues:</h3>
         <ul>
           <li>Loading element between certain actions/pages is kinda odd</li>
+          {/* Use promises to handle loaders better */}
         </ul>
       </div>
     </div>

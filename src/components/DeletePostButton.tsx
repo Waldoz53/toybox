@@ -9,7 +9,7 @@ export default function DeletePostButton({ id } : { id: string }) {
   async function handleDelete() {
     setLoading(true)
     await deletePost(id)
-    router.refresh()
+    router.push('/profile')
     setLoading(false)
   }
   return (
