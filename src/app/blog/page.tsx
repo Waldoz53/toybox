@@ -7,7 +7,7 @@ export default function Blog() {
         <p>April 24, 2025</p>
         <ul>
           <li>Added comments!</li>
-          <li>Improve loading element (hopefully!)</li>
+          <li>Improved loading element (hopefully!)</li>
         </ul>
       </div>
 
@@ -29,7 +29,6 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Change titles depending on the content being viewed</li>
           <li>Likely redesign how the site looks</li>
-          <li>Dark mode!</li>
         </ul>
       </div>
 
