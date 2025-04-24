@@ -12,6 +12,9 @@ export default function StartEditPostButton({ id } : { id: string }) {
     setLoading(false)
   }
   return (
-    <button className="start-edit" onClick={startEdit}>Edit</button>
+    <button className="start-edit" onClick={(e) => {
+      e.stopPropagation()
+      startEdit()
+    }}>Edit</button>
   )
 }
