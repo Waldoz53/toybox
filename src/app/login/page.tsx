@@ -15,17 +15,18 @@ export default function LoginPage() {
     e.preventDefault()
     setLoading(true)
     const formData = new FormData(e.currentTarget)
-    setMessage(await login(formData))
-    console.log("Login message:", message)
+    await login(formData).then(res => {
+      setMessage(res ?? "")
+      if (message !== "") {
+        console.log("Login message:", message)
+      }
+      setLoading(false)
+    })
 
     setTimeout(() => {
       setMessage('')
     }, 5000)
-
     router.push("/")
-    setTimeout(() => {
-      setLoading(false)
-    }, 500)
   }
 
   return (

@@ -15,18 +15,19 @@ export default function PostPage() {
     e.preventDefault()
     setLoading(true)
     const formData = new FormData(e.currentTarget)
-    const result = await createPost(formData)
-    setMessage(result ?? "")
-    console.log("Submit post error:", message)
+    await createPost(formData).then(res => {
+      setMessage(res ?? "")
+      if (res !== "") {
+        console.log("Submit post error:", message)
+      }
+      setLoading(false)
+    })
 
     setTimeout(() => {
       setMessage('')
     }, 5000)
 
     router.push('/profile')
-    setTimeout(() => {
-      setLoading(false)
-    }, 200)
   }
   return (
     <form onSubmit={handleSubmit}>

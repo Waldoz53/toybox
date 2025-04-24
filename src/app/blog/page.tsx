@@ -4,17 +4,19 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>April 22, 2025</p>
+        <p>April 24, 2025</p>
         <ul>
-          <li>Added the ability to like posts!</li>
+          <li>Added comments!</li>
+          <li>Improve loading element (hopefully!)</li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Features in development:</h3>
         <ul>
-          <li>Separate dynamic pages for each post</li>
-          <li>Comments on posts</li>
+          <li>Custom 404 page</li>
+          <li>More error clarification</li>
+          <li>Turn delete buttons into icons for less chunky looking elements</li>
           <li>Optionally rating on a scale of 1-10 to your posts</li>
           <li>Show likes + comments icons on home page posts</li>
           <li>Validate emails, usernames (so that theyre unique), post titles, descriptions, etc so my database doesnt get absolutely fricked</li>
@@ -24,8 +26,8 @@ export default function Blog() {
           <li>Pick a colour scheme (and add dark mode)</li>
           <li>New favicon</li>
           <li>Change titles depending on the content being viewed</li>
-          <li>Make CSS between some sections more consistent</li>
           <li>Likely redesign how the site looks</li>
+          <li>Dark mode!</li>
         </ul>
       </div>
 
@@ -33,7 +35,6 @@ export default function Blog() {
         <h3>Known issues:</h3>
         <ul>
           <li>Loading element between certain actions/pages is kinda odd</li>
-          {/* Use promises to handle loaders better */}
         </ul>
       </div>
     </div>

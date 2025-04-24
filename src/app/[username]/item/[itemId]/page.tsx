@@ -1,3 +1,5 @@
+import CommentForm from "@/components/CommentForm"
+import DeleteCommentButton from "@/components/DeleteCommentButton"
 import DeletePostButton from "@/components/DeletePostButton"
 import LikesButton from "@/components/LikesButton"
 import StartEditPostButton from "@/components/StartEditPostButton"
@@ -23,6 +25,7 @@ export default async function UserItem({ params }: Props) {
   let authorAuth = false
   let realCount
   let userLiked = false
+  let commentCount = 0
   
   // find valid post, if available
   const { data, error } = await supabase.from('posts').select('id, title, description, created_at, user_id, profiles(username)').eq('id', itemId).single()
@@ -59,6 +62,12 @@ export default async function UserItem({ params }: Props) {
     userLiked = true
   }
 
+  // fetches comments on a post
+  const { data: comments, error: commentsError } = await supabase.from('comments').select('*').eq('post_id', itemId).order('created_at', { ascending: true })
+  if (!commentsError) {
+    commentCount = comments.length
+  }
+
   return (
     <div className="item-page">
       <div className="main">
@@ -66,12 +75,26 @@ export default async function UserItem({ params }: Props) {
         <p className="description">{item.description}</p>
         <p className="author-date">Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on {new Date(item.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
         <LikesButton count={realCount} userLiked={userLiked} postId={itemId}/>
+        {authorAuth && 
+          <div className="buttons-container">
+            <StartEditPostButton id={itemId}/>
+            <DeletePostButton id={itemId}/>
+          </div>}
       </div>
-      {authorAuth && 
-        <div className="buttons-container">
-          <StartEditPostButton id={itemId}/>
-          <DeletePostButton id={itemId}/>
-        </div>}
+      <div className="item-comments">
+        {commentCount > 0 ? (
+          comments?.map(comment => (
+            <div className="comment" key={comment.id}>
+              <p className="author">{comment.comment_author}:</p>
+              <div className="comment-container">
+                <p>{comment.comment}</p>
+                {comment.user_id == userData.user?.id && <DeleteCommentButton commentId={comment.id}/>}
+              </div>
+            </div>
+          ))
+        ) : "No comments yet"}
+        {userData.user?.id && <CommentForm postId={itemId}/>}
+      </div>
     </div>
   )
 }

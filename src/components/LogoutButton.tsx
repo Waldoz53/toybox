@@ -11,12 +11,12 @@ export default function LogoutButton() {
 
   async function handleLogout() {
     setLoading(true)
-    await logOut()
-    setUser(null)
-    router.push('/')
-    setTimeout(() => {
+    await logOut().then(res => {
+      console.log(res)
+      setUser(null)
+      router.push('/')
       setLoading(false)
-    }, 500)
+    })
   }
 
   return (<button onClick={handleLogout}>Log Out</button>)

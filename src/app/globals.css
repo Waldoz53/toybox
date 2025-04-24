@@ -270,6 +270,11 @@ a {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  padding-bottom: 1em;
+}
+.item-page .main {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 1em;
 }
 .item-page h3 {
   margin-bottom: .5em;
@@ -297,4 +302,34 @@ a {
 .item-page .buttons-container {
   display: flex;
   gap: .5em;
+}
+.item-page .item-comments {
+  padding-top: 1em;
+}
+.item-comments form {
+  margin-bottom: .5em;
+}
+.item-comments textarea {
+  height: 75px;
+  width: 100%;
+  border-radius: 6px;
+  border-style: none;
+  border: 1px solid black;
+  padding-left: .5em;
+  padding-top: .5em;
+  font-family: Nunito Sans, 'Nunito Sans', sans-serif;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+.item-comments .comment {
+  margin-bottom: .5em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: .5em;
+}
+.item-comments .comment .author {
+  font-weight: 700;
+}
+.item-comments .comment .comment-container {
+  display: flex;
+  justify-content: space-between;
 }

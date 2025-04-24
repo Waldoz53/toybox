@@ -1,7 +1,6 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-
 import { createClientServer } from '@/utils/supabase/server'
 
 // Log in
@@ -117,7 +116,7 @@ export async function editPost(formData: FormData) {
   redirect('/profile')
 }
 
-// like + unlike on a post
+// like a post
 export async function likePost(postId: string, userId: string) {
   const supabase = await createClientServer()
   const { error } = await supabase.from('likes').insert([{ user_id: userId, post_id: postId }])
@@ -126,6 +125,8 @@ export async function likePost(postId: string, userId: string) {
     return error.message
   } else return 'liked successfully!'
 }
+
+// unlike a post
 export async function unlikePost(postId: string, userId: string) {
   const supabase = await createClientServer()
   const { error } = await supabase.from('likes').delete().eq('user_id', userId).eq('post_id', postId)
@@ -133,4 +134,38 @@ export async function unlikePost(postId: string, userId: string) {
   if (error) {
     return error.message
   } else return 'unliked successfully!'
+}
+
+// comment on a post
+export async function commentOnPost(formData: FormData) {
+  const supabase = await createClientServer()
+  const commentData = {
+    postId: formData.get('postId') as string,
+    comment: formData.get('comment') as string,
+    commentAuthorId: formData.get('commentAuthorId') as string,
+    commentAuthor: formData.get('commentAuthor') as string
+  }
+
+  const { error } = await supabase.from('comments').insert([
+    {
+      post_id: commentData.postId,
+      user_id: commentData.commentAuthorId,
+      comment_author: commentData.commentAuthor,
+      comment: commentData.comment
+    }
+  ])
+
+  if (error) {
+    return error.message
+  } else return ""
+}
+
+// delete a comment (on a post)
+export async function deleteComment(commentId: string) {
+  const supabase = await createClientServer()
+  const { error } = await supabase.from('comments').delete().eq('id', commentId)
+
+  if (error) {
+    return error.message
+  } else return ""
 }

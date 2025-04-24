@@ -51,11 +51,10 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
     }
   }
 
-
   return (
     <div className="likes">
       <button className={`likes-button ${liked ? 'liked' : ''}`} onClick={handleToggleLike}>{liked ? 'Liked' : 'Like'}</button>
-      <p>{countState > 0 ? (`${countState} likes`) : ('No likes')}</p>
+      <p>{countState > 0 ? (countState == 1 ? '1 like' : `${countState} likes`) : ('No likes')}</p>
     </div>
   )
 }

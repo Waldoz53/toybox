@@ -12,13 +12,14 @@ export default function EditPostForm({ id, title, description }: { id: string, t
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 500)
     const formData = new FormData(e.currentTarget)
-    const result = await editPost(formData)
-    setMessage(result ?? "")
-    console.log("Submit post error:", message)
+    await editPost(formData).then(res => {
+      setMessage(res ?? "")
+      if (res !== "") {
+        console.log("Submit post error:", message)
+      }
+      setLoading(false)
+    })
 
     setTimeout(() => {
       setMessage('')
