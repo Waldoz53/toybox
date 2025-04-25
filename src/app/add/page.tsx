@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createClientServer } from '@/utils/supabase/server';
-import PostPage from './PostPage';
+import AddPage from './AddPage'
 
 export default async function Post() {
   const supabase = await createClientServer();
@@ -13,7 +13,7 @@ export default async function Post() {
   return (
     <div className="post-page">
       <h2>Add to your collection</h2>
-      <PostPage />
+      <AddPage />
     </div>
   );
 }

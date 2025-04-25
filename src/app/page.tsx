@@ -22,7 +22,7 @@ export default function Home() {
 
   function goToPost() {
     setLoading(true);
-    router.push('/post');
+    router.push('/add');
     setLoading(false);
   }
 

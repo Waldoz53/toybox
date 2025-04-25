@@ -1,6 +1,5 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { createClientServer } from '@/utils/supabase/server';
 
 // Log in
@@ -118,9 +117,7 @@ export async function editPost(formData: FormData) {
     .eq('user_id', data.user?.id);
   if (postsError) {
     return postsError.message;
-  }
-
-  redirect('/profile');
+  } else return ''
 }
 
 // like a post

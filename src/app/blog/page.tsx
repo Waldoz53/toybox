@@ -41,7 +41,7 @@ export default function Blog() {
       <div className="blog-section">
         <h3>Known issues:</h3>
         <ul>
-          <li>Loading element between certain actions/pages is kinda odd</li>
+          {/* <li>Loading element after submitting an edited post has odd functionality</li> */}
         </ul>
       </div>
     </div>

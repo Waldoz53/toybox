@@ -3,6 +3,7 @@
 import { editPost } from '@/app/actions';
 import useLoading from '@/app/context/LoadingContext';
 import Toast from '@/components/Toast';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function EditPostForm({
@@ -16,6 +17,7 @@ export default function EditPostForm({
 }) {
   const [message, setMessage] = useState('');
   const { setLoading } = useLoading();
+  const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +29,7 @@ export default function EditPostForm({
         console.log('Submit post error:', message);
       }
       setLoading(false);
+      router.push('/profile')
     });
 
     setTimeout(() => {
