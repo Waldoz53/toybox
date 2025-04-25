@@ -117,7 +117,7 @@ export async function editPost(formData: FormData) {
     .eq('user_id', data.user?.id);
   if (postsError) {
     return postsError.message;
-  } else return ''
+  } else return '';
 }
 
 // like a post

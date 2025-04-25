@@ -5,6 +5,7 @@ import { login } from '../actions';
 import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
 import { useRouter } from 'next/navigation';
+import '@/styles/login.css';
 
 export default function LoginPage() {
   const [message, setMessage] = useState('');

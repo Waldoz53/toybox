@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import '@/styles/components/toast.css';
 
 type ToastProps = {
   message: string;

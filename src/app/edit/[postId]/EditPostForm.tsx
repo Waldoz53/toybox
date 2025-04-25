@@ -29,7 +29,7 @@ export default function EditPostForm({
         console.log('Submit post error:', message);
       }
       setLoading(false);
-      router.push('/profile')
+      router.push('/profile');
     });
 
     setTimeout(() => {

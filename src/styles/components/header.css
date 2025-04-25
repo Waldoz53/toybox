@@ -1,0 +1,15 @@
+/* Header component */
+.header {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+.header .title {
+  text-decoration: none;
+  color: black;
+}

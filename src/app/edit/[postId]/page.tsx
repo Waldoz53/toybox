@@ -1,6 +1,8 @@
 import { createClientServer } from '@/utils/supabase/server';
 import EditPostForm from '@/app/edit/[postId]/EditPostForm';
 import { redirect } from 'next/navigation';
+import '@/styles/login.css';
+import '@/styles/post.css';
 
 type Props = {
   params: Promise<{ postId: string }>;

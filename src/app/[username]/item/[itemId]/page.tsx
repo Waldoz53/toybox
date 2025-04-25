@@ -5,6 +5,7 @@ import LikesButton from '@/components/LikesButton';
 import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
+import '@/styles/itemPage.css';
 
 type Props = {
   params: Promise<{ username: string; itemId: string }>;

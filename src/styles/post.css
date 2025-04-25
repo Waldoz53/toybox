@@ -1,0 +1,10 @@
+/* Create/edit post css - that page uses the same as login/signup */
+/* besides this */
+.post-page form textarea,
+.edit-page form textarea {
+  height: 100px;
+  font-family:
+    Nunito Sans,
+    'Nunito Sans',
+    sans-serif;
+}

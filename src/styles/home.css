@@ -1,0 +1,47 @@
+/* Home page */
+.home {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+.home button {
+  width: 100%;
+  max-width: 350px;
+  padding: 1em 2em;
+  font-size: 18px;
+}
+.home .all-posts {
+  margin-top: 1em;
+  text-align: left;
+}
+.all-posts .loader {
+  position: relative;
+  margin-top: 2em;
+}
+.all-posts .post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0.5em;
+  border-bottom: 1px solid #bbb;
+  gap: 0.5em;
+  cursor: pointer;
+  text-decoration: none;
+}
+.all-posts .post:hover {
+  background: #eee;
+}
+.all-posts .post:last-child {
+  border: none;
+}
+.post p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.post span {
+  font-size: 11px;
+  color: #bbb;
+}

@@ -2,6 +2,7 @@ import DeletePostButton from '@/components/DeletePostButton';
 import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
+import '@/styles/profile.css';
 
 type Props = {
   params: Promise<{ username: string }>;

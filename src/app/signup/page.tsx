@@ -4,6 +4,7 @@ import { signup } from '../actions';
 import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
 import { useRouter } from 'next/navigation';
+import '@/styles/login.css';
 
 export default function SignUpPage() {
   const [message, setMessage] = useState('');

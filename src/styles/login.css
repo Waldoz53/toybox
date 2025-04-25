@@ -1,0 +1,38 @@
+/* Login/Signup page -- also contains some post/edit page bits */
+.login-page,
+.signup-page,
+.post-page,
+.edit-page {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 0 auto;
+}
+.login-page h2,
+.signup-page h2,
+.post-page h2,
+.edit-page h2 {
+  margin-bottom: 0.5em;
+}
+.login-page form label,
+.signup-page form label,
+.post-page form label,
+.edit-page form label {
+  width: 100%;
+  display: inline-block;
+}
+.login-page form input,
+.signup-page form input,
+.post-page form input,
+.edit-page form input,
+.post-page form textarea,
+.edit-page form textarea {
+  width: 292px;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+  padding-left: 0.5em;
+  font-size: 16px;
+  border-style: none;
+  border: 1px solid #444;
+  border-radius: 6px;
+}

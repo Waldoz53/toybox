@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { createClientBrowser } from '@/utils/supabase/client';
 import { getTimeAgo } from '@/utils/getTimeAgo';
 import Link from 'next/link';
+import '@/styles/home.css';
 
 type Post = {
   id: string;

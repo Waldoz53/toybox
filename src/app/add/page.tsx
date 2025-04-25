@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation';
 import { createClientServer } from '@/utils/supabase/server';
-import AddPage from './AddPage'
+import AddPage from './AddPage';
+import '@/styles/login.css';
+import '@/styles/post.css';
 
 export default async function Post() {
   const supabase = await createClientServer();

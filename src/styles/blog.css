@@ -1,0 +1,16 @@
+/* Blog */
+.blog {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.blog .blog-section {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+.blog-section ul {
+  padding-left: 1em;
+}
+.blog-section li {
+  padding-bottom: 0.5em;
+}

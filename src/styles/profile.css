@@ -1,0 +1,43 @@
+/* User collection page */
+.collection {
+  padding-top: 0.5em;
+}
+.collection h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.collection-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+.collection-item {
+  width: 100%;
+  border-bottom: 1px solid #bbb;
+  padding: 1em 0.5em;
+  text-decoration: none;
+}
+.collection-item:hover {
+  background: #eee;
+}
+.collection-item h3 {
+  margin-bottom: 0.5em;
+}
+.collection-item:last-child {
+  border: none;
+}
+.collection-item .description {
+  min-height: 100px;
+  margin-bottom: 0.5em;
+}
+.collection-item .date {
+  /* color: #1a386e; */
+  color: black;
+  font-size: 14px;
+}
+.collection-item .start-edit {
+  margin-right: 8px;
+  margin-top: 8px;
+}

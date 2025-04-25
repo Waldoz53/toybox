@@ -1,0 +1,15 @@
+.toast {
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  z-index: 999999;
+  background: #af1717;
+  color: white;
+  transform: translateY(-100%);
+}
+.toast.show {
+  transform: translateY(0);
+}

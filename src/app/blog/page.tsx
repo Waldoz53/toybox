@@ -1,3 +1,5 @@
+import '@/styles/blog.css';
+
 export default function Blog() {
   return (
     <div className="blog">
@@ -35,6 +37,9 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Change titles depending on the content being viewed</li>
           <li>Likely redesign how the site looks</li>
+          <li>
+            Reduce usage of network requests. Currently its fine, but can be trimmed down some more
+          </li>
         </ul>
       </div>
 
