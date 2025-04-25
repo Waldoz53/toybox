@@ -4,10 +4,10 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>April 24, 2025</p>
+        <p>April 25, 2025</p>
         <ul>
-          <li>Added comments!</li>
-          <li>Improved loading element (hopefully!)</li>
+          <li>Big CSS + code cleanup</li>
+          <li>Renamed /post route to /add</li>
         </ul>
       </div>
 

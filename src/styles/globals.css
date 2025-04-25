@@ -109,6 +109,21 @@ a {
   color: black;
 }
 
+/* Footer component */
+.footer {
+  margin: auto auto 0 auto;
+  max-width: 1200px;
+  padding: 3em 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+.footer p {
+  font-size: 12px;
+}
+
 /* Home page */
 .home {
   width: 100%;
@@ -231,7 +246,8 @@ a {
   margin-bottom: 0.5em;
 }
 .collection-item .date {
-  color: #1a386e;
+  /* color: #1a386e; */
+  color: black;
   font-size: 14px;
 }
 .collection-item .start-edit {
@@ -264,21 +280,6 @@ a {
 }
 .blog-section li {
   padding-bottom: 0.5em;
-}
-
-/* Footer component */
-.footer {
-  margin: auto auto 0 auto;
-  max-width: 1200px;
-  padding: 3em 0 1em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-}
-.footer p {
-  font-size: 12px;
 }
 
 /* Individual item post page */
