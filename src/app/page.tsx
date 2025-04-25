@@ -1,49 +1,53 @@
-'use client'
-import { useRouter } from "next/navigation"
-import useLoading from "./context/LoadingContext"
-import { useEffect, useState, useCallback } from "react"
-import { createClientBrowser } from "@/utils/supabase/client"
-import { getTimeAgo } from "@/utils/getTimeAgo"
-import Link from "next/link"
+'use client';
+import { useRouter } from 'next/navigation';
+import useLoading from './context/LoadingContext';
+import { useEffect, useState, useCallback } from 'react';
+import { createClientBrowser } from '@/utils/supabase/client';
+import { getTimeAgo } from '@/utils/getTimeAgo';
+import Link from 'next/link';
 
 type Post = {
-  id: string,
-  title: string, 
-  created_at: string,
-  profiles: { username: string }
-}
+  id: string;
+  title: string;
+  created_at: string;
+  profiles: { username: string };
+};
 
 export default function Home() {
-  const router = useRouter()
-  const supabase = createClientBrowser()
-  const { setLoading } = useLoading()
-  const [loadedPosts, setLoadedPosts] = useState(false)
-  const [posts, setPosts] = useState<Post[]>([])
+  const router = useRouter();
+  const supabase = createClientBrowser();
+  const { setLoading } = useLoading();
+  const [loadedPosts, setLoadedPosts] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   function goToPost() {
-    setLoading(true)
-    router.push('/post')
-    setLoading(false)
+    setLoading(true);
+    router.push('/post');
+    setLoading(false);
   }
 
   const fetchAllPosts = useCallback(async () => {
-    const { data, error } = await supabase.from('posts').select('id, title, created_at, profiles(username)').order("created_at", { ascending: false }).limit(100)
+    const { data, error } = await supabase
+      .from('posts')
+      .select('id, title, created_at, profiles(username)')
+      .order('created_at', { ascending: false })
+      .limit(100);
     // FIX: add pagination
     if (error || !data) {
-      console.log("Error fetching posts:", error.message)
-      return <p>Error fetching posts :(</p>
+      console.log('Error fetching posts:', error.message);
+      return <p>Error fetching posts :(</p>;
     } else {
       // FIX: sanity check here in the future
-      setPosts(data as unknown as Post[])
-      setLoadedPosts(true)
+      setPosts(data as unknown as Post[]);
+      setLoadedPosts(true);
     }
-  }, [supabase])
+  }, [supabase]);
 
   useEffect(() => {
     if (!loadedPosts) {
-      fetchAllPosts()
+      fetchAllPosts();
     }
-  }, [loadedPosts, fetchAllPosts])
+  }, [loadedPosts, fetchAllPosts]);
 
   return (
     <div className="home">
@@ -51,16 +55,22 @@ export default function Home() {
       <div className="all-posts">
         {posts && posts.length > 0 && (
           <>
-          {posts.map((post) => (
-            <Link href={`/${post.profiles?.username}/item/${post.id}`} key={post.id} className="post">
-              <p>{post.profiles?.username} added {post.title}</p>
-              <span>{getTimeAgo(post.created_at)}</span>
-            </Link>
-          ))}
+            {posts.map((post) => (
+              <Link
+                href={`/${post.profiles?.username}/item/${post.id}`}
+                key={post.id}
+                className="post"
+              >
+                <p>
+                  {post.profiles?.username} added {post.title}
+                </p>
+                <span>{getTimeAgo(post.created_at)}</span>
+              </Link>
+            ))}
           </>
         )}
         {!loadedPosts && <span className="loader"></span>}
       </div>
     </div>
-  )
+  );
 }

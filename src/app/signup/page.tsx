@@ -1,33 +1,32 @@
-'use client'
-import { useState } from 'react'
-import { signup } from '../actions'
-import Toast from '@/components/Toast'
-import useLoading from '../context/LoadingContext'
-import { useRouter } from 'next/navigation'
-
+'use client';
+import { useState } from 'react';
+import { signup } from '../actions';
+import Toast from '@/components/Toast';
+import useLoading from '../context/LoadingContext';
+import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
-  const [message, setMessage] = useState('')
-  const { setLoading } = useLoading()
-  const router = useRouter()
+  const [message, setMessage] = useState('');
+  const { setLoading } = useLoading();
+  const router = useRouter();
 
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setLoading(true)
-    const formData = new FormData(e.currentTarget)
-    await signup(formData).then(res => {
-      setMessage(res ?? '')
-      if (res !== "") {
-        console.log("Sign up message:", message)
+    e.preventDefault();
+    setLoading(true);
+    const formData = new FormData(e.currentTarget);
+    await signup(formData).then((res) => {
+      setMessage(res ?? '');
+      if (res !== '') {
+        console.log('Sign up message:', message);
       }
-      setLoading(false)
-    })
+      setLoading(false);
+    });
 
     setTimeout(() => {
-      setMessage('')
-    }, 5000)
+      setMessage('');
+    }, 5000);
 
-    router.push('/')
+    router.push('/');
   }
 
   return (
@@ -43,7 +42,7 @@ export default function SignUpPage() {
         <div className="spacer"></div>
         <button>Sign Up</button>
       </form>
-      <Toast message={message}/>
+      <Toast message={message} />
     </div>
-  )
+  );
 }

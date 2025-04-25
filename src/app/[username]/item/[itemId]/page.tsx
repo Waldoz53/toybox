@@ -1,37 +1,41 @@
-import CommentForm from "@/components/CommentForm"
-import DeleteCommentButton from "@/components/DeleteCommentButton"
-import DeletePostButton from "@/components/DeletePostButton"
-import LikesButton from "@/components/LikesButton"
-import StartEditPostButton from "@/components/StartEditPostButton"
-import { createClientServer } from "@/utils/supabase/server"
-import Link from "next/link"
+import CommentForm from '@/components/CommentForm';
+import DeleteCommentButton from '@/components/DeleteCommentButton';
+import DeletePostButton from '@/components/DeletePostButton';
+import LikesButton from '@/components/LikesButton';
+import StartEditPostButton from '@/components/StartEditPostButton';
+import { createClientServer } from '@/utils/supabase/server';
+import Link from 'next/link';
 
 type Props = {
-  params: Promise<{ username: string, itemId: string }>
-}
+  params: Promise<{ username: string; itemId: string }>;
+};
 
 type Item = {
-  id: string,
-  title: string,
-  description: string,
-  created_at: string,
-  user_id: string,
-  profiles: { username: string }
-}
+  id: string;
+  title: string;
+  description: string;
+  created_at: string;
+  user_id: string;
+  profiles: { username: string };
+};
 
 export default async function UserItem({ params }: Props) {
-  const { itemId } = await params
-  const supabase = await createClientServer()
-  let authorAuth = false
-  let realCount
-  let userLiked = false
-  let commentCount = 0
-  
+  const { itemId } = await params;
+  const supabase = await createClientServer();
+  let authorAuth = false;
+  let realCount;
+  let userLiked = false;
+  let commentCount = 0;
+
   // find valid post, if available
-  const { data, error } = await supabase.from('posts').select('id, title, description, created_at, user_id, profiles(username)').eq('id', itemId).single()
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, title, description, created_at, user_id, profiles(username)')
+    .eq('id', itemId)
+    .single();
   // FIX: sanity check here
-  const item = data as unknown as Item
-  
+  const item = data as unknown as Item;
+
   if (!data || error) {
     return (
       <div className="item-page">
@@ -39,33 +43,42 @@ export default async function UserItem({ params }: Props) {
           <h3>Page not found.</h3>
         </div>
       </div>
-    )
+    );
   }
 
   // check for likes count
-  const { data: count } = await supabase.from('likes').select('id').eq('post_id', item.id)
+  const { data: count } = await supabase.from('likes').select('id').eq('post_id', item.id);
   if (count) {
-    realCount = count?.length ?? 0
+    realCount = count?.length ?? 0;
   } else {
-    realCount = 0
+    realCount = 0;
   }
-  
+
   // check user auth
-  const { data: userData } = await supabase.auth.getUser()
+  const { data: userData } = await supabase.auth.getUser();
   // if logged in user id = post author id, enable the edit/delete buttons
   if (userData.user?.id === data?.user_id) {
-    authorAuth = true
+    authorAuth = true;
   }
   // checks if logged in user has liked this post
-  const { data: like } = await supabase.from('likes').select('*').eq('user_id', userData.user?.id).eq('post_id', itemId).maybeSingle()
-  if (like) { 
-    userLiked = true
+  const { data: like } = await supabase
+    .from('likes')
+    .select('*')
+    .eq('user_id', userData.user?.id)
+    .eq('post_id', itemId)
+    .maybeSingle();
+  if (like) {
+    userLiked = true;
   }
 
   // fetches comments on a post
-  const { data: comments, error: commentsError } = await supabase.from('comments').select('*').eq('post_id', itemId).order('created_at', { ascending: true })
+  const { data: comments, error: commentsError } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('post_id', itemId)
+    .order('created_at', { ascending: true });
   if (!commentsError) {
-    commentCount = comments.length
+    commentCount = comments.length;
   }
 
   return (
@@ -73,28 +86,38 @@ export default async function UserItem({ params }: Props) {
       <div className="main">
         <h3>{item.title}</h3>
         <p className="description">{item.description}</p>
-        <p className="author-date">Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on {new Date(item.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
-        <LikesButton count={realCount} userLiked={userLiked} postId={itemId}/>
-        {authorAuth && 
+        <p className="author-date">
+          Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on{' '}
+          {new Date(item.created_at).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+        <LikesButton count={realCount} userLiked={userLiked} postId={itemId} />
+        {authorAuth && (
           <div className="buttons-container">
-            <StartEditPostButton id={itemId}/>
-            <DeletePostButton id={itemId}/>
-          </div>}
+            <StartEditPostButton id={itemId} />
+            <DeletePostButton id={itemId} />
+          </div>
+        )}
       </div>
       <div className="item-comments">
-        {commentCount > 0 ? (
-          comments?.map(comment => (
-            <div className="comment" key={comment.id}>
-              <p className="author">{comment.comment_author}:</p>
-              <div className="comment-container">
-                <p>{comment.comment}</p>
-                {comment.user_id == userData.user?.id && <DeleteCommentButton commentId={comment.id}/>}
+        {commentCount > 0
+          ? comments?.map((comment) => (
+              <div className="comment" key={comment.id}>
+                <p className="author">{comment.comment_author}:</p>
+                <div className="comment-container">
+                  <p>{comment.comment}</p>
+                  {comment.user_id == userData.user?.id && (
+                    <DeleteCommentButton commentId={comment.id} />
+                  )}
+                </div>
               </div>
-            </div>
-          ))
-        ) : "No comments yet"}
-        {userData.user?.id && <CommentForm postId={itemId}/>}
+            ))
+          : 'No comments yet'}
+        {userData.user?.id && <CommentForm postId={itemId} />}
       </div>
     </div>
-  )
+  );
 }

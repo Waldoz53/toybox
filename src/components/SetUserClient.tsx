@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { useEffect } from "react"
-import useUser from "@/app/context/UserContext"
+import { useEffect } from 'react';
+import useUser from '@/app/context/UserContext';
 
 type User = {
-  id: string,
-  username: string
-}
+  id: string;
+  username: string;
+};
 
 export default function SetUserClient({ user }: { user: User | null }) {
-  const { setUser } = useUser()
+  const { setUser } = useUser();
 
   useEffect(() => {
-    setUser(user)
-  }, [user, setUser])
+    setUser(user);
+  }, [user, setUser]);
 
-  return null
+  return null;
 }

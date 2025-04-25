@@ -1,13 +1,9 @@
-'use client'
+'use client';
 
-import useLoading from "@/app/context/LoadingContext"
+import useLoading from '@/app/context/LoadingContext';
 
 export default function LoadingEffect() {
-  const { loading } = useLoading()
+  const { loading } = useLoading();
 
-  return (
-    <>
-      {loading && <span className="loader"></span>}
-    </>
-  )
+  return <>{loading && <span className="loader"></span>}</>;
 }

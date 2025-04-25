@@ -15,13 +15,19 @@ export default function Blog() {
         <h3>Features in development:</h3>
         <ul>
           <li>Add dates to comments (1m, 1h, 1d, etc)</li>
-          <li>Kinda like letterboxd, users should only be able to pick items from a database, rather than custom titles</li>
+          <li>
+            Kinda like letterboxd, users should only be able to pick items from a database, rather
+            than custom titles
+          </li>
           <li>Custom 404 page</li>
           <li>More error clarification</li>
           <li>Turn delete buttons into icons for less chunky looking elements</li>
           <li>Optionally rating on a scale of 1-10 to your posts</li>
           <li>Show likes + comments icons on home page posts</li>
-          <li>Validate emails, usernames (so that theyre unique), post titles, descriptions, etc so my database doesnt get absolutely fricked</li>
+          <li>
+            Validate emails, usernames (so that theyre unique), post titles, descriptions, etc so my
+            database doesnt get absolutely fricked
+          </li>
           <li>Follow/unfollow people then...</li>
           <li>On the home page you can switch between a following/all posts tab</li>
           <li>Profile setting to limit who can comment on your posts</li>
@@ -39,5 +45,5 @@ export default function Blog() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

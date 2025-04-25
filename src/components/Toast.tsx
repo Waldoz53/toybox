@@ -1,27 +1,23 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 
 type ToastProps = {
-  message: string
-}
+  message: string;
+};
 
 export default function Toast({ message }: ToastProps) {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (message) {
-      setShow(true)
+      setShow(true);
 
       setTimeout(() => {
-        setShow(false)
-      }, 5000)
+        setShow(false);
+      }, 5000);
     }
-  }, [message])
+  }, [message]);
 
-  return (
-    <div className={`toast ${show ? "show" : ""}`}>
-      {message}
-    </div>
-  )
+  return <div className={`toast ${show ? 'show' : ''}`}>{message}</div>;
 }

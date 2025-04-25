@@ -1,29 +1,29 @@
-'use client'
+'use client';
 
-import { deleteComment } from "@/app/actions"
-import useLoading from "@/app/context/LoadingContext"
-import { useRouter } from "next/navigation"
+import { deleteComment } from '@/app/actions';
+import useLoading from '@/app/context/LoadingContext';
+import { useRouter } from 'next/navigation';
 
 type Comment = {
-  commentId: string
-}
+  commentId: string;
+};
 
-type Props = Comment
+type Props = Comment;
 
 export default function DeleteCommentButton({ commentId }: Props) {
-  const router = useRouter()
-  const { setLoading } = useLoading()
+  const router = useRouter();
+  const { setLoading } = useLoading();
 
   async function handleDeleteComment() {
-    setLoading(true)
-    await deleteComment(commentId).then(res => {
-      if (res !== "") {
-        console.log(res)
+    setLoading(true);
+    await deleteComment(commentId).then((res) => {
+      if (res !== '') {
+        console.log(res);
       }
-      router.refresh()
-      setLoading(false)
-    })
+      router.refresh();
+      setLoading(false);
+    });
   }
 
-  return <button onClick={handleDeleteComment}>Delete</button>
+  return <button onClick={handleDeleteComment}>Delete</button>;
 }
