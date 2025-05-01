@@ -71,7 +71,7 @@ export default function Home() {
             ))}
           </>
         )}
-        {posts.length == 0 && <p>No items available yet.</p>}
+        {posts.length == 0 && loadedPosts && <p>No items available yet.</p>}
         {posts == undefined && <p>Failed to fetch items.</p>}
         {!loadedPosts && <span className="loader"></span>}
       </div>
