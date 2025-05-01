@@ -17,6 +17,7 @@
 }
 .all-posts h3 {
   padding-left: .5em;
+  margin-bottom: 1em;
 }
 .all-posts .loader {
   position: relative;
