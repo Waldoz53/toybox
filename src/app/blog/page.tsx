@@ -17,6 +17,7 @@ export default function Blog() {
       <div className="blog-section">
         <h3>Features in development:</h3>
         <ul>
+          <li>Make it more clear that the front page is recent items added</li>
           <li>Add dates to comments (1m, 1h, 1d, etc)</li>
           <li>
             Kinda like letterboxd, users should only be able to pick items from a database, rather

@@ -8,6 +8,10 @@
   margin-top: 1em;
   margin-bottom: 2em;
 }
+.blog-section h3,
+.blog-section p {
+  margin-bottom: 0.5em;
+}
 .blog-section ul {
   padding-left: 1em;
 }

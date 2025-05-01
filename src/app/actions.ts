@@ -33,7 +33,7 @@ export async function signup(formData: FormData) {
   };
 
   // check username validity
-  const userExists = await isUsernameAvailable(userData.username);
+  const userExists = await usernameAlreadyExists(userData.username);
   if (userExists) return 'Username is unavailable';
 
   // check email validity
@@ -188,7 +188,7 @@ export async function deleteComment(commentId: string) {
 }
 
 // checks username for uniqueness (only 1 username available at a time)
-export async function isUsernameAvailable(username: string) {
+export async function usernameAlreadyExists(username: string) {
   const supabase = await createClientServer();
   const { data, error } = await supabase
     .from('profiles')

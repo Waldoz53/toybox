@@ -32,7 +32,7 @@ export default function Home() {
       .from('posts')
       .select('id, title, created_at, profiles(username)')
       .order('created_at', { ascending: false })
-      .limit(100);
+      .limit(10);
     // FIX: add pagination
     if (error || !data) {
       console.log('Error fetching posts:', error.message);
@@ -54,6 +54,7 @@ export default function Home() {
     <div className="home">
       <button onClick={goToPost}>Add to your collection</button>
       <div className="all-posts">
+        <h3>RECENTLY ADDED</h3>
         {posts && posts.length > 0 && (
           <>
             {posts.map((post) => (
@@ -70,6 +71,8 @@ export default function Home() {
             ))}
           </>
         )}
+        {posts.length == 0 && <p>No items available yet.</p>}
+        {posts == undefined && <p>Failed to fetch items.</p>}
         {!loadedPosts && <span className="loader"></span>}
       </div>
     </div>
