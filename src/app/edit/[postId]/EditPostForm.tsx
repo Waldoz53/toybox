@@ -34,7 +34,7 @@ export default function EditPostForm({
 
     setTimeout(() => {
       setMessage('');
-    }, 5000);
+    }, 3000);
   }
   return (
     <form onSubmit={handleSubmit}>

@@ -1,6 +1,7 @@
 'use server';
 
 import { createClientServer } from '@/utils/supabase/server';
+import { isValidEmail } from '@/utils/validation';
 
 // Log in
 export async function login(formData: FormData) {
@@ -30,6 +31,14 @@ export async function signup(formData: FormData) {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
   };
+
+  // check username validity
+  const userExists = await isUsernameAvailable(userData.username);
+  if (userExists) return 'Username is unavailable';
+
+  // check email validity
+  const emailValid = isValidEmail(userData.email);
+  if (!emailValid) return 'Email is an invalid format';
 
   const { data, error } = await supabase.auth.signUp(userData);
 
@@ -176,4 +185,19 @@ export async function deleteComment(commentId: string) {
   if (error) {
     return error.message;
   } else return '';
+}
+
+// checks username for uniqueness (only 1 username available at a time)
+export async function isUsernameAvailable(username: string) {
+  const supabase = await createClientServer();
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id')
+    .eq('username', username)
+    .maybeSingle();
+  if (data || error) {
+    return true;
+  } else {
+    return false;
+  }
 }

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import '@/styles/login.css';
 
 export default function SignUpPage() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string | undefined>('');
   const { setLoading } = useLoading();
   const router = useRouter();
 
@@ -16,18 +16,17 @@ export default function SignUpPage() {
     setLoading(true);
     const formData = new FormData(e.currentTarget);
     await signup(formData).then((res) => {
-      setMessage(res ?? '');
-      if (res !== '') {
-        console.log('Sign up message:', message);
+      if (res != '') {
+        setMessage(res);
+      } else {
+        router.push('/');
       }
       setLoading(false);
     });
 
     setTimeout(() => {
       setMessage('');
-    }, 5000);
-
-    router.push('/');
+    }, 3000);
   }
 
   return (

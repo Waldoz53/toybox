@@ -25,7 +25,7 @@ export default function PostPage() {
 
     setTimeout(() => {
       setMessage('');
-    }, 5000);
+    }, 3000);
 
     router.push('/profile');
   }

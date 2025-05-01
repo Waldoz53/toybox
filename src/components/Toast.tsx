@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import '@/styles/components/toast.css';
 
 type ToastProps = {
-  message: string;
+  message: string | undefined;
 };
 
 export default function Toast({ message }: ToastProps) {
@@ -16,7 +16,7 @@ export default function Toast({ message }: ToastProps) {
 
       setTimeout(() => {
         setShow(false);
-      }, 5000);
+      }, 3000);
     }
   }, [message]);
 
