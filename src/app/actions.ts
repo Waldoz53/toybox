@@ -24,8 +24,6 @@ export async function login(formData: FormData) {
 
 // Sign up
 export async function signup(formData: FormData) {
-  const supabase = await createClientServer();
-
   const userData = {
     username: formData.get('username') as string,
     email: formData.get('email') as string,
@@ -40,6 +38,7 @@ export async function signup(formData: FormData) {
   const emailValid = isValidEmail(userData.email);
   if (!emailValid) return 'Email is an invalid format';
 
+  const supabase = await createClientServer();
   const { data, error } = await supabase.auth.signUp(userData);
 
   if (error || !data.user) {
@@ -138,7 +137,7 @@ export async function likePost(postId: string, userId: string) {
     if (error) {
       return error.message;
     } else return 'liked successfully!';
-  } else return 'like failed'
+  } else return 'like failed';
 }
 
 // unlike a post
@@ -150,11 +149,11 @@ export async function unlikePost(postId: string, userId: string) {
       .delete()
       .eq('user_id', userId)
       .eq('post_id', postId);
-  
+
     if (error) {
       return error.message;
     } else return 'unliked successfully!';
-  } else return 'unlike failed'
+  } else return 'unlike failed';
 }
 
 // comment on a post

@@ -32,7 +32,7 @@ export default function Home() {
       .from('posts')
       .select('id, title, created_at, profiles(username)')
       .order('created_at', { ascending: false })
-      .limit(10);
+      .limit(50);
     // FIX: add pagination
     if (error || !data) {
       console.log('Error fetching posts:', error.message);
@@ -71,7 +71,7 @@ export default function Home() {
             ))}
           </>
         )}
-        {posts.length == 0 && loadedPosts && <p>No items available yet.</p>}
+        {posts.length == 0 && loadedPosts && <p>No recently added items.</p>}
         {posts == undefined && <p>Failed to fetch items.</p>}
         {!loadedPosts && <span className="loader"></span>}
       </div>

@@ -11,13 +11,13 @@ export default function Blog() {
           <li>Official testing begins!</li>
           <li>Added username validation so usernames are unique</li>
           <li>Added email validation so the format should be standardized</li>
+          <li>Misc. updates to reduce network requests</li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Features in development:</h3>
         <ul>
-          <li>Make it more clear that the front page is recent items added</li>
           <li>Add dates to comments (1m, 1h, 1d, etc)</li>
           <li>
             Kinda like letterboxd, users should only be able to pick items from a database, rather
@@ -35,9 +35,7 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Change titles depending on the content being viewed</li>
           <li>Likely redesign how the site looks</li>
-          <li>
-            Reduce usage of network requests. Currently its fine, but can be trimmed down some more
-          </li>
+          <li>Always ongoing: reduce usage of network requests</li>
         </ul>
       </div>
 
