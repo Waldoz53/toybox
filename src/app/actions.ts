@@ -131,26 +131,30 @@ export async function editPost(formData: FormData) {
 
 // like a post
 export async function likePost(postId: string, userId: string) {
-  const supabase = await createClientServer();
-  const { error } = await supabase.from('likes').insert([{ user_id: userId, post_id: postId }]);
+  if (userId != undefined || userId != null) {
+    const supabase = await createClientServer();
+    const { error } = await supabase.from('likes').insert([{ user_id: userId, post_id: postId }]);
 
-  if (error) {
-    return error.message;
-  } else return 'liked successfully!';
+    if (error) {
+      return error.message;
+    } else return 'liked successfully!';
+  } else return 'like failed'
 }
 
 // unlike a post
 export async function unlikePost(postId: string, userId: string) {
-  const supabase = await createClientServer();
-  const { error } = await supabase
-    .from('likes')
-    .delete()
-    .eq('user_id', userId)
-    .eq('post_id', postId);
-
-  if (error) {
-    return error.message;
-  } else return 'unliked successfully!';
+  if (userId != undefined || userId != null) {
+    const supabase = await createClientServer();
+    const { error } = await supabase
+      .from('likes')
+      .delete()
+      .eq('user_id', userId)
+      .eq('post_id', postId);
+  
+    if (error) {
+      return error.message;
+    } else return 'unliked successfully!';
+  } else return 'unlike failed'
 }
 
 // comment on a post
