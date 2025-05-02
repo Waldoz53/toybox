@@ -27,7 +27,7 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
 
   async function handleToggleLike() {
     const { data: user } = await supabase.auth.getUser();
-    if (user.user) {
+    if (user.user != null) {
       setLoading(true);
       if (liked) {
         // handles unliking a post
