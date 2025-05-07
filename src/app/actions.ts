@@ -62,32 +62,6 @@ export async function logOut() {
   await supabase.auth.signOut();
 }
 
-// Creates a post
-export async function createPost(formData: FormData) {
-  const supabase = await createClientServer();
-  const { data, error } = await supabase.auth.getUser();
-
-  if (error || !data) {
-    return error?.message;
-  }
-  const postData = {
-    title: formData.get('title') as string,
-    description: formData.get('description') as string,
-  };
-  const { error: postsError } = await supabase.from('posts').insert([
-    {
-      user_id: data.user.id,
-      title: postData.title,
-      description: postData.description,
-    },
-  ]);
-  if (postsError) {
-    return postsError.message;
-  }
-
-  return '';
-}
-
 // Deletes a post
 export async function deletePost(postId: string) {
   const supabase = await createClientServer();
@@ -163,14 +137,12 @@ export async function commentOnPost(formData: FormData) {
     postId: formData.get('postId') as string,
     comment: formData.get('comment') as string,
     commentAuthorId: formData.get('commentAuthorId') as string,
-    commentAuthor: formData.get('commentAuthor') as string,
   };
 
   const { error } = await supabase.from('comments').insert([
     {
       post_id: commentData.postId,
       user_id: commentData.commentAuthorId,
-      comment_author: commentData.commentAuthor,
       comment: commentData.comment,
     },
   ]);
@@ -203,4 +175,32 @@ export async function usernameAlreadyExists(username: string) {
   } else {
     return false;
   }
+}
+
+// adds an item, based on its item id
+export async function addItem(formData: FormData) {
+  console.log(formData);
+
+  const supabase = await createClientServer();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data) {
+    return error?.message;
+  }
+  const postData = {
+    figure: formData.get('figure') as string,
+    description: formData.get('description') as string,
+  };
+  const { error: postsError } = await supabase.from('posts').insert([
+    {
+      user_id: data.user.id,
+      figure_id: postData.figure,
+      description: postData.description,
+    },
+  ]);
+  if (postsError) {
+    return postsError.message;
+  }
+
+  return '';
 }

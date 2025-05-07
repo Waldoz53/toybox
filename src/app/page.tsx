@@ -9,9 +9,9 @@ import '@/styles/home.css';
 
 type Post = {
   id: string;
-  title: string;
   created_at: string;
   profiles: { username: string };
+  figures: { name: string };
 };
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
   const fetchAllPosts = useCallback(async () => {
     const { data, error } = await supabase
       .from('posts')
-      .select('id, title, created_at, profiles(username)')
+      .select('id, figure_id, created_at, profiles(username), figures(name)')
       .order('created_at', { ascending: false })
       .limit(50);
     // FIX: add pagination
@@ -64,7 +64,7 @@ export default function Home() {
                 className="post"
               >
                 <p>
-                  {post.profiles?.username} added {post.title}
+                  {post.profiles?.username} added {post.figures.name}
                 </p>
                 <span>{getTimeAgo(post.created_at)}</span>
               </Link>

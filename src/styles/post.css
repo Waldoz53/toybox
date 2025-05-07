@@ -8,3 +8,13 @@
     'Nunito Sans',
     sans-serif;
 }
+.post-page form select,
+.edit-page form select {
+  width: 100%;
+  padding: 0.5em 0;
+  padding-left: 0.5em;
+  border: 1px solid black;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.5em;
+}

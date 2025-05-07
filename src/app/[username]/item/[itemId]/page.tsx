@@ -2,7 +2,7 @@ import CommentForm from '@/components/CommentForm';
 import DeleteCommentButton from '@/components/DeleteCommentButton';
 import DeletePostButton from '@/components/DeletePostButton';
 import LikesButton from '@/components/LikesButton';
-import StartEditPostButton from '@/components/StartEditPostButton';
+// import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
 import '@/styles/itemPage.css';
@@ -13,11 +13,21 @@ type Props = {
 
 type Item = {
   id: string;
-  title: string;
+  figures: { name: string };
   description: string;
   created_at: string;
   user_id: string;
   profiles: { username: string };
+};
+
+type Comment = {
+  id: string;
+  comment: string;
+  post_id: string;
+  user_id: string;
+  created_at: string;
+  profiles: { username: string };
+  error: Error | null;
 };
 
 export default async function UserItem({ params }: Props) {
@@ -31,7 +41,7 @@ export default async function UserItem({ params }: Props) {
   // find valid post, if available
   const { data, error } = await supabase
     .from('posts')
-    .select('id, title, description, created_at, user_id, profiles(username)')
+    .select('id, figure_id, description, created_at, user_id, profiles(username), figures(name)')
     .eq('id', itemId)
     .single();
   // FIX: sanity check here
@@ -73,11 +83,11 @@ export default async function UserItem({ params }: Props) {
   }
 
   // fetches comments on a post
-  const { data: comments, error: commentsError } = await supabase
+  const { data: comments, error: commentsError } = (await supabase
     .from('comments')
-    .select('*')
+    .select('*, profiles(username)')
     .eq('post_id', itemId)
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: true })) as { data: Comment[]; error: Error | null };
   if (!commentsError) {
     commentCount = comments.length;
   }
@@ -85,7 +95,7 @@ export default async function UserItem({ params }: Props) {
   return (
     <div className="item-page">
       <div className="main">
-        <h3>{item.title}</h3>
+        <h3>{item.figures.name}</h3>
         <p className="description">{item.description}</p>
         <p className="author-date">
           Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on{' '}
@@ -98,7 +108,7 @@ export default async function UserItem({ params }: Props) {
         <LikesButton count={realCount} userLiked={userLiked} postId={itemId} />
         {authorAuth && (
           <div className="buttons-container">
-            <StartEditPostButton id={itemId} />
+            {/* <StartEditPostButton id={itemId} /> */}
             <DeletePostButton id={itemId} />
           </div>
         )}
@@ -107,7 +117,7 @@ export default async function UserItem({ params }: Props) {
         {commentCount > 0
           ? comments?.map((comment) => (
               <div className="comment" key={comment.id}>
-                <p className="author">{comment.comment_author}:</p>
+                <p className="author">{comment.profiles.username}:</p>
                 <div className="comment-container">
                   <p>{comment.comment}</p>
                   {comment.user_id == userData.user?.id && (

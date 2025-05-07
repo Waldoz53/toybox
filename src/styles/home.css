@@ -6,7 +6,7 @@
   text-align: center;
 }
 .home button {
-  width: 100%;
+  width: calc(100% - 1em);
   max-width: 350px;
   padding: 1em 2em;
   font-size: 18px;

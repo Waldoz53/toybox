@@ -1,5 +1,5 @@
 import DeletePostButton from '@/components/DeletePostButton';
-import StartEditPostButton from '@/components/StartEditPostButton';
+// import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
 import '@/styles/profile.css';
@@ -29,7 +29,7 @@ export default async function UserPage({ params }: Props) {
 
   const { data: postsData, error: postsError } = await supabase
     .from('posts')
-    .select('*')
+    .select('*, figures(name)')
     .eq('user_id', profile?.id)
     .order('created_at', { ascending: false });
   if (postsError) {
@@ -57,7 +57,7 @@ export default async function UserPage({ params }: Props) {
                   key={post.id}
                   className="collection-item"
                 >
-                  <h3>{post.title}</h3>
+                  <h3>{post.figures.name}</h3>
                   <p className="description">{post.description}</p>
                   <p className="date">
                     Added on{' '}
@@ -69,7 +69,7 @@ export default async function UserPage({ params }: Props) {
                   </p>
                   {isOwner ? (
                     <>
-                      <StartEditPostButton id={post.id} />
+                      {/* <StartEditPostButton id={post.id} /> */}
                       <DeletePostButton id={post.id} />
                     </>
                   ) : (

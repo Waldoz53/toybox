@@ -6,23 +6,21 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 1, 2025</p>
+        <p>May 7, 2025</p>
         <ul>
-          <li>Official testing begins!</li>
-          <li>Added username validation so usernames are unique</li>
-          <li>Added email validation so the format should be standardized</li>
-          <li>Misc. updates to reduce network requests</li>
+          <li>
+            Users can now only select from a catered list of action figures, the intended behavior.
+          </li>
+          <li>Fixed body css padding</li>
+          <li>Editing posts is disabled until I rework the edit system.</li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Features in development:</h3>
         <ul>
+          <li>Fix body CSS: remove global padding</li>
           <li>Add dates to comments (1m, 1h, 1d, etc)</li>
-          <li>
-            Kinda like letterboxd, users should only be able to pick items from a database, rather
-            than custom titles
-          </li>
           <li>Custom 404 page</li>
           <li>More error clarification</li>
           <li>Turn delete buttons into icons for less chunky looking elements</li>
@@ -42,7 +40,7 @@ export default function Blog() {
       <div className="blog-section">
         <h3>Known issues:</h3>
         <ul>
-          {/* <li>Loading element after submitting an edited post has odd functionality</li> */}
+          <li>Editing does NOT work!</li>
         </ul>
       </div>
     </div>

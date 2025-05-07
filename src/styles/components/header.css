@@ -8,6 +8,7 @@
   align-items: center;
   gap: 0.5em;
   margin-bottom: 1em;
+  padding: 0.5em;
 }
 .header .title {
   text-decoration: none;
