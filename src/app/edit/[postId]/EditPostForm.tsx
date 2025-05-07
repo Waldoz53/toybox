@@ -59,21 +59,28 @@ export default function EditPostForm({ id }: { id: string }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>{originalPost ? originalPost.figures.name : 'Loading...'}</h3>
-      <input type="hidden" name="postId" value={id} />
-      <label htmlFor="description">Review:</label>
-      <textarea
-        id="description"
-        name="description"
-        placeholder="Optional: write a review or describe its quality"
-        defaultValue={originalPost ? originalPost?.description : ''}
-      />
-      <div className="spacer"></div>
-      <button>Submit Edit</button>
-      <DeletePostButton id={id} />
+    <>
+      {!originalPost && <h3>Loading review...</h3>}
+      {originalPost && (
+        <>
+          <form onSubmit={handleSubmit}>
+            <h3>{originalPost ? originalPost.figures.name : 'Loading...'}</h3>
+            <input type="hidden" name="postId" value={id} />
+            <label htmlFor="description">Review:</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Optional: write a review or describe its quality"
+              defaultValue={originalPost ? originalPost?.description : ''}
+            />
+            <div className="spacer"></div>
+            <button>Submit Edit</button>
+            <DeletePostButton id={id} />
 
-      <Toast message={message} />
-    </form>
+            <Toast message={message} />
+          </form>
+        </>
+      )}
+    </>
   );
 }

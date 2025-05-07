@@ -16,9 +16,8 @@ export default function Blog() {
       </div>
 
       <div className="blog-section">
-        <h3>Features in development:</h3>
+        <h3>Features & fixes in development:</h3>
         <ul>
-          <li>Fix body CSS: remove global padding</li>
           <li>Add dates to comments (1m, 1h, 1d, etc)</li>
           <li>Custom 404 page</li>
           <li>More error clarification</li>
@@ -38,7 +37,9 @@ export default function Blog() {
 
       <div className="blog-section">
         <h3>Known issues:</h3>
-        <ul>{/* <li>Editing does NOT work!</li> */}</ul>
+        <ul>
+          {/* <li>Edit page kinda flickers when loading text</li> */}
+        </ul>
       </div>
     </div>
   );
