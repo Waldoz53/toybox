@@ -172,11 +172,11 @@ export default function PostPage() {
 
       {selectedFigure && (
         <>
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description">Review:</label>
           <textarea
             id="description"
             name="description"
-            placeholder="Optional: add a review of the figure"
+            placeholder="Optional: write a review or describe its quality"
           />
 
           <div className="spacer"></div>

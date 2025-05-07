@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default async function EditPostPage({ params }: Props) {
-  const disabled = true;
+  const disabled = false;
   const { postId } = await params;
   const supabase = await createClientServer();
   let validUser = false;
@@ -30,21 +30,18 @@ export default async function EditPostPage({ params }: Props) {
     validUser = true;
   }
 
-  if (disabled)
+  if (disabled) {
     return (
       <div className="edit-page">
         <h3>Editing is disabled for now. Please try again later.</h3>
       </div>
     );
+  }
 
   return (
     <div className="edit-page">
-      <h2>Editing a collection item</h2>
-      {validUser ? (
-        <EditPostForm id={postId} title={postData.title} description={postData.description} />
-      ) : (
-        <p>You are not allowed here!</p>
-      )}
+      <h2>Editing review</h2>
+      {validUser ? <EditPostForm id={postId} /> : <p>You are not allowed here!</p>}
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default function StartEditPostButton({ id }: { id: string }) {
         startEdit();
       }}
     >
-      Edit
+      Edit Review
     </button>
   );
 }

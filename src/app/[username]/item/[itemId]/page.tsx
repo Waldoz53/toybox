@@ -2,7 +2,7 @@ import CommentForm from '@/components/CommentForm';
 import DeleteCommentButton from '@/components/DeleteCommentButton';
 import DeletePostButton from '@/components/DeletePostButton';
 import LikesButton from '@/components/LikesButton';
-// import StartEditPostButton from '@/components/StartEditPostButton';
+import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
 import '@/styles/itemPage.css';
@@ -108,7 +108,7 @@ export default async function UserItem({ params }: Props) {
         <LikesButton count={realCount} userLiked={userLiked} postId={itemId} />
         {authorAuth && (
           <div className="buttons-container">
-            {/* <StartEditPostButton id={itemId} /> */}
+            <StartEditPostButton id={itemId} />
             <DeletePostButton id={itemId} />
           </div>
         )}

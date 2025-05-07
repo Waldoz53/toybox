@@ -1,5 +1,5 @@
 import DeletePostButton from '@/components/DeletePostButton';
-// import StartEditPostButton from '@/components/StartEditPostButton';
+import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
 import '@/styles/profile.css';
@@ -69,7 +69,7 @@ export default async function UserPage({ params }: Props) {
                   </p>
                   {isOwner ? (
                     <>
-                      {/* <StartEditPostButton id={post.id} /> */}
+                      <StartEditPostButton id={post.id} />
                       <DeletePostButton id={post.id} />
                     </>
                   ) : (

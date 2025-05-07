@@ -12,7 +12,6 @@ export default function Blog() {
             Users can now only select from a catered list of action figures, the intended behavior.
           </li>
           <li>Fixed body css padding</li>
-          <li>Editing posts is disabled until I rework the edit system.</li>
         </ul>
       </div>
 
@@ -39,9 +38,7 @@ export default function Blog() {
 
       <div className="blog-section">
         <h3>Known issues:</h3>
-        <ul>
-          <li>Editing does NOT work!</li>
-        </ul>
+        <ul>{/* <li>Editing does NOT work!</li> */}</ul>
       </div>
     </div>
   );

@@ -2,22 +2,43 @@
 
 import { editPost } from '@/app/actions';
 import useLoading from '@/app/context/LoadingContext';
+import DeletePostButton from '@/components/DeletePostButton';
 import Toast from '@/components/Toast';
+import { createClientBrowser } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-export default function EditPostForm({
-  id,
-  title,
-  description,
-}: {
-  id: string;
-  title: string;
+type Post = {
   description: string;
-}) {
+  figures: { name: string };
+};
+
+export default function EditPostForm({ id }: { id: string }) {
+  const supabase = createClientBrowser();
   const [message, setMessage] = useState('');
+  const [originalPost, setOriginalPost] = useState<Post | null>(null);
   const { setLoading } = useLoading();
   const router = useRouter();
+
+  const fetchPostData = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('posts')
+      .select('description, figures(name)')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      return <p>Failed to fetch post</p>;
+    }
+
+    if (data) {
+      setOriginalPost(data as unknown as Post);
+    }
+  }, [id, supabase]);
+
+  useEffect(() => {
+    fetchPostData();
+  }, [fetchPostData]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,7 +46,7 @@ export default function EditPostForm({
     const formData = new FormData(e.currentTarget);
     await editPost(formData).then((res) => {
       setMessage(res ?? '');
-      if (res !== '') {
+      if (res != '') {
         console.log('Submit post error:', message);
       }
       setLoading(false);
@@ -36,20 +57,22 @@ export default function EditPostForm({
       setMessage('');
     }, 3000);
   }
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="hidden" name="id" value={id} />
-      <label htmlFor="title">Figure Name:</label>
-      <input id="title" name="title" type="text" required defaultValue={title} />
-      <label htmlFor="description">Description:</label>
+      <h3>{originalPost ? originalPost.figures.name : 'Loading...'}</h3>
+      <input type="hidden" name="postId" value={id} />
+      <label htmlFor="description">Review:</label>
       <textarea
         id="description"
         name="description"
-        defaultValue={description}
-        placeholder="Quality, features, etc."
+        placeholder="Optional: write a review or describe its quality"
+        defaultValue={originalPost ? originalPost?.description : ''}
       />
       <div className="spacer"></div>
       <button>Submit Edit</button>
+      <DeletePostButton id={id} />
+
       <Toast message={message} />
     </form>
   );

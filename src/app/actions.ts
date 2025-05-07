@@ -62,7 +62,35 @@ export async function logOut() {
   await supabase.auth.signOut();
 }
 
-// Deletes a post
+// adds an item
+export async function addItem(formData: FormData) {
+  console.log(formData);
+
+  const supabase = await createClientServer();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data) {
+    return error?.message;
+  }
+  const postData = {
+    figure: formData.get('figure') as string,
+    description: formData.get('description') as string,
+  };
+  const { error: postsError } = await supabase.from('posts').insert([
+    {
+      user_id: data.user.id,
+      figure_id: postData.figure,
+      description: postData.description,
+    },
+  ]);
+  if (postsError) {
+    return postsError.message;
+  }
+
+  return '';
+}
+
+// Deletes an item
 export async function deletePost(postId: string) {
   const supabase = await createClientServer();
   const { data } = await supabase.auth.getUser();
@@ -86,15 +114,15 @@ export async function editPost(formData: FormData) {
     return error?.message;
   }
 
+  console.log(formData);
   const postData = {
-    id: formData.get('id') as string,
-    title: formData.get('title') as string,
+    id: formData.get('postId') as string,
     description: formData.get('description') as string,
   };
 
   const { error: postsError } = await supabase
     .from('posts')
-    .update({ title: postData.title, description: postData.description })
+    .update({ description: postData.description })
     .eq('id', postData.id)
     .eq('user_id', data.user?.id);
   if (postsError) {
@@ -175,32 +203,4 @@ export async function usernameAlreadyExists(username: string) {
   } else {
     return false;
   }
-}
-
-// adds an item, based on its item id
-export async function addItem(formData: FormData) {
-  console.log(formData);
-
-  const supabase = await createClientServer();
-  const { data, error } = await supabase.auth.getUser();
-
-  if (error || !data) {
-    return error?.message;
-  }
-  const postData = {
-    figure: formData.get('figure') as string,
-    description: formData.get('description') as string,
-  };
-  const { error: postsError } = await supabase.from('posts').insert([
-    {
-      user_id: data.user.id,
-      figure_id: postData.figure,
-      description: postData.description,
-    },
-  ]);
-  if (postsError) {
-    return postsError.message;
-  }
-
-  return '';
 }
