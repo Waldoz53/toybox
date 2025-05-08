@@ -7,9 +7,9 @@ export function getTimeAgo(date: string | Date): string {
   const hours = Math.floor(diff / 3600);
   const days = Math.floor(diff / 86400);
 
-  if (diff < 60) return `${diff}s ago`;
-  if (diff < 3600) return `${minutes}m ago`;
-  if (diff < 86400) return `${hours}h ago`;
+  if (diff < 60) return `${diff}s`;
+  if (diff < 3600) return `${minutes}m`;
+  if (diff < 86400) return `${hours}h`;
 
-  return `${days}d ago`;
+  return `${days}d`;
 }

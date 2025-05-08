@@ -17,7 +17,7 @@
 }
 .all-posts h3 {
   padding-left: 0.5em;
-  margin-bottom: 1em;
+  margin-top: 1.5em;
 }
 .all-posts .loader {
   position: relative;
@@ -28,13 +28,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 1em 0.5em;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--medium-color);
   gap: 0.5em;
   cursor: pointer;
   text-decoration: none;
 }
 .all-posts .post:hover {
-  background: #eee;
+  background: var(--primary-color-light);
 }
 .all-posts .post:last-child {
   border: none;
@@ -47,5 +47,5 @@
 }
 .post span {
   font-size: 11px;
-  color: #bbb;
+  color: var(--medium-color);
 }

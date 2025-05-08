@@ -6,19 +6,21 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 7, 2025</p>
+        <p>May 8, 2025</p>
         <ul>
+          <li>Experimental color scheme!</li>
           <li>
-            Users can now only select from a catered list of action figures, the intended behavior.
+            Comments now have a little text on them that shows how long ago the comment was made
           </li>
-          <li>Fixed body css padding</li>
+          <li>Some other misc. CSS and JS changes</li>
+          <li>Server actions only: added some limited server logging</li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Features & fixes in development:</h3>
         <ul>
-          <li>Add dates to comments (1m, 1h, 1d, etc)</li>
+          <li>ONGOING: improve server logging messages</li>
           <li>Custom 404 page</li>
           <li>More error clarification</li>
           <li>Turn delete buttons into icons for less chunky looking elements</li>
@@ -31,14 +33,14 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Change titles depending on the content being viewed</li>
           <li>Likely redesign how the site looks</li>
-          <li>Always ongoing: reduce usage of network requests</li>
+          <li>ONGOING: reduce usage of network requests</li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Known issues:</h3>
         <ul>
-          {/* <li>Edit page kinda flickers when loading text</li> */}
+          <li>With the new colour scheme some pages/elements might not look correct</li>
         </ul>
       </div>
     </div>

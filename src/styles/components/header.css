@@ -12,5 +12,5 @@
 }
 .header .title {
   text-decoration: none;
-  color: black;
+  color: var(--dark-color);
 }

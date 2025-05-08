@@ -6,10 +6,10 @@
   display: block;
   margin: 0 auto;
   position: absolute;
-  background: #fff;
+  background: #84b8eb;
   box-shadow:
-    -24px 0 #fff,
-    24px 0 #fff;
+    -24px 0 #84b8eb,
+    24px 0 #84b8eb;
   box-sizing: border-box;
   animation: shadowPulse 2s linear infinite;
 }
@@ -18,21 +18,21 @@
 }
 @keyframes shadowPulse {
   33% {
-    background: #fff;
+    background: #84b8eb;
     box-shadow:
-      -24px 0 #000,
-      24px 0 #fff;
+      -24px 0 #13232d,
+      24px 0 #84b8eb;
   }
   66% {
-    background: #000;
+    background: #13232d;
     box-shadow:
-      -24px 0 #fff,
-      24px 0 #fff;
+      -24px 0 #84b8eb,
+      24px 0 #84b8eb;
   }
   100% {
-    background: #fff;
+    background: #84b8eb;
     box-shadow:
-      -24px 0 #fff,
-      24px 0 #000;
+      -24px 0 #84b8eb,
+      24px 0 #13232d;
   }
 }

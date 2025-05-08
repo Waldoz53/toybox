@@ -53,7 +53,7 @@ export default function CommentForm({ postId }: Props) {
         onChange={(e) => setComment(e.target.value)}
         value={comment}
       ></textarea>
-      <button>Post</button>
+      <button>Comment</button>
     </form>
   );
 }

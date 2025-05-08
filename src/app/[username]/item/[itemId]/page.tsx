@@ -6,6 +6,7 @@ import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import Link from 'next/link';
 import '@/styles/itemPage.css';
+import { getTimeAgo } from '@/utils/getTimeAgo';
 
 type Props = {
   params: Promise<{ username: string; itemId: string }>;
@@ -117,9 +118,11 @@ export default async function UserItem({ params }: Props) {
         {commentCount > 0
           ? comments?.map((comment) => (
               <div className="comment" key={comment.id}>
-                <p className="author">{comment.profiles.username}:</p>
+                <p className="author">{comment.profiles.username}</p>
                 <div className="comment-container">
                   <p>{comment.comment}</p>
+                  <div className="spacer"></div>
+                  <p className="comment-created-at">{getTimeAgo(comment.created_at)}</p>
                   {comment.user_id == userData.user?.id && (
                     <DeleteCommentButton commentId={comment.id} />
                   )}

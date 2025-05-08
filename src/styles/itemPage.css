@@ -7,7 +7,7 @@
   padding: 0.5em;
 }
 .item-page .main {
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid var(--dark-color);
   padding-bottom: 0.5em;
 }
 .item-page h3 {
@@ -58,7 +58,7 @@
 }
 .item-comments .comment {
   margin-bottom: 0.5em;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--primary-color-light);
   padding-bottom: 0.5em;
 }
 .item-comments .comment .author {
@@ -66,5 +66,9 @@
 }
 .item-comments .comment .comment-container {
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.5em;
+}
+.comment-container .comment-created-at {
+  color: var(--medium-color);
 }

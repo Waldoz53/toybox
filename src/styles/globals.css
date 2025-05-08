@@ -1,4 +1,11 @@
 /* General css styles like buttons, links, etc */
+:root {
+  --primary-color: #5fa3e5;
+  --primary-color-light: #84b8eb;
+  --medium-color: #045474;
+  --dark-color: #13232d;
+  /* Colors are TBD */
+}
 *,
 *::before,
 *::after {
@@ -7,7 +14,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* Colors are TBD */
+  color: var(--dark-color);
 }
 html {
   /* on windows firefox this makes it so the entire page doesnt shift slight if theres a scrollbar */
@@ -19,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: var(--primary-color);
 }
 .spacer {
   flex-grow: 1;
@@ -27,12 +35,12 @@ button {
   padding: 0.5em 1em;
   cursor: pointer;
   border-style: none;
-  border: 1px solid black;
+  border: 1px solid var(--dark-color);
   border-radius: 6px;
-  background: white;
+  background: transparent;
 }
 button:hover {
-  background: black;
+  background: var(--dark-color);
   color: white;
 }
 a {

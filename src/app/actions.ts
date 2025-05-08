@@ -17,6 +17,8 @@ export async function login(formData: FormData) {
   if (error) {
     console.log(error.message);
     return error.message;
+  } else {
+    console.log('a user successfully logged in.');
   }
 
   return '';
@@ -51,6 +53,7 @@ export async function signup(formData: FormData) {
         username: userData.username,
       },
     ]);
+    console.log('a user has signed up');
   }
 
   return '';
@@ -60,12 +63,11 @@ export async function signup(formData: FormData) {
 export async function logOut() {
   const supabase = await createClientServer();
   await supabase.auth.signOut();
+  console.log('a user has signed out');
 }
 
 // adds an item
 export async function addItem(formData: FormData) {
-  console.log(formData);
-
   const supabase = await createClientServer();
   const { data, error } = await supabase.auth.getUser();
 
@@ -84,7 +86,10 @@ export async function addItem(formData: FormData) {
     },
   ]);
   if (postsError) {
+    console.log(postsError.message);
     return postsError.message;
+  } else {
+    console.log('user added an item');
   }
 
   return '';
@@ -100,8 +105,10 @@ export async function deletePost(postId: string) {
     .eq('id', postId)
     .eq('user_id', data.user?.id);
   if (error || !data) {
+    console.log('failed to delete an item');
     return;
   } else {
+    console.log('successfully deleted an item');
   }
 }
 
@@ -114,7 +121,6 @@ export async function editPost(formData: FormData) {
     return error?.message;
   }
 
-  console.log(formData);
   const postData = {
     id: formData.get('postId') as string,
     description: formData.get('description') as string,
@@ -126,8 +132,12 @@ export async function editPost(formData: FormData) {
     .eq('id', postData.id)
     .eq('user_id', data.user?.id);
   if (postsError) {
+    console.log(postsError.message);
     return postsError.message;
-  } else return '';
+  } else {
+    console.log('user edited a post');
+    return '';
+  }
 }
 
 // like a post
@@ -137,8 +147,12 @@ export async function likePost(postId: string, userId: string) {
     const { error } = await supabase.from('likes').insert([{ user_id: userId, post_id: postId }]);
 
     if (error) {
+      console.log(error.message);
       return error.message;
-    } else return 'liked successfully!';
+    } else {
+      console.log('user liked successfully');
+      return 'liked successfully!';
+    }
   } else return 'like failed';
 }
 
@@ -153,8 +167,12 @@ export async function unlikePost(postId: string, userId: string) {
       .eq('post_id', postId);
 
     if (error) {
+      console.log(error.message);
       return error.message;
-    } else return 'unliked successfully!';
+    } else {
+      console.log('user unliked successfully');
+      return 'unliked successfully!';
+    }
   } else return 'unlike failed';
 }
 
@@ -176,8 +194,12 @@ export async function commentOnPost(formData: FormData) {
   ]);
 
   if (error) {
+    console.log(error.message);
     return error.message;
-  } else return '';
+  } else {
+    console.log('user commented on a post');
+    return '';
+  }
 }
 
 // delete a comment (on a post)
@@ -186,8 +208,12 @@ export async function deleteComment(commentId: string) {
   const { error } = await supabase.from('comments').delete().eq('id', commentId);
 
   if (error) {
+    console.log(error.message);
     return error.message;
-  } else return '';
+  } else {
+    console.log('user deleted a comment successfully');
+    return '';
+  }
 }
 
 // checks username for uniqueness (only 1 username available at a time)
@@ -199,8 +225,10 @@ export async function usernameAlreadyExists(username: string) {
     .eq('username', username)
     .maybeSingle();
   if (data || error) {
+    console.log('username was checked and it exists');
     return true;
   } else {
+    console.log('username was checked and it doesnt exist yet');
     return false;
   }
 }
