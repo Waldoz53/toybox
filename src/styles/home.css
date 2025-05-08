@@ -18,6 +18,7 @@
 .all-posts h3 {
   padding-left: 0.5em;
   margin-top: 1.5em;
+  text-transform: uppercase;
 }
 .all-posts .loader {
   position: relative;
@@ -48,4 +49,12 @@
 .post span {
   font-size: 11px;
   color: var(--medium-color);
+}
+@media screen and (min-width: 810px) {
+  .all-posts .post:nth-child(2) {
+    border-radius: 6px 6px 0 0;
+  }
+  .all-posts .post:last-child {
+    border-radius: 0 0 6px 6px;
+  }
 }

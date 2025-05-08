@@ -54,7 +54,7 @@ export default function Home() {
     <div className="home">
       <button onClick={goToPost}>Add to your collection</button>
       <div className="all-posts">
-        <h3>RECENTLY ADDED</h3>
+        <h3>Recently Added</h3>
         {posts && posts.length > 0 && (
           <>
             {posts.map((post) => (
@@ -64,7 +64,7 @@ export default function Home() {
                 className="post"
               >
                 <p>
-                  {post.profiles?.username} added {post.figures.name}
+                  {post.profiles?.username} added <strong>{post.figures.name}</strong>
                 </p>
                 <span>{getTimeAgo(post.created_at)}</span>
               </Link>
