@@ -6,12 +6,16 @@ import { createClientBrowser } from '@/utils/supabase/client';
 import { getTimeAgo } from '@/utils/getTimeAgo';
 import Link from 'next/link';
 import '@/styles/home.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
 
 type Post = {
   id: string;
   created_at: string;
   profiles: { username: string };
   figures: { name: string };
+  likes: { count: number }[];
+  comments: { count: number }[];
 };
 
 export default function Home() {
@@ -30,7 +34,9 @@ export default function Home() {
   const fetchAllPosts = useCallback(async () => {
     const { data, error } = await supabase
       .from('posts')
-      .select('id, figure_id, created_at, profiles(username), figures(name)')
+      .select(
+        'id, figure_id, created_at, profiles(username), figures(name), comments(count), likes(count)',
+      )
       .order('created_at', { ascending: false })
       .limit(50);
     // FIX: add pagination
@@ -66,6 +72,14 @@ export default function Home() {
                 <p>
                   {post.profiles?.username} added <strong>{post.figures.name}</strong>
                 </p>
+                <span>
+                  {post.likes[0].count ?? 0}&nbsp;
+                  <FontAwesomeIcon icon={faHeart} />
+                </span>
+                <span>
+                  {post.comments[0].count ?? 0}&nbsp;
+                  <FontAwesomeIcon icon={faComment} />
+                </span>
                 <span>{getTimeAgo(post.created_at)}</span>
               </Link>
             ))}

@@ -50,6 +50,9 @@
   font-size: 11px;
   color: var(--medium-color);
 }
+span svg path {
+  fill: var(--medium-color);
+}
 @media screen and (min-width: 810px) {
   .all-posts .post:nth-child(2) {
     border-radius: 6px 6px 0 0;
