@@ -55,7 +55,7 @@
 }
 .post span:last-child {
   text-align: right;
-  min-width: 20px;
+  min-width: 30px;
 }
 span svg path {
   fill: var(--medium-color);
