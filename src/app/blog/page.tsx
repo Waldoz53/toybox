@@ -6,14 +6,9 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 8, 2025</p>
+        <p>May 15, 2025</p>
         <ul>
-          <li>Experimental color scheme!</li>
-          <li>
-            Comments now have a little text on them that shows how long ago the comment was made
-          </li>
-          <li>Some other misc. CSS and JS changes</li>
-          <li>Server actions only: added some limited server logging</li>
+          <li>Experimental prefetching links for faster loading speed!</li>
         </ul>
       </div>
 

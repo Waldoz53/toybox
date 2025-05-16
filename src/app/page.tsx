@@ -4,10 +4,10 @@ import useLoading from './context/LoadingContext';
 import { useEffect, useState, useCallback } from 'react';
 import { createClientBrowser } from '@/utils/supabase/client';
 import { getTimeAgo } from '@/utils/getTimeAgo';
-import Link from 'next/link';
 import '@/styles/home.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
+import PrefetchLink from '@/components/PrefetchLink';
 
 type Post = {
   id: string;
@@ -64,7 +64,7 @@ export default function Home() {
         {posts && posts.length > 0 && (
           <>
             {posts.map((post) => (
-              <Link
+              <PrefetchLink
                 href={`/${post.profiles?.username}/item/${post.id}`}
                 key={post.id}
                 className="post"
@@ -72,16 +72,16 @@ export default function Home() {
                 <p>
                   {post.profiles?.username} added <strong>{post.figures.name}</strong>
                 </p>
-                <span>
+                <span className="icons">
                   {post.likes[0].count ?? 0}&nbsp;
                   <FontAwesomeIcon icon={faHeart} />
                 </span>
-                <span>
+                <span className="icons">
                   {post.comments[0].count ?? 0}&nbsp;
                   <FontAwesomeIcon icon={faComment} />
                 </span>
                 <span>{getTimeAgo(post.created_at)}</span>
-              </Link>
+              </PrefetchLink>
             ))}
           </>
         )}

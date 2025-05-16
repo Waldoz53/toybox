@@ -50,8 +50,20 @@
   font-size: 11px;
   color: var(--medium-color);
 }
+.post .icons {
+  display: none;
+}
+.post span:last-child {
+  text-align: right;
+  min-width: 20px;
+}
 span svg path {
   fill: var(--medium-color);
+}
+@media screen and (min-width: 420px) {
+  .post .icons {
+    display: block;
+  }
 }
 @media screen and (min-width: 810px) {
   .all-posts .post:nth-child(2) {

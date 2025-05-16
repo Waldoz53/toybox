@@ -27,7 +27,7 @@
   gap: 0.5em;
 }
 .likes-button.liked {
-  background: black;
+  background: var(--dark-color);
   color: white;
 }
 .item-page .buttons-container {
@@ -71,4 +71,5 @@
 }
 .comment-container .comment-created-at {
   color: var(--medium-color);
+  font-size: 12px;
 }

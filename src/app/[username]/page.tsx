@@ -1,8 +1,8 @@
 import DeletePostButton from '@/components/DeletePostButton';
 import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
-import Link from 'next/link';
 import '@/styles/profile.css';
+import PrefetchLink from '@/components/PrefetchLink';
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -34,7 +34,7 @@ export default async function UserPage({ params }: Props) {
     .order('created_at', { ascending: false });
   if (postsError) {
     console.error('Error fetching posts:', postsError);
-    errorMessage = 'Error fetching posts.';
+    errorMessage = 'Page not found.';
   }
 
   // check if user is logged in + their user id matches the user id of the page, then enables editing/delete buttons
@@ -52,7 +52,7 @@ export default async function UserPage({ params }: Props) {
           <div className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map((post) => (
-                <Link
+                <PrefetchLink
                   href={`/${username}/item/${post.id}`}
                   key={post.id}
                   className="collection-item"
@@ -75,7 +75,7 @@ export default async function UserPage({ params }: Props) {
                   ) : (
                     ''
                   )}
-                </Link>
+                </PrefetchLink>
               ))
             ) : (
               <p>No items in {isOwner ? `your` : `${username}'s`} collection.</p>

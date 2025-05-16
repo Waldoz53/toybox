@@ -4,9 +4,9 @@ import DeletePostButton from '@/components/DeletePostButton';
 import LikesButton from '@/components/LikesButton';
 import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
-import Link from 'next/link';
 import '@/styles/itemPage.css';
 import { getTimeAgo } from '@/utils/getTimeAgo';
+import PrefetchLink from '@/components/PrefetchLink';
 
 type Props = {
   params: Promise<{ username: string; itemId: string }>;
@@ -99,7 +99,9 @@ export default async function UserItem({ params }: Props) {
         <h3>{item.figures.name}</h3>
         <p className="description">{item.description}</p>
         <p className="author-date">
-          Added by <Link href={`/${item.profiles.username}`}>{item.profiles.username}</Link> on{' '}
+          Added by{' '}
+          <PrefetchLink href={`/${item.profiles.username}`}>{item.profiles.username}</PrefetchLink>{' '}
+          on{' '}
           {new Date(item.created_at).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',

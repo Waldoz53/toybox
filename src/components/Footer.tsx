@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import '@/styles/components/footer.css';
+import PrefetchLink from './PrefetchLink';
 
 export default function Footer() {
   return (
@@ -11,9 +11,9 @@ export default function Footer() {
         </a>
       </p>
       |
-      <Link href="/blog">
+      <PrefetchLink href="/blog">
         <p>Blog</p>
-      </Link>
+      </PrefetchLink>
     </div>
   );
 }
