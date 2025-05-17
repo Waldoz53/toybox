@@ -38,9 +38,7 @@ export default function Blog() {
 
       <div className="blog-section">
         <h3>Known issues:</h3>
-        <ul>
-          <li>With the new colour scheme some pages/elements might not look correct</li>
-        </ul>
+        <ul></ul>
       </div>
     </div>
   );
