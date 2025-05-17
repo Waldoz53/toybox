@@ -35,7 +35,7 @@ export default function PrefetchLink({
   }, [href, router]);
 
   return (
-    <Link href={href} ref={ref} className={className}>
+    <Link href={href} ref={ref} className={className} prefetch={true}>
       {children}
     </Link>
   );
