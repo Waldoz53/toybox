@@ -16,9 +16,10 @@
 .item-page .author-date {
   font-size: 14px;
   margin-bottom: 0.5em;
+  color: var(--medium-color);
 }
 .item-page .description {
-  min-height: 100px;
+  min-height: 50px;
   margin-bottom: 0.5em;
 }
 .item-page .likes {
@@ -53,7 +54,7 @@
     Nunito Sans,
     'Nunito Sans',
     sans-serif;
-  margin-top: 0.5em;
+  margin-top: 1em;
   margin-bottom: 0.5em;
 }
 .item-comments .comment {

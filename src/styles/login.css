@@ -11,7 +11,8 @@
 .login-page h2,
 .signup-page h2,
 .post-page h2,
-.edit-page h2 {
+.edit-page h2,
+.edit-page h3 {
   margin-bottom: 0.5em;
 }
 .login-page form,

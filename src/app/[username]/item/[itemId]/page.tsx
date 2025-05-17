@@ -14,7 +14,15 @@ type Props = {
 
 type Item = {
   id: string;
-  figures: { name: string };
+  figures: {
+    name: string;
+    toylines: {
+      name: string;
+      brands: {
+        name: string;
+      };
+    };
+  };
   description: string;
   created_at: string;
   user_id: string;
@@ -42,7 +50,9 @@ export default async function UserItem({ params }: Props) {
   // find valid post, if available
   const { data, error } = await supabase
     .from('posts')
-    .select('id, figure_id, description, created_at, user_id, profiles(username), figures(name)')
+    .select(
+      'id, figure_id, description, created_at, user_id, profiles(username), figures(name, toylines(name, brands(name)))',
+    )
     .eq('id', itemId)
     .single();
   // FIX: sanity check here
@@ -96,7 +106,9 @@ export default async function UserItem({ params }: Props) {
   return (
     <div className="item-page">
       <div className="main">
-        <h3>{item.figures.name}</h3>
+        <h3>
+          {item.figures.toylines.brands.name} {item.figures.toylines.name} {item.figures.name}
+        </h3>
         <p className="description">{item.description}</p>
         <p className="author-date">
           Added by{' '}

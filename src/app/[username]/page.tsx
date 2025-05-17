@@ -29,7 +29,7 @@ export default async function UserPage({ params }: Props) {
 
   const { data: postsData, error: postsError } = await supabase
     .from('posts')
-    .select('*, figures(name)')
+    .select('*, figures(name, toylines(name, brands(name)))')
     .eq('user_id', profile?.id)
     .order('created_at', { ascending: false });
   if (postsError) {
@@ -57,7 +57,10 @@ export default async function UserPage({ params }: Props) {
                   key={post.id}
                   className="collection-item"
                 >
-                  <h3>{post.figures.name}</h3>
+                  <h3>
+                    {post.figures.toylines.brands.name} {post.figures.toylines.name}{' '}
+                    {post.figures.name}
+                  </h3>
                   <p className="description">{post.description}</p>
                   <p className="date">
                     Added on{' '}

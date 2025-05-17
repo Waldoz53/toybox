@@ -10,7 +10,15 @@ import { useCallback, useEffect, useState } from 'react';
 
 type Post = {
   description: string;
-  figures: { name: string };
+  figures: {
+    name: string;
+    toylines: {
+      name: string;
+      brands: {
+        name: string;
+      };
+    };
+  };
 };
 
 export default function EditPostForm({ id }: { id: string }) {
@@ -23,7 +31,7 @@ export default function EditPostForm({ id }: { id: string }) {
   const fetchPostData = useCallback(async () => {
     const { data, error } = await supabase
       .from('posts')
-      .select('description, figures(name)')
+      .select('description, figures(name, toylines(name, brands(name)))')
       .eq('id', id)
       .single();
 
@@ -64,7 +72,11 @@ export default function EditPostForm({ id }: { id: string }) {
       {originalPost && (
         <>
           <form onSubmit={handleSubmit}>
-            <h3>{originalPost ? originalPost.figures.name : 'Loading...'}</h3>
+            <h3>
+              {originalPost
+                ? `${originalPost.figures.toylines.brands.name} ${originalPost.figures.toylines.name} ${originalPost.figures.name}`
+                : 'Loading...'}
+            </h3>
             <input type="hidden" name="postId" value={id} />
             <label htmlFor="description">Review:</label>
             <textarea

@@ -6,21 +6,25 @@ export default function Blog() {
       <h2>Blog</h2>
       <div className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 16, 2025</p>
+        <p>May 17, 2025</p>
         <ul>
-          <li>Experimental massive home page speed improvements</li>
-          <li>Added toyline names in front of figure names on the home page</li>
+          <li>Some css improvements + db query adjustments</li>
+          <li>
+            Certain pages should have show the entire toy name (eg Transformers Studio Series Jazz)
+          </li>
+          <li>Front page posts just say the toyline and figure name (eg Studio Series Jazz)</li>
+          <li>
+            Added a ratings column to the db! Soon youll be able to (optionally!) rate your figures
+          </li>
         </ul>
       </div>
 
       <div className="blog-section">
         <h3>Features & fixes in development:</h3>
         <ul>
-          <li>On post page, below the figure name it should show the brand + toyline</li>
           <li>Custom 404 page</li>
           <li>More error clarification</li>
           <li>Turn delete buttons into icons for less chunky looking elements</li>
-          <li>Optionally rating on a scale of 1-10 to your posts</li>
           <li>Follow/unfollow people then...</li>
           <li>On the home page you can switch between a following/all posts tab</li>
           <li>Profile setting to limit who can comment on your posts</li>
