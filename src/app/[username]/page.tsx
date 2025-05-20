@@ -20,7 +20,13 @@ export default async function UserPage({ params }: Props) {
     .eq('username', username)
     .single();
 
-  if (error || !profile) {
+  if (!profile) {
+    return (
+      <div className="collection">
+        <h2 className="error">User {username} not found.</h2>
+      </div>
+    );
+  } else if (error) {
     console.log('Error retrieving profile', error);
     errorMessage = 'Error retrieving profile';
   } else {
@@ -32,9 +38,15 @@ export default async function UserPage({ params }: Props) {
     .select('*, figures(name, toylines(name, brands(name)))')
     .eq('user_id', profile?.id)
     .order('created_at', { ascending: false });
-  if (postsError) {
+  if (!postsData) {
+    return (
+      <div className="collection">
+        <h2 className="error">User {username} has no items.</h2>
+      </div>
+    );
+  } else if (postsError) {
     console.error('Error fetching posts:', postsError);
-    errorMessage = 'Page not found.';
+    errorMessage = 'Error fetching page.';
   }
 
   // check if user is logged in + their user id matches the user id of the page, then enables editing/delete buttons

@@ -77,12 +77,14 @@ export async function addItem(formData: FormData) {
   const postData = {
     figure: formData.get('figure') as string,
     description: formData.get('description') as string,
+    rating: formData.get('rating') as string,
   };
   const { error: postsError } = await supabase.from('posts').insert([
     {
       user_id: data.user.id,
       figure_id: postData.figure,
       description: postData.description,
+      rating: parseInt(postData.rating),
     },
   ]);
   if (postsError) {

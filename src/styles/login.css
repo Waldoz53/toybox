@@ -43,3 +43,8 @@
   border: 1px solid var(--dark-color);
   border-radius: 6px;
 }
+.post-page form .rating,
+.edit-page form .rating {
+  margin-bottom: 0.5em;
+  width: 50px;
+}

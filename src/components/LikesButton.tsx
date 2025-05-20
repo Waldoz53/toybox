@@ -1,6 +1,5 @@
 'use client';
 import { likePost, unlikePost } from '@/app/actions';
-import useLoading from '@/app/context/LoadingContext';
 import { createClientBrowser } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -16,7 +15,6 @@ type Props = Like;
 export default function LikesButton({ count, userLiked, postId }: Props) {
   const router = useRouter();
   const supabase = createClientBrowser();
-  const { setLoading } = useLoading();
   const [countState, setCountState] = useState(0);
   const [liked, setLiked] = useState(false);
 
@@ -28,21 +26,18 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
   async function handleToggleLike() {
     const { data: user } = await supabase.auth.getUser();
     if (user.user != null) {
-      setLoading(true);
       if (liked) {
         // handles unliking a post
+        setLiked(false);
+        setCountState(countState - 1);
         unlikePost(postId, user.user.id).then((res) => {
-          setLiked(false);
-          setCountState(countState - 1);
-          setLoading(false);
           console.log(res);
         });
       } else {
         // handles liking a post
+        setLiked(true);
+        setCountState(countState + 1);
         likePost(postId, user.user.id).then((res) => {
-          setLiked(true);
-          setCountState(countState + 1);
-          setLoading(false);
           console.log(res);
         });
       }

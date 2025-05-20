@@ -7,6 +7,7 @@ import { createClientServer } from '@/utils/supabase/server';
 import '@/styles/itemPage.css';
 import { getTimeAgo } from '@/utils/getTimeAgo';
 import PrefetchLink from '@/components/PrefetchLink';
+import ItemRating from '@/components/ItemRating';
 
 type Props = {
   params: Promise<{ username: string; itemId: string }>;
@@ -27,6 +28,7 @@ type Item = {
   created_at: string;
   user_id: string;
   profiles: { username: string };
+  rating: number;
 };
 
 type Comment = {
@@ -51,7 +53,7 @@ export default async function UserItem({ params }: Props) {
   const { data, error } = await supabase
     .from('posts')
     .select(
-      'id, figure_id, description, created_at, user_id, profiles(username), figures(name, toylines(name, brands(name)))',
+      'id, figure_id, description, created_at, user_id, rating, profiles(username), figures(name, toylines(name, brands(name)))',
     )
     .eq('id', itemId)
     .single();
@@ -109,6 +111,7 @@ export default async function UserItem({ params }: Props) {
         <h3>
           {item.figures.toylines.brands.name} {item.figures.toylines.name} {item.figures.name}
         </h3>
+        {item.rating && <ItemRating rating={item.rating} />}
         <p className="description">{item.description}</p>
         <p className="author-date">
           Added by{' '}

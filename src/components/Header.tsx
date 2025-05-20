@@ -23,14 +23,16 @@ export default function Header() {
   return (
     <div className="header">
       <PrefetchLink href="/" className="title">
-        <h1 className={bebas.className}>Toybox</h1>
+        <h1 className={bebas.className} title="Home">
+          Toybox
+        </h1>
       </PrefetchLink>
       <LoadingEffect />
       <div className="spacer"></div>
       {username ? (
         <>
           <PrefetchLink href={`/${username}`}>
-            <p>{username}</p>
+            <p title="View your user page">{username}</p>
           </PrefetchLink>
           <LogoutButton />
         </>
