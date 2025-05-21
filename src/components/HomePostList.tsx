@@ -25,7 +25,7 @@ export default function Home({ posts }: { posts: Posts[] }) {
         <>
           {posts.map((post) => (
             <PrefetchLink
-              href={`/${post.profiles?.username}/item/${post.id}`}
+              href={`/user/${post.profiles?.username}/item/${post.id}`}
               key={post.id}
               className="post"
             >

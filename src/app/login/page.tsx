@@ -4,13 +4,16 @@ import { useState } from 'react';
 import { login } from '../actions';
 import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import '@/styles/login.css';
+import PrefetchLink from '@/components/PrefetchLink';
 
 export default function LoginPage() {
   const [message, setMessage] = useState('');
   const { setLoading } = useLoading();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const path = searchParams.get('redirectTo');
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,7 +30,11 @@ export default function LoginPage() {
     setTimeout(() => {
       setMessage('');
     }, 3000);
-    router.push('/');
+    if (path) {
+      router.replace(`${path}`);
+    } else {
+      router.push('/');
+    }
   }
 
   return (
@@ -41,6 +48,9 @@ export default function LoginPage() {
         <div className="spacer"></div>
         <button>Log in</button>
       </form>
+      <p>
+        Don&apos;t have an account?&nbsp;<PrefetchLink href="/signup">Sign up!</PrefetchLink>
+      </p>
       <Toast message={message} />
     </main>
   );

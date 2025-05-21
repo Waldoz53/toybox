@@ -66,7 +66,7 @@ export default async function UserPage({ params }: Props) {
             {postsData && postsData.length > 0 ? (
               postsData.map((post) => (
                 <PrefetchLink
-                  href={`/${username}/item/${post.id}`}
+                  href={`/user/${username}/item/${post.id}`}
                   key={post.id}
                   className="collection-item"
                 >

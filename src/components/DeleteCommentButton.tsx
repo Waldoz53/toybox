@@ -2,6 +2,8 @@
 
 import { deleteComment } from '@/app/actions';
 import useLoading from '@/app/context/LoadingContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 
 type Comment = {
@@ -25,5 +27,9 @@ export default function DeleteCommentButton({ commentId }: Props) {
     });
   }
 
-  return <button onClick={handleDeleteComment}>Delete</button>;
+  return (
+    <button title="Delete this comment" onClick={handleDeleteComment}>
+      <FontAwesomeIcon icon={faTrash} />
+    </button>
+  );
 }

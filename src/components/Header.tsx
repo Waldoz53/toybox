@@ -31,7 +31,7 @@ export default function Header() {
       <div className="spacer"></div>
       {username ? (
         <>
-          <PrefetchLink href={`/${username}`}>
+          <PrefetchLink href={`/user/${username}`}>
             <p title="View your collection">{username}</p>
           </PrefetchLink>
           <LogoutButton />

@@ -115,7 +115,9 @@ export default async function UserItem({ params }: Props) {
         <p className="description">{item.description}</p>
         <p className="author-date">
           Added by{' '}
-          <PrefetchLink href={`/${item.profiles.username}`}>{item.profiles.username}</PrefetchLink>{' '}
+          <PrefetchLink href={`/user/${item.profiles.username}`}>
+            {item.profiles.username}
+          </PrefetchLink>{' '}
           on{' '}
           {new Date(item.created_at).toLocaleDateString('en-US', {
             year: 'numeric',

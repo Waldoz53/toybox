@@ -12,7 +12,7 @@ export default function ProfileRedirectPage() {
     if (!user) return;
     async function redirectToUsername() {
       if (user) {
-        router.push(`/${user.username}`);
+        router.push(`/user/${user.username}`);
       } else {
         router.push('/login');
       }

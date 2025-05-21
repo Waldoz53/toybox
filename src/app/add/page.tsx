@@ -10,7 +10,7 @@ export default async function Post() {
   const { data, error } = await supabase.auth.getUser();
 
   if (error || !data) {
-    redirect('/login');
+    redirect(`/login?redirectTo=add`);
   }
   return (
     <main className="post-page">

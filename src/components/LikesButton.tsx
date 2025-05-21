@@ -1,7 +1,7 @@
 'use client';
 import { likePost, unlikePost } from '@/app/actions';
 import { createClientBrowser } from '@/utils/supabase/client';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 type Like = {
@@ -17,6 +17,7 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
   const supabase = createClientBrowser();
   const [countState, setCountState] = useState(0);
   const [liked, setLiked] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setCountState(count);
@@ -42,7 +43,7 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
         });
       }
     } else {
-      router.push('/login');
+      router.push(`/login?redirectTo=${encodeURIComponent(pathname)}`);
     }
   }
 

@@ -20,6 +20,7 @@
 .post-page form,
 .edit-page form {
   width: 100%;
+  margin-bottom: 0.5em;
 }
 .login-page form label,
 .signup-page form label,

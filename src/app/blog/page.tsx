@@ -11,24 +11,23 @@ export default function Blog() {
           <li>Added the ability to edit ratings in item reviews</li>
           <li>Added the visible ratings component to certain pages</li>
           <li>Refactored some divs into header, footer, main, section, etc instead</li>
+          <li>Refactored routes of page /[username] to /user/[username]</li>
+          <li>Replaced text in delete comment button with a little trashcan icon</li>
+          <li>Added a new 404 page!</li>
+          <li>
+            Improved logged out to logged in redirection on the /add page and when liking an item
+            review when logged out
+          </li>
         </ul>
       </section>
 
       <section className="blog-section">
         <h3>Features (& fixes) in development:</h3>
         <ul>
-          <li>Rewrite routes of page /[username] to /user/[username]</li>
-          <li>Custom 404 page</li>
-          <li>More error clarification</li>
-          <li>Turn delete buttons into icons for less chunky looking elements</li>
           <li>Follow/unfollow people then...</li>
           <li>On the home page you can switch between a following/all posts tab</li>
           <li>Profile setting to limit who can comment on your posts</li>
           <li>New favicon</li>
-          <li>
-            Add title=&quot;explanation&quot; hover text for possibly unclear actions or elements
-          </li>
-          <li>Rewrite some title=explanation hover text (username link in header)</li>
           <li>Change titles depending on the content being viewed</li>
           <li>Likely redesign how the site looks</li>
           <li>Sanitize data from some network requests</li>

@@ -43,6 +43,9 @@ button:hover {
   background: var(--dark-color);
   color: white;
 }
+button:hover svg path {
+  fill: white;
+}
 a {
   color: black;
 }
