@@ -18,6 +18,11 @@
   border-bottom: 1px solid var(--medium-color);
   padding: 1em;
   text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  gap: 0 8px;
 }
 .collection-item:first-child {
   border-radius: 6px 6px 0 0;
@@ -32,18 +37,29 @@
   border: none;
   border-radius: 0 0 6px 6px;
 }
+.collection-item .rating {
+  width: 100%;
+}
+.collection .icon-container {
+  color: var(--medium-color);
+}
+.collection-item .icon-container svg {
+  width: 12px;
+}
+.icon-container svg path {
+  fill: var(--medium-color);
+}
 .collection-item .description {
   min-height: 50px;
   margin-bottom: 0.5em;
+  width: 100%;
 }
 .collection-item .date {
   color: var(--medium-color);
   font-size: 14px;
+  flex-grow: 1;
 }
-.collection-item .start-edit {
-  margin-right: 8px;
-  margin-top: 8px;
-}
+.collection-item .start-edit,
 .collection-item .delete-post {
-  margin-top: 8px;
+  margin-top: -1em;
 }

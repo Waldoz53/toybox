@@ -4,6 +4,8 @@ import { createClientServer } from '@/utils/supabase/server';
 import '@/styles/profile.css';
 import PrefetchLink from '@/components/PrefetchLink';
 import ItemRating from '@/components/ItemRating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -36,7 +38,7 @@ export default async function UserPage({ params }: Props) {
 
   const { data: postsData, error: postsError } = await supabase
     .from('posts')
-    .select('*, figures(name, toylines(name, brands(name)))')
+    .select('*, figures(name, toylines(name, brands(name))), comments(count), likes(count)')
     .eq('user_id', profile?.id)
     .order('created_at', { ascending: false });
   if (!postsData) {
@@ -61,7 +63,7 @@ export default async function UserPage({ params }: Props) {
       {isValidUsername ? (
         <>
           <h2>{isOwner ? `Your collection` : `${username}'s collection`}</h2>
-          <p className="error">{errorMessage}</p>
+          {errorMessage && <p className="error">{errorMessage}</p>}
           <section className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map((post) => (
@@ -76,6 +78,12 @@ export default async function UserPage({ params }: Props) {
                   </h3>
                   {post.rating && <ItemRating rating={post.rating} />}
                   <p className="description">{post.description}</p>
+                  <div className="icon-container">
+                    {post.likes[0].count ?? 0}&nbsp;
+                    <FontAwesomeIcon icon={faHeart} />
+                    &nbsp;{post.comments[0].count ?? 0}&nbsp;
+                    <FontAwesomeIcon icon={faComment} />
+                  </div>
                   <p className="date">
                     Added on{' '}
                     {new Date(post.created_at).toLocaleDateString('en-US', {

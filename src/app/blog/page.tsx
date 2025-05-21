@@ -18,6 +18,7 @@ export default function Blog() {
             Improved logged out to logged in redirection on the /add page and when liking an item
             review when logged out
           </li>
+          <li>Added like + comment count to certain pages/elements</li>
         </ul>
       </section>
 

@@ -27,6 +27,12 @@
   align-items: center;
   gap: 0.5em;
 }
+.item-page .likes p {
+  color: var(--medium-color);
+}
+.likes svg path {
+  fill: var(--medium-color);
+}
 .likes-button.liked {
   background: var(--dark-color);
   color: white;

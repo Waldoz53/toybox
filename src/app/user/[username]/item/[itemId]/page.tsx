@@ -125,7 +125,12 @@ export default async function UserItem({ params }: Props) {
             day: 'numeric',
           })}
         </p>
-        <LikesButton count={realCount} userLiked={userLiked} postId={itemId} />
+        <LikesButton
+          count={realCount}
+          userLiked={userLiked}
+          postId={itemId}
+          commentCount={commentCount}
+        />
         {authorAuth && (
           <div className="buttons-container">
             <StartEditPostButton id={itemId} />

@@ -1,6 +1,8 @@
 'use client';
 import { likePost, unlikePost } from '@/app/actions';
 import { createClientBrowser } from '@/utils/supabase/client';
+import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -8,11 +10,12 @@ type Like = {
   count: number;
   userLiked: boolean;
   postId: string;
+  commentCount: number;
 };
 
 type Props = Like;
 
-export default function LikesButton({ count, userLiked, postId }: Props) {
+export default function LikesButton({ count, userLiked, postId, commentCount }: Props) {
   const router = useRouter();
   const supabase = createClientBrowser();
   const [countState, setCountState] = useState(0);
@@ -52,7 +55,14 @@ export default function LikesButton({ count, userLiked, postId }: Props) {
       <button className={`likes-button ${liked ? 'liked' : ''}`} onClick={handleToggleLike}>
         {liked ? 'Liked' : 'Like'}
       </button>
-      <p>{countState > 0 ? (countState == 1 ? '1 like' : `${countState} likes`) : 'No likes'}</p>
+      <p>
+        {countState ?? 0}&nbsp;
+        <FontAwesomeIcon icon={faHeart} />
+      </p>
+      <p>
+        {commentCount ?? 0}&nbsp;
+        <FontAwesomeIcon icon={faComment} />
+      </p>
     </div>
   );
 }
