@@ -6,26 +6,12 @@
   padding-bottom: 1em;
   padding: 0.5em;
 }
-.item-page .main {
+.item-page .item-page-main {
   border-bottom: 1px solid var(--dark-color);
   padding-bottom: 0.5em;
 }
 .item-page h3 {
   margin-bottom: 0.5em;
-}
-.item-page .rating {
-  display: flex;
-  gap: 0.25em;
-  margin-bottom: 0.5em;
-}
-.item-page .rating svg {
-  width: 20px;
-}
-.rating .rating-hidden {
-  opacity: 0.5;
-}
-.rating .rating-hidden path {
-  fill: white;
 }
 .item-page .author-date {
   font-size: 14px;

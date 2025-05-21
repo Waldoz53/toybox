@@ -172,7 +172,7 @@ export default function PostPage() {
 
       {selectedFigure && (
         <>
-          <label htmlFor="rating">Rating (out of 10):</label>
+          <label htmlFor="rating">Rating, out of 10 (optional):</label>
           <input type="number" name="rating" className="rating" min="1" max="10" />
           <label htmlFor="description">Review:</label>
           <textarea

@@ -31,7 +31,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="login-page">
+    <main className="login-page">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
@@ -42,6 +42,6 @@ export default function LoginPage() {
         <button>Log in</button>
       </form>
       <Toast message={message} />
-    </div>
+    </main>
   );
 }

@@ -33,6 +33,7 @@
   border-radius: 0 0 6px 6px;
 }
 .collection-item .description {
+  min-height: 50px;
   margin-bottom: 0.5em;
 }
 .collection-item .date {

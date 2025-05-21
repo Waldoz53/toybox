@@ -19,6 +19,7 @@ type Post = {
       };
     };
   };
+  rating: number;
 };
 
 export default function EditPostForm({ id }: { id: string }) {
@@ -31,7 +32,7 @@ export default function EditPostForm({ id }: { id: string }) {
   const fetchPostData = useCallback(async () => {
     const { data, error } = await supabase
       .from('posts')
-      .select('description, figures(name, toylines(name, brands(name)))')
+      .select('description, rating, figures(name, toylines(name, brands(name)))')
       .eq('id', id)
       .single();
 
@@ -78,6 +79,15 @@ export default function EditPostForm({ id }: { id: string }) {
                 : 'Loading...'}
             </h3>
             <input type="hidden" name="postId" value={id} />
+            <label htmlFor="rating">Rating, out of 10 (optional):</label>
+            <input
+              type="number"
+              name="rating"
+              className="rating"
+              min="1"
+              max="10"
+              defaultValue={originalPost.rating ? originalPost.rating : ''}
+            />
             <label htmlFor="description">Review:</label>
             <textarea
               id="description"

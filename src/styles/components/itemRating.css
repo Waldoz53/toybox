@@ -1,0 +1,14 @@
+.rating svg {
+  width: 20px;
+}
+.rating {
+  display: flex;
+  gap: 0.25em;
+  margin-bottom: 1.5em;
+}
+.rating .rating-hidden {
+  opacity: 0.5;
+}
+.rating .rating-hidden path {
+  fill: white;
+}

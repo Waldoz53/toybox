@@ -126,11 +126,12 @@ export async function editPost(formData: FormData) {
   const postData = {
     id: formData.get('postId') as string,
     description: formData.get('description') as string,
+    rating: formData.get('rating') as string,
   };
 
   const { error: postsError } = await supabase
     .from('posts')
-    .update({ description: postData.description })
+    .update({ description: postData.description, rating: parseInt(postData.rating) })
     .eq('id', postData.id)
     .eq('user_id', data.user?.id);
   if (postsError) {

@@ -13,9 +13,9 @@ export default async function Post() {
     redirect('/login');
   }
   return (
-    <div className="post-page">
+    <main className="post-page">
       <h2>Add to your collection</h2>
       <AddPage />
-    </div>
+    </main>
   );
 }

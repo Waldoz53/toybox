@@ -39,9 +39,9 @@ export default async function EditPostPage({ params }: Props) {
   }
 
   return (
-    <div className="edit-page">
+    <main className="edit-page">
       <h2>Editing review</h2>
       {validUser ? <EditPostForm id={postId} /> : <p>You are not allowed here!</p>}
-    </div>
+    </main>
   );
 }

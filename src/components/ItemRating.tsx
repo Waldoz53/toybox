@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot } from '@fortawesome/free-solid-svg-icons';
+import '@/styles/components/itemRating.css';
 
 export default function ItemRating({ rating }: { rating: number }) {
   const ratingArray = [];

@@ -30,7 +30,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="signup-page">
+    <main className="signup-page">
       <h2>Sign Up</h2>
       <form onSubmit={handleSignUp}>
         <label htmlFor="username">Username:</label>
@@ -43,6 +43,6 @@ export default function SignUpPage() {
         <button>Sign Up</button>
       </form>
       <Toast message={message} />
-    </div>
+    </main>
   );
 }

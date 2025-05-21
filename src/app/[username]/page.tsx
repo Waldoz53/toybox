@@ -3,6 +3,7 @@ import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
 import '@/styles/profile.css';
 import PrefetchLink from '@/components/PrefetchLink';
+import ItemRating from '@/components/ItemRating';
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -56,12 +57,12 @@ export default async function UserPage({ params }: Props) {
   }
 
   return (
-    <div className="collection">
+    <main className="collection">
       {isValidUsername ? (
         <>
           <h2>{isOwner ? `Your collection` : `${username}'s collection`}</h2>
           <p className="error">{errorMessage}</p>
-          <div className="collection-container">
+          <section className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map((post) => (
                 <PrefetchLink
@@ -73,6 +74,7 @@ export default async function UserPage({ params }: Props) {
                     {post.figures.toylines.brands.name} {post.figures.toylines.name}{' '}
                     {post.figures.name}
                   </h3>
+                  {post.rating && <ItemRating rating={post.rating} />}
                   <p className="description">{post.description}</p>
                   <p className="date">
                     Added on{' '}
@@ -95,11 +97,11 @@ export default async function UserPage({ params }: Props) {
             ) : (
               <p>No items in {isOwner ? `your` : `${username}'s`} collection.</p>
             )}
-          </div>
+          </section>
         </>
       ) : (
         <h2 className="error">{errorMessage}</h2>
       )}
-    </div>
+    </main>
   );
 }

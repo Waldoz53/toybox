@@ -21,7 +21,7 @@ export default function Header() {
   }
 
   return (
-    <div className="header">
+    <header className="header">
       <PrefetchLink href="/" className="title">
         <h1 className={bebas.className} title="Home">
           Toybox
@@ -32,16 +32,20 @@ export default function Header() {
       {username ? (
         <>
           <PrefetchLink href={`/${username}`}>
-            <p title="View your user page">{username}</p>
+            <p title="View your collection">{username}</p>
           </PrefetchLink>
           <LogoutButton />
         </>
       ) : (
         <>
-          <PrefetchLink href="/login">Login</PrefetchLink>
-          <PrefetchLink href="/signup">Sign Up</PrefetchLink>
+          <PrefetchLink href="/login">
+            <p title="Go to the login page">Login</p>
+          </PrefetchLink>
+          <PrefetchLink href="/signup">
+            <p title="Sign up for an account">Sign Up</p>
+          </PrefetchLink>
         </>
       )}
-    </div>
+    </header>
   );
 }

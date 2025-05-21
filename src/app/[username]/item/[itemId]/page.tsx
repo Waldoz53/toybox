@@ -106,8 +106,8 @@ export default async function UserItem({ params }: Props) {
   }
 
   return (
-    <div className="item-page">
-      <div className="main">
+    <main className="item-page">
+      <section className="item-page-main">
         <h3>
           {item.figures.toylines.brands.name} {item.figures.toylines.name} {item.figures.name}
         </h3>
@@ -130,8 +130,8 @@ export default async function UserItem({ params }: Props) {
             <DeletePostButton id={itemId} />
           </div>
         )}
-      </div>
-      <div className="item-comments">
+      </section>
+      <section className="item-comments">
         {commentCount > 0
           ? comments?.map((comment) => (
               <div className="comment" key={comment.id}>
@@ -148,7 +148,7 @@ export default async function UserItem({ params }: Props) {
             ))
           : 'No comments yet'}
         {userData.user?.id && <CommentForm postId={itemId} />}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
