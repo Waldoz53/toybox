@@ -235,3 +235,24 @@ export async function usernameAlreadyExists(username: string) {
     return false;
   }
 }
+
+// function slugify(str: string) {
+//   return str.toLowerCase().trim().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+|-+$/g, '');
+// }
+
+// server scripts to update db
+// export function updateFigureSlugs() {
+//   console.log('updating figure slugs...')
+//   const supabase = await createClientServer()
+
+//   const { data: figures, error } = await supabase.from('figures').select('id, name');
+
+//   if (error) throw new Error(error.message)
+
+//   for (const figure of figures) {
+//     const slug = slugify(figure.name)
+
+//     await supabase.from('figures').update({ slug }).eq('id', figure.id)
+//     console.log('updated item:', figure.name)
+//   }
+// }

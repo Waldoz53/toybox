@@ -4,7 +4,7 @@ import DeletePostButton from '@/components/DeletePostButton';
 import LikesButton from '@/components/LikesButton';
 import StartEditPostButton from '@/components/StartEditPostButton';
 import { createClientServer } from '@/utils/supabase/server';
-import '@/styles/itemPage.css';
+import '@/styles/userItemPage.css';
 import { getTimeAgo } from '@/utils/getTimeAgo';
 import PrefetchLink from '@/components/PrefetchLink';
 import ItemRating from '@/components/ItemRating';
@@ -16,8 +16,10 @@ type Props = {
 type Item = {
   id: string;
   figures: {
+    slug: string;
     name: string;
     toylines: {
+      slug: string;
       name: string;
       brands: {
         name: string;
@@ -53,7 +55,7 @@ export default async function UserItem({ params }: Props) {
   const { data, error } = await supabase
     .from('posts')
     .select(
-      'id, figure_id, description, created_at, user_id, rating, profiles(username), figures(name, toylines(name, brands(name)))',
+      'id, figure_id, description, created_at, user_id, rating, profiles(username), figures(name, slug, toylines(name, slug, brands(name)))',
     )
     .eq('id', itemId)
     .single();
@@ -106,11 +108,13 @@ export default async function UserItem({ params }: Props) {
   }
 
   return (
-    <main className="item-page">
-      <section className="item-page-main">
-        <h3>
-          {item.figures.toylines.brands.name} {item.figures.toylines.name} {item.figures.name}
-        </h3>
+    <main className="user-item-page">
+      <section className="user-item-page-main">
+        <PrefetchLink href={`/item/${item.figures.toylines.slug}/${item.figures.slug}`}>
+          <h3>
+            {item.figures.toylines.brands.name} {item.figures.toylines.name} {item.figures.name}
+          </h3>
+        </PrefetchLink>
         {item.rating && <ItemRating rating={item.rating} />}
         <p className="description">{item.description}</p>
         <p className="author-date">

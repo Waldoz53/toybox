@@ -5,6 +5,7 @@ import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
 import { useRouter } from 'next/navigation';
 import '@/styles/login.css';
+import PrefetchLink from '@/components/PrefetchLink';
 
 export default function SignUpPage() {
   const [message, setMessage] = useState<string | undefined>('');
@@ -42,6 +43,9 @@ export default function SignUpPage() {
         <div className="spacer"></div>
         <button>Sign Up</button>
       </form>
+      <p>
+        Already have an account?&nbsp;<PrefetchLink href="/login">Log in here!</PrefetchLink>
+      </p>
       <Toast message={message} />
     </main>
   );
