@@ -68,13 +68,13 @@ export default async function UserPage({ params }: Props) {
   }
 
   //checks if logged in user is following this user
-  const { data: followData, error: followError } = await supabase
+  const { data: followData } = await supabase
     .from('follows')
     .select('*')
     .eq('follower_id', data.user?.id)
     .eq('followed_id', profile?.id)
     .maybeSingle();
-  if (followData != null || !followError) {
+  if (followData != null) {
     isFollowing = true;
   }
 
