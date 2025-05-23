@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import { signup } from '../actions';
 import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
@@ -11,6 +12,10 @@ export default function SignUpPage() {
   const [message, setMessage] = useState<string | undefined>('');
   const { setLoading } = useLoading();
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = 'Toybox | Sign Up';
+  }, []);
 
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

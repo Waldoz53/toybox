@@ -17,6 +17,7 @@ export default async function UserPage({ params }: Props) {
   let isOwner = false;
   let errorMessage = '';
   const supabase = await createClientServer();
+
   const { data: profile, error: error } = await supabase
     .from('profiles')
     .select('id, username')
@@ -112,4 +113,12 @@ export default async function UserPage({ params }: Props) {
       )}
     </main>
   );
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { username } = await params;
+
+  const title = `Toybox | ${username}'s collection`;
+
+  return { title };
 }

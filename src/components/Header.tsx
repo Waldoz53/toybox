@@ -6,6 +6,7 @@ import { Bebas_Neue } from 'next/font/google';
 import useUser from '@/app/context/UserContext';
 import '@/styles/components/header.css';
 import PrefetchLink from './PrefetchLink';
+import { usePathname } from 'next/navigation';
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -14,12 +15,12 @@ const bebas = Bebas_Neue({
 });
 
 export default function Header() {
-  let username = '';
   const { user } = useUser();
-  if (user) {
-    username = user.username;
+  const pathname = usePathname();
+  let path = '';
+  if (!pathname.includes('login') || !pathname.includes('signup')) {
+    path = pathname;
   }
-
   return (
     <header className="header">
       <PrefetchLink href="/" className="title">
@@ -29,16 +30,16 @@ export default function Header() {
       </PrefetchLink>
       <LoadingEffect />
       <div className="spacer"></div>
-      {username ? (
+      {user?.username ? (
         <>
-          <PrefetchLink href={`/user/${username}`}>
-            <p title="View your collection">{username}</p>
+          <PrefetchLink href={`/user/${user?.username}`}>
+            <p title="View your collection">{user?.username}</p>
           </PrefetchLink>
           <LogoutButton />
         </>
       ) : (
         <>
-          <PrefetchLink href="/login">
+          <PrefetchLink href={`/login?redirectTo=${encodeURIComponent(path)}`}>
             <p title="Go to the login page">Login</p>
           </PrefetchLink>
           <PrefetchLink href="/signup">

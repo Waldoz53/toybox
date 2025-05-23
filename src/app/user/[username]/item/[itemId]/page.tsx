@@ -163,3 +163,20 @@ export default async function UserItem({ params }: Props) {
     </main>
   );
 }
+
+export async function generateMetadata({ params }: Props) {
+  const { username, itemId } = await params;
+  const supabase = await createClientServer();
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, figures(name)')
+    .eq('id', itemId)
+    .maybeSingle();
+  const item = data as unknown as Item;
+
+  const title = `Toybox | ${username}'s ${item?.figures.name}`;
+
+  if (data || !error) {
+    return { title };
+  } else return;
+}

@@ -8,6 +8,10 @@ type Props = {
   params: Promise<{ postId: string }>;
 };
 
+export const metadata = {
+  title: 'Toybox | Editing an item post',
+};
+
 export default async function EditPostPage({ params }: Props) {
   const disabled = false;
   const { postId } = await params;

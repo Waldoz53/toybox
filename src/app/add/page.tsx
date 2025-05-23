@@ -4,6 +4,10 @@ import AddPage from './AddPage';
 import '@/styles/login.css';
 import '@/styles/post.css';
 
+export const metadata = {
+  title: 'Toybox | Add an item to your collection',
+};
+
 export default async function Post() {
   const supabase = await createClientServer();
 

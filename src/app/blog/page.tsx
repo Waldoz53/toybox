@@ -1,42 +1,44 @@
 import '@/styles/blog.css';
 
+export const metadata = {
+  title: 'Toybox | Blog',
+};
+
 export default function Blog() {
   return (
     <main className="blog">
       <h2>Blog</h2>
       <section className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 22, 2025</p>
+        <p>May 23, 2025</p>
         <ul>
-          <li>
-            Items now have their own (barebones) individual pages! Click on an item review, then
-            from that page, click on the title of the item, and you&apos;ll get to its unique page!
-          </li>
-          <li>Individual item pages have an average of all reviews</li>
+          <li>Some more tweaks to login redirection</li>
+          <li>Slight tweaks to the individual item page</li>
+          <li>Added titles to most pages</li>
+          <li>Starting development of follower system!</li>
         </ul>
       </section>
 
       <section className="blog-section">
         <h3>Features (& fixes) in development:</h3>
         <ul>
+          <li>New favicon</li>
           <li>Improve item pages</li>
-          <li>Make commenting feel faster</li>
           <li>Follow/unfollow people then...</li>
           <li>On the home page you can switch between a following/all posts tab</li>
           <li>Profile setting to limit who can comment on your posts</li>
-          <li>New favicon</li>
-          <li>Change titles depending on the content being viewed</li>
-          <li>Pagination of front page posts</li>
+          {/* Dev Access Only: */}
           {/* <li>Long term/scaling goal: Sanitize data from some network requests</li> */}
           {/* <li>ONGOING: improve server logging messages</li> */}
           {/* <li>ONGOING: reduce usage of network requests</li> */}
         </ul>
       </section>
 
-      <section className="blog-section">
+      {/* <section className="blog-section">
         <h3>Known issues:</h3>
-        <ul></ul>
-      </section>
+        <ul>
+        </ul>
+      </section> */}
     </main>
   );
 }

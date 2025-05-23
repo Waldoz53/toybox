@@ -51,10 +51,31 @@ export default async function ItemPage({ params }: Props) {
       <p>
         {toylines.brands.name}&nbsp;{toylines.name}
       </p>
-      <p>
-        Average rating: <strong>{calcAverage(figure?.posts).toFixed(1)}/10</strong>&nbsp;(
-        {figure?.posts.length} ratings)
-      </p>
+      {calcAverage(figure?.posts) > 0 && (
+        <p>
+          Average rating: <strong>{calcAverage(figure?.posts).toFixed(1)}/10</strong>&nbsp;(
+          {figure?.posts.length} ratings)
+        </p>
+      )}
     </main>
   );
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { toyline, itemName } = await params;
+  const supabase = await createClientServer();
+  const { data: figure, error } = await supabase
+    .from('figures')
+    .select('name, toylines(name, brands(name))')
+    .eq('slug', itemName)
+    .eq('toylines.slug', toyline)
+    .maybeSingle();
+
+  const toylines = figure?.toylines as unknown as Toylines;
+
+  const title = `Toybox | ${toylines.brands.name} ${toylines.name} ${figure?.name}`;
+
+  if (figure || !error) {
+    return { title };
+  } else return;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { login } from '../actions';
 import Toast from '@/components/Toast';
 import useLoading from '../context/LoadingContext';
@@ -14,6 +14,10 @@ export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const path = searchParams.get('redirectTo');
+
+  useEffect(() => {
+    document.title = 'Toybox | Log In';
+  }, []);
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

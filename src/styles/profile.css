@@ -4,7 +4,10 @@
 }
 .collection h2 {
   text-align: center;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+}
+.collection .follower-container {
+  padding: 0.5em;
 }
 .collection-container {
   display: flex;
