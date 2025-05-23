@@ -93,6 +93,11 @@ export default async function UserPage({ params }: Props) {
                 followCount={followCount}
               />
             )}
+            {isOwner && (
+              <p>
+                {followCount ?? 0}&nbsp;{followCount == 1 ? 'follower' : 'followers'}
+              </p>
+            )}
           </section>
 
           <section className="collection-container">
