@@ -6,6 +6,7 @@ import PrefetchLink from '@/components/PrefetchLink';
 import ItemRating from '@/components/ItemRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
+import FollowComponent from '@/components/FollowComponent';
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -16,6 +17,7 @@ export default async function UserPage({ params }: Props) {
   let isValidUsername = false;
   let isOwner = false;
   let errorMessage = '';
+  let isFollowing = false;
   const supabase = await createClientServer();
 
   const { data: profile, error: error } = await supabase
@@ -53,10 +55,27 @@ export default async function UserPage({ params }: Props) {
     errorMessage = 'Error fetching page.';
   }
 
+  // checks user follower count
+  const { count: followCount } = await supabase
+    .from('follows')
+    .select('*', { count: 'exact', head: true })
+    .eq('followed_id', profile?.id);
+
   // check if user is logged in + their user id matches the user id of the page, then enables editing/delete buttons
   const { data } = await supabase.auth.getUser();
   if (data.user?.id === profile?.id) {
     isOwner = true;
+  }
+
+  //checks if logged in user is following this user
+  const { data: followData, error: followError } = await supabase
+    .from('follows')
+    .select('*')
+    .eq('follower_id', data.user?.id)
+    .eq('followed_id', profile?.id)
+    .maybeSingle();
+  if (followData != null || !followError) {
+    isFollowing = true;
   }
 
   return (
@@ -65,6 +84,17 @@ export default async function UserPage({ params }: Props) {
         <>
           <h2>{isOwner ? `Your collection` : `${username}'s collection`}</h2>
           {errorMessage && <p className="error">{errorMessage}</p>}
+
+          <section className="follower-container">
+            {!isOwner && (
+              <FollowComponent
+                isFollowing={isFollowing}
+                userId={profile?.id}
+                followCount={followCount}
+              />
+            )}
+          </section>
+
           <section className="collection-container">
             {postsData && postsData.length > 0 ? (
               postsData.map((post) => (

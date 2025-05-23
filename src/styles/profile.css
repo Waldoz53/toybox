@@ -8,6 +8,22 @@
 }
 .collection .follower-container {
   padding: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  justify-content: center;
+}
+.follower-container button {
+  margin-bottom: 0.5em;
+}
+.follower-container button.following {
+  background: var(--dark-color);
+  color: white;
+}
+.follower-container p {
+  width: 100%;
 }
 .collection-container {
   display: flex;

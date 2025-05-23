@@ -15,7 +15,7 @@ export default function Blog() {
           <li>Some more tweaks to login redirection</li>
           <li>Slight tweaks to the individual item page</li>
           <li>Added titles to most pages</li>
-          <li>Starting development of follower system!</li>
+          <li>Basic follower system added!</li>
         </ul>
       </section>
 

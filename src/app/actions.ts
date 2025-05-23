@@ -236,6 +236,32 @@ export async function usernameAlreadyExists(username: string) {
   }
 }
 
+export async function followUser(loggedInId: string, id: string) {
+  const supabase = await createClientServer();
+
+  const { error } = await supabase.from('follows').insert({
+    follower_id: loggedInId,
+    followed_id: id,
+  });
+
+  if (error) {
+    return error.message;
+  } else return 'user followed successfully!';
+}
+
+export async function unfollowUser(loggedInId: string, id: string) {
+  const supabase = await createClientServer();
+
+  const { error } = await supabase.from('follows').delete().match({
+    follower_id: loggedInId,
+    followed_id: id,
+  });
+
+  if (error) {
+    return error.message;
+  } else return 'user unfollowed successfully!';
+}
+
 // function slugify(str: string) {
 //   return str.toLowerCase().trim().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+|-+$/g, '');
 // }
