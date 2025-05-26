@@ -12,6 +12,8 @@ export const metadata = {
   title: 'Toybox | Editing an item post',
 };
 
+export const revalidate = 300;
+
 export default async function EditPostPage({ params }: Props) {
   const disabled = false;
   const { postId } = await params;

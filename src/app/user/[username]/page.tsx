@@ -12,6 +12,8 @@ type Props = {
   params: Promise<{ username: string }>;
 };
 
+export const revalidate = 30;
+
 export default async function UserPage({ params }: Props) {
   const { username } = await params;
   let isValidUsername = false;
@@ -86,18 +88,13 @@ export default async function UserPage({ params }: Props) {
           {errorMessage && <p className="error">{errorMessage}</p>}
 
           <section className="follower-container">
-            {!isOwner && (
-              <FollowComponent
-                isFollowing={isFollowing}
-                userId={profile?.id}
-                followCount={followCount}
-              />
-            )}
-            {isOwner && (
-              <p>
-                {followCount ?? 0}&nbsp;{followCount == 1 ? 'follower' : 'followers'}
-              </p>
-            )}
+            <FollowComponent
+              isOwner={isOwner}
+              isFollowing={isFollowing}
+              userId={profile?.id}
+              followCount={followCount}
+              username={username}
+            />
           </section>
 
           <section className="collection-container">

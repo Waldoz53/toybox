@@ -11,6 +11,8 @@ type Toylines = {
   brands: { name: string };
 };
 
+export const revalidate = 300;
+
 export default async function ItemPage({ params }: Props) {
   const { toyline, itemName } = await params;
   const supabase = await createClientServer();

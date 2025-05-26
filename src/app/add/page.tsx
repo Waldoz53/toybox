@@ -8,6 +8,8 @@ export const metadata = {
   title: 'Toybox | Add an item to your collection',
 };
 
+export const revalidate = 300;
+
 export default async function Post() {
   const supabase = await createClientServer();
 

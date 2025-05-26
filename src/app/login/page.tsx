@@ -13,7 +13,7 @@ export default function LoginPage() {
   const { setLoading } = useLoading();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const path = searchParams.get('redirectTo');
+  let path = searchParams.get('redirectTo') || '/';
 
   useEffect(() => {
     document.title = 'Toybox | Log In';
@@ -34,6 +34,9 @@ export default function LoginPage() {
     setTimeout(() => {
       setMessage('');
     }, 3000);
+    if (path?.startsWith('/login') || path?.startsWith('/signup')) {
+      path = '/';
+    }
     if (path) {
       router.replace(`${path}`);
     } else {

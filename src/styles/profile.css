@@ -14,16 +14,11 @@
   flex-wrap: wrap;
   gap: 0.5em;
   justify-content: center;
-}
-.follower-container button {
-  margin-bottom: 0.5em;
+  align-items: center;
 }
 .follower-container button.following {
   background: var(--dark-color);
   color: white;
-}
-.follower-container p {
-  width: 100%;
 }
 .collection-container {
   display: flex;
@@ -31,6 +26,9 @@
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
+}
+.collection-container p {
+  padding: 0 0.5em;
 }
 .collection-item {
   width: 100%;
@@ -68,6 +66,7 @@
   min-height: 50px;
   margin-bottom: 0.5em;
   width: 100%;
+  padding: 0;
 }
 .collection-item .date {
   color: var(--medium-color);

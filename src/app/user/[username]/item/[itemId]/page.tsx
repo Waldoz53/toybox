@@ -43,6 +43,8 @@ type Comment = {
   error: Error | null;
 };
 
+export const revalidate = 300;
+
 export default async function UserItem({ params }: Props) {
   const { itemId } = await params;
   const supabase = await createClientServer();

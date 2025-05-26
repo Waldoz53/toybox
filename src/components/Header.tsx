@@ -17,7 +17,7 @@ const bebas = Bebas_Neue({
 export default function Header() {
   const { user } = useUser();
   const pathname = usePathname();
-  let path = '';
+  let path = '/';
   if (!pathname.includes('login') || !pathname.includes('signup')) {
     path = pathname;
   }
@@ -39,7 +39,13 @@ export default function Header() {
         </>
       ) : (
         <>
-          <PrefetchLink href={`/login?redirectTo=${encodeURIComponent(path)}`}>
+          <PrefetchLink
+            href={
+              path == '/signup' || path == '/login'
+                ? '/login'
+                : `/login?redirectTo=${encodeURIComponent(path)}`
+            }
+          >
             <p title="Go to the login page">Login</p>
           </PrefetchLink>
           <PrefetchLink href="/signup">
