@@ -1,7 +1,6 @@
-import HomePostList from '@/components/HomePostList';
 import { Suspense } from 'react';
 import { fetchHomePosts } from '@/lib/fetchHomePosts';
-import HomeShell from '@/components/HomeShell';
+import ClientPostList from '@/components/ClientPostList';
 
 // forces nextjs to cache this page for 15 seconds
 export const revalidate = 15;
@@ -27,10 +26,8 @@ export default async function HomePage() {
   }));
 
   return (
-    <HomeShell>
       <Suspense fallback={<p>Loading posts...</p>}>
-        <HomePostList posts={posts} />
+        <ClientPostList defaultPosts={posts}/>
       </Suspense>
-    </HomeShell>
   );
 }

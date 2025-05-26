@@ -11,14 +11,50 @@
   padding: 1em 2em;
   font-size: 18px;
 }
-.home .all-posts {
+.home h3 {
   margin-top: 1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding-left: .5em;
+}
+.home .feed-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .5em;
+  margin-top: 1em;
+  width: 100%;
+  justify-content: center;
+}
+.feed-toggle button {
+  border: none;
+  font-size: 16px;
+  border-radius: 0;
+  border-bottom: none;
+  opacity: .5;
+  padding: 1em;
+  width: 45%;
+  flex-grow: 1;
+  max-width: none;
+}
+.feed-toggle button:first-child {
+  border-right: 1px solid var(--dark-color);
+}
+.feed-toggle button:hover {
+  color: unset;
+}
+.feed-toggle button.active {
+  opacity: 1;
+  background: var(--primary-color);
+  border-bottom: 5px solid var(--dark-color);
+}
+.feed-toggle button:not(.active):hover {
+  color: white;
+}
+.home .all-posts {
   text-align: left;
 }
-.all-posts h3 {
-  padding-left: 0.5em;
-  margin-top: 1.5em;
-  text-transform: uppercase;
+.all-posts p {
+  padding: 0 .5em;
 }
 .all-posts .loader {
   position: relative;
@@ -45,24 +81,35 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   flex: 1;
+  padding: 0;
+}
+.post p strong {
+  font-size: 16px;
 }
 .post span {
   font-size: 11px;
   color: var(--medium-color);
+}
+.post .added-text {
+  font-size: 16px;
+  color: black;
+  display: none;
 }
 .post .icons {
   display: none;
 }
 .post span:last-child {
   text-align: right;
-  min-width: 30px;
 }
 span svg path {
   fill: var(--medium-color);
 }
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 450px) {
   .post .icons {
     display: block;
+  }
+  .post span:last-child {
+    min-width: 30px;
   }
 }
 @media screen and (min-width: 810px) {

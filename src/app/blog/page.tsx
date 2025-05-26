@@ -20,6 +20,7 @@ export default function Blog() {
             Added follower lists! &quot;/user/[username]/followers&quot; displays a simple list of
             the users followers
           </li>
+          <li>Follower/Everyone tabs on the home page to see only follower posts or every recent post</li>
         </ul>
       </section>
 
@@ -29,6 +30,9 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
+          <li>Add an empty/no followers text to the followers page</li>
+          <li>Improve follower/everyone tab design</li>
+          <li>Paginate posts (once there are a lot of posts)</li>
           <li>WIP: Follow/unfollow people then...</li>
           <li>WIP: On the home page you can switch between a following/all posts tab</li>
           <li>WIP: Profile setting to limit who can comment on your posts</li>

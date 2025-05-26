@@ -18,7 +18,7 @@ type Posts = {
   comments: { count: number }[];
 };
 
-export default function Home({ posts }: { posts: Posts[] }) {
+export default function HomePostList({ posts }: { posts: Posts[] }) {
   return (
     <>
       {posts.length > 0 ? (
@@ -30,9 +30,9 @@ export default function Home({ posts }: { posts: Posts[] }) {
               className="post"
             >
               <p>
-                {post.profiles?.username} added{' '}
+                {post.profiles?.username}&nbsp;added
                 <strong>
-                  {post.figures.toylines.name} {post.figures.name}
+                  &nbsp;{post.figures.toylines.name} {post.figures.name}
                 </strong>
               </p>
               <span className="icons">
@@ -48,7 +48,7 @@ export default function Home({ posts }: { posts: Posts[] }) {
           ))}
         </>
       ) : (
-        <p>No recently added items</p>
+        <p>No recent posts.</p>
       )}
     </>
   );
