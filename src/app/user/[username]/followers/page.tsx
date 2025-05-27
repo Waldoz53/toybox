@@ -39,15 +39,19 @@ export default async function FollowersPage({ params }: Props) {
       <h2>{username}&apos;s followers</h2>
       {!error ? (
         <>
-          {followers.length > 0 ? followers.map((f) => (
-            <PrefetchLink
-              href={`/user/${f.follower.username}`}
-              key={f.follower.id}
-              className="follower"
-            >
-              {f.follower.username}
-            </PrefetchLink>
-          )) : (<p>No followers yet.</p>)}
+          {followers.length > 0 ? (
+            followers.map((f) => (
+              <PrefetchLink
+                href={`/user/${f.follower.username}`}
+                key={f.follower.id}
+                className="follower"
+              >
+                {f.follower.username}
+              </PrefetchLink>
+            ))
+          ) : (
+            <p>No followers yet.</p>
+          )}
         </>
       ) : (
         <p>Failed to fetch followers</p>

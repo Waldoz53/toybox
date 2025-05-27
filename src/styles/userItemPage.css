@@ -76,6 +76,9 @@
   align-items: flex-end;
   gap: 0.5em;
 }
+.comment-container p {
+  margin-top: 0.5em;
+}
 .comment-container .comment-created-at {
   color: var(--medium-color);
   font-size: 12px;

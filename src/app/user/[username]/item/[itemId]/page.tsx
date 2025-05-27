@@ -148,7 +148,9 @@ export default async function UserItem({ params }: Props) {
         {commentCount > 0
           ? comments?.map((comment) => (
               <div className="comment" key={comment.id}>
-                <p className="author">{comment.profiles.username}</p>
+                <PrefetchLink href={`/user/${comment.profiles.username}`}>
+                  <p className="author">{comment.profiles.username}</p>
+                </PrefetchLink>
                 <div className="comment-container">
                   <p>{comment.comment}</p>
                   <div className="spacer"></div>

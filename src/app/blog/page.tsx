@@ -12,15 +12,10 @@ export default function Blog() {
       <h2>Blog</h2>
       <section className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 26, 2025</p>
+        <p>May 27, 2025</p>
         <ul>
-          <li>Added caching to certain pages. Pages should be a tiny bit faster</li>
-          <li>Tweaked login/signup redirects</li>
-          <li>
-            Added follower lists! &quot;/user/[username]/followers&quot; displays a simple list of
-            the users followers
-          </li>
-          <li>Follower/Everyone tabs on the home page to see only follower posts or every recent post</li>
+          <li>Misc. css tweaks</li>
+          <li>Added links to comments</li>
         </ul>
       </section>
 
