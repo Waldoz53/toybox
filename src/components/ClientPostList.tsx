@@ -23,7 +23,7 @@ type Posts = {
 export default function ClientPostList({ defaultPosts }: { defaultPosts: Posts[] }) {
   const supabase = createClientBrowser();
   const { user } = useUser();
-  const [feedType, setFeedType] = useState<FeedType>('following');
+  const [feedType, setFeedType] = useState<FeedType>('everyone');
   const [posts, setPosts] = useState<Posts[]>(defaultPosts);
   const [loading, setLoading] = useState(false);
 
