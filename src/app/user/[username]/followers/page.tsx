@@ -59,3 +59,10 @@ export default async function FollowersPage({ params }: Props) {
     </main>
   );
 }
+
+export async function generateMetadata({ params }: Props) {
+  const { username } = await params;
+  const title = `Toybox | ${username}'s followers`;
+
+  return { title };
+}

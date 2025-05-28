@@ -57,26 +57,18 @@ export default async function UserPage({ params }: Props) {
     errorMessage = 'Error fetching page.';
   }
 
-  // checks user follower count
-  const { count: followCount } = await supabase
-    .from('follows')
-    .select('*', { count: 'exact', head: true })
-    .eq('followed_id', profile?.id);
-
   // check if user is logged in + their user id matches the user id of the page, then enables editing/delete buttons
   const { data } = await supabase.auth.getUser();
   if (data.user?.id === profile?.id) {
     isOwner = true;
   }
 
-  //checks if logged in user is following this user
-  const { data: followData } = await supabase
+  //checks if logged in user is following this user + check the follow count
+  const { data: followData, count: followCount } = await supabase
     .from('follows')
-    .select('*')
-    .eq('follower_id', data.user?.id)
-    .eq('followed_id', profile?.id)
-    .maybeSingle();
-  if (followData != null) {
+    .select('follower_id', { count: 'exact' })
+    .eq('followed_id', profile?.id);
+  if (followData?.some((f) => f.follower_id === data.user?.id)) {
     isFollowing = true;
   }
 

@@ -12,10 +12,15 @@ export default function Blog() {
       <h2>Blog</h2>
       <section className="blog-section">
         <h3>Latest updates only</h3>
-        <p>May 27, 2025</p>
+        <p>May 28, 2025</p>
         <ul>
-          <li>Misc. css tweaks</li>
-          <li>Added links to comments</li>
+          <li>
+            Fixed: on the /user/[username] page the edit review button would redirect incorrectly
+          </li>
+          <li>Adjusted some network requests</li>
+          <li>Default home tab is &quot;following&quot;, instead of everyone</li>
+          <li>Misc. tweaks</li>
+          <li>WIP: Profile settings page! Initial blank/minimal page</li>
         </ul>
       </section>
 
@@ -25,11 +30,8 @@ export default function Blog() {
           <li>New favicon</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
-          <li>Add an empty/no followers text to the followers page</li>
-          <li>Improve follower/everyone tab design</li>
-          <li>Paginate posts (once there are a lot of posts)</li>
+          <li>Paginate posts (once there are more posts)</li>
           <li>WIP: Follow/unfollow people then...</li>
-          <li>WIP: On the home page you can switch between a following/all posts tab</li>
           <li>WIP: Profile setting to limit who can comment on your posts</li>
           {/* Dev Access Only: */}
           {/* <li>Long term/scaling goal: Sanitize data from some network requests</li> */}

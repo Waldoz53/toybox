@@ -14,7 +14,7 @@ export default function HomeShell({
 }) {
   const router = useRouter();
   const { user } = useUser();
-  const [feedType, setFeedType] = useState<'everyone' | 'following'>('everyone');
+  const [feedType, setFeedType] = useState<'everyone' | 'following'>('following');
 
   useEffect(() => {
     router.prefetch('/add');
@@ -32,18 +32,18 @@ export default function HomeShell({
       {user?.id && (
         <div className="feed-toggle">
           <button
-            className={feedType === 'everyone' ? 'active' : ''}
-            onClick={() => switchFeed('everyone')}
-            title="Change feed to view all recent posts"
-          >
-            All Posts
-          </button>
-          <button
             className={feedType === 'following' ? 'active' : ''}
             onClick={() => switchFeed('following')}
             title="Change feed to view only recent posts by people you follow"
           >
             Following
+          </button>
+          <button
+            className={feedType === 'everyone' ? 'active' : ''}
+            onClick={() => switchFeed('everyone')}
+            title="Change feed to view all recent posts"
+          >
+            Everyone
           </button>
         </div>
       )}

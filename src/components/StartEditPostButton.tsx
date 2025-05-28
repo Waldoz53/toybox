@@ -18,7 +18,7 @@ export default function StartEditPostButton({ id }: { id: string }) {
       className="start-edit"
       onClick={(e) => {
         e.stopPropagation();
-        e.preventDefault()
+        e.preventDefault();
         startEdit();
       }}
     >

@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const metadata = {
-  title: 'Toybox | Editing an item post',
+  title: 'Toybox | Editing an item review',
 };
 
 export const revalidate = 300;

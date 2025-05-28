@@ -1,0 +1,14 @@
+.settings {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+.settings h2,
+.settings p {
+  margin-bottom: 0.5em;
+}
+
+.settings form {
+  margin-top: 1em;
+}

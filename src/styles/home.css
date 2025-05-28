@@ -116,10 +116,4 @@ span svg path {
   .feed-toggle {
     padding: 0.5em;
   }
-  .all-posts .post:nth-child(2) {
-    border-radius: 6px 6px 0 0;
-  }
-  .all-posts .post:last-child {
-    border-radius: 0 0 6px 6px;
-  }
 }
