@@ -1,17 +1,17 @@
 .toast {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background-color;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1em;
   z-index: 999999;
-  background: #af1717;
+  background-color: #af1717;
   color: white;
   transform: translateY(-100%);
 }
 .toast.success {
-  background: #006239;
+  background-color: #006239;
 }
 .toast.show {
   transform: translateY(0);

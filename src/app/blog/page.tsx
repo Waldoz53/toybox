@@ -34,6 +34,7 @@ export default function Blog() {
             Replace logout button in header with a new hover component for profile, settings +
             logout
           </li>
+          <li>Improve semantic html: make sure h1 to h6 are correct, etc</li>
           <li>
             Tweak Toast message on other pages (currently only the settings page has the new Toast)
           </li>
