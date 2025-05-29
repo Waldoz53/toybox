@@ -35,6 +35,7 @@ export default function Blog() {
             logout
           </li>
           <li>Improve semantic html: make sure h1 to h6 are correct, etc</li>
+          <li>Refactor most anchor links so they underline on hover</li>
           <li>
             Tweak Toast message on other pages (currently only the settings page has the new Toast)
           </li>
