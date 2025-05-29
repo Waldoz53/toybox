@@ -15,6 +15,7 @@
 form .settings-input {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 3em;
 }
 .settings-input label {
   width: 100%;

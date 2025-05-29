@@ -198,7 +198,7 @@ export default async function UserItem({ params }: Props) {
               <CommentForm postId={itemId} />
             ) : (
               <div className="follower-message">
-                <p>Only users this user follows can comment on their posts.</p>
+                <p>This user limits who can comment on their posts.</p>
               </div>
             )}
           </>

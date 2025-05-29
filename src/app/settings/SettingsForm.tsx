@@ -49,6 +49,7 @@ export default function SettingsForm() {
   }, [router, supabase]);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
+    setMessage('');
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -80,7 +81,7 @@ export default function SettingsForm() {
             <input type="password" name="confirmPassword" />
           </div>
 
-          <button>Save Changes</button>
+          <button>Save Settings</button>
         </>
       ) : (
         <>
