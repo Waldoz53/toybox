@@ -99,7 +99,7 @@ export default function EditPostForm({ id }: { id: string }) {
             <button>Submit Edit</button>
             <DeletePostButton id={id} />
 
-            <Toast message={message} />
+            <Toast message={message} toastType="error" />
           </form>
         </>
       )}

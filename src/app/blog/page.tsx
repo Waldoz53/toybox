@@ -14,13 +14,8 @@ export default function Blog() {
         <h3>Latest updates only</h3>
         <p>May 28, 2025</p>
         <ul>
-          <li>
-            Fixed: on the /user/[username] page the edit review button would redirect incorrectly
-          </li>
-          <li>Adjusted some network requests</li>
-          <li>Default home tab is &quot;following&quot;, instead of everyone</li>
-          <li>Misc. tweaks</li>
-          <li>WIP: Profile settings page! Initial blank/minimal page</li>
+          <li>Added functionality to the /settings page!</li>
+          <li>WIP: Still not accessible from any link or button yet</li>
         </ul>
       </section>
 
@@ -28,8 +23,12 @@ export default function Blog() {
         <h3>Features (& fixes) in development:</h3>
         <ul>
           <li>New favicon</li>
+          <li>
+            Tweak Toast message on other pages (currently only the settings page has the new Toast)
+          </li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
+          <li>Refactor front page so that the following tab is default</li>
           <li>Paginate posts (once there are more posts)</li>
           <li>WIP: Follow/unfollow people then...</li>
           <li>WIP: Profile setting to limit who can comment on your posts</li>

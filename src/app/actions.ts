@@ -262,6 +262,31 @@ export async function unfollowUser(loggedInId: string, id: string) {
   } else return 'user unfollowed successfully!';
 }
 
+export async function saveUserSettings(formData: FormData) {
+  const supabase = await createClientServer();
+
+  const newPassword = formData.get('newPassword') as string;
+  const confirmPassword = formData.get('confirmPassword') as string;
+  const allowCommentsRaw = formData.get('allowComments');
+  const allowComments = allowCommentsRaw === 'on' ? true : false;
+
+  const { data: user } = await supabase.auth.getUser();
+  if (user.user?.id) {
+    await supabase
+      .from('settings')
+      .update({ following_only_comment: allowComments })
+      .eq('user_id', user.user?.id);
+  } else {
+    return 'You must be logged in to change user settings';
+  }
+
+  if (user.user?.id && newPassword === confirmPassword) {
+    await supabase.auth.updateUser({ password: newPassword });
+  }
+
+  return 'Settings changed successfully!';
+}
+
 // function slugify(str: string) {
 //   return str.toLowerCase().trim().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+|-+$/g, '');
 // }

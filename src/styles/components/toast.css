@@ -10,6 +10,9 @@
   color: white;
   transform: translateY(-100%);
 }
+.toast.success {
+  background: #006239;
+}
 .toast.show {
   transform: translateY(0);
 }

@@ -2,6 +2,7 @@ import '@/styles/settingsPage.css';
 import { createClientServer } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import SettingsForm from './SettingsForm';
+import LogoutButton from '@/components/LogoutButton';
 
 export default async function SettingsPage() {
   const supabase = await createClientServer();
@@ -20,7 +21,8 @@ export default async function SettingsPage() {
   return (
     <main className="settings">
       <h2>Profile Settings</h2>
-      <p>Logged in as {username?.username}</p>
+      <p>Logged in as {username?.username}. Not you?</p>
+      <LogoutButton />
       <SettingsForm />
     </main>
   );

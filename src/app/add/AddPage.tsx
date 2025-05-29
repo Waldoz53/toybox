@@ -186,7 +186,7 @@ export default function PostPage() {
         </>
       )}
 
-      <Toast message={message} />
+      <Toast message={message} toastType="error" />
     </form>
   );
 }

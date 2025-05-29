@@ -50,7 +50,7 @@ export default function SignUpPage() {
       <p>
         Already have an account?&nbsp;<PrefetchLink href="/login">Log in here!</PrefetchLink>
       </p>
-      <Toast message={message} />
+      <Toast message={message} toastType="error" />
     </main>
   );
 }
