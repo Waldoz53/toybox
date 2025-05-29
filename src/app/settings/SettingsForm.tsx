@@ -54,7 +54,7 @@ export default function SettingsForm() {
     const formData = new FormData(e.currentTarget);
 
     saveUserSettings(formData).then((res) => {
-      if (res === 'Settings changed successfully!') {
+      if (res == 'Settings changed successfully!') {
         setToastType('success');
       }
       setMessage(res);

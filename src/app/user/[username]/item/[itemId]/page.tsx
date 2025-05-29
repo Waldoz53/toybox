@@ -110,18 +110,33 @@ export default async function UserItem({ params }: Props) {
     commentCount = comments.length;
   }
 
-  // checks if a user and the post author follow each other, then enables/disables commenting if that setting is enabled in user settings
+  // checks if a user and the post author follow each other
   if (userData.user && item.user_id !== userData.user.id) {
     const { data: followData } = await supabase
       .from('follows')
       .select('follower_id, followed_id')
       .eq('follower_id', item.user_id);
 
-    followData?.forEach((follower) => {
-      if (userData.user.id === follower.followed_id) {
-        isFriend = true;
+    if (followData) {
+      for (let i = 0; i < followData.length; i++) {
+        if (userData.user.id === followData[i].followed_id) {
+          isFriend = true;
+          break;
+        }
       }
-    });
+    }
+  }
+
+  // checks user comment settings
+  const { data: commentSetting } = await supabase
+    .from('settings')
+    .select('following_only_comment')
+    .eq('user_id', item.user_id)
+    .maybeSingle();
+  if (commentSetting) {
+    if (commentSetting.following_only_comment == false) {
+      isFriend = true;
+    }
   }
 
   return (

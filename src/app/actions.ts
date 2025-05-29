@@ -272,16 +272,22 @@ export async function saveUserSettings(formData: FormData) {
 
   const { data: user } = await supabase.auth.getUser();
   if (user.user?.id) {
-    await supabase
+    const { error } = await supabase
       .from('settings')
       .update({ following_only_comment: allowComments })
       .eq('user_id', user.user?.id);
+    if (error) {
+      return error.message;
+    }
   } else {
     return 'You must be logged in to change user settings';
   }
 
   if (user.user?.id && newPassword === confirmPassword) {
-    await supabase.auth.updateUser({ password: newPassword });
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) {
+      return `Password update error: ${error.message}`;
+    }
   }
 
   return 'Settings changed successfully!';
