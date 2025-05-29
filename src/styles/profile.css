@@ -12,9 +12,12 @@
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5em;
+  gap: 0.25em;
   justify-content: center;
   align-items: center;
+}
+.follower-container button {
+  margin-right: 4px;
 }
 .follower-container button.following {
   background: var(--dark-color);

@@ -52,6 +52,7 @@ export default async function UserItem({ params }: Props) {
   let realCount;
   let userLiked = false;
   let commentCount = 0;
+  let isFriend = false;
 
   // find valid post, if available
   const { data, error } = await supabase
@@ -109,6 +110,20 @@ export default async function UserItem({ params }: Props) {
     commentCount = comments.length;
   }
 
+  // checks if a user and the post author follow each other, then enables/disables commenting if that setting is enabled in user settings
+  if (userData.user && item.user_id !== userData.user.id) {
+    const { data: followData } = await supabase
+      .from('follows')
+      .select('follower_id, followed_id')
+      .eq('follower_id', item.user_id);
+
+    followData?.forEach((follower) => {
+      if (userData.user.id === follower.followed_id) {
+        isFriend = true;
+      }
+    });
+  }
+
   return (
     <main className="user-item-page">
       <section className="user-item-page-main">
@@ -162,7 +177,17 @@ export default async function UserItem({ params }: Props) {
               </div>
             ))
           : 'No comments yet'}
-        {userData.user?.id && <CommentForm postId={itemId} />}
+        {userData.user?.id && (
+          <>
+            {isFriend ? (
+              <CommentForm postId={itemId} />
+            ) : (
+              <div className="follower-message">
+                <p>Only users this user follows can comment on their posts.</p>
+              </div>
+            )}
+          </>
+        )}
       </section>
     </main>
   );

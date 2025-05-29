@@ -45,6 +45,16 @@
 .user-item-page .item-comments {
   padding-top: 1em;
 }
+.item-comments .follower-message {
+  margin-top: 2em;
+  padding: 0.5em;
+  text-align: center;
+  background: var(--primary-color-light);
+  border-radius: 6px;
+}
+.follower-message p {
+  margin: auto;
+}
 .item-comments form {
   margin-bottom: 0.5em;
 }

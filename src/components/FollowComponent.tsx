@@ -22,15 +22,33 @@ export default function FollowComponent({
   const [following, setFollowing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState<number | null>(0);
+  const [isFriend, setIsFriend] = useState(false);
   const supabase = createClientBrowser();
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     setFollowing(isFollowing);
-    setLoading(false);
     setCount(followCount);
-  }, [isFollowing, followCount]);
+
+    async function checkFollowing() {
+      const { data: userData } = await supabase.auth.getUser();
+      if (userData.user && userId !== userData.user.id) {
+        const { data: followData } = await supabase
+          .from('follows')
+          .select('follower_id, followed_id')
+          .eq('follower_id', userId);
+
+        followData?.forEach((follower) => {
+          if (userData.user.id === follower.followed_id) {
+            setIsFriend(true);
+          }
+        });
+      }
+      setLoading(false);
+    }
+    checkFollowing();
+  }, [isFollowing, followCount, supabase, userId]);
 
   async function toggleFollow() {
     const { data: user } = await supabase.auth.getUser();
@@ -59,7 +77,7 @@ export default function FollowComponent({
 
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <>
           {!isOwner && (
             <button className={following ? 'following' : ''} onClick={toggleFollow}>
@@ -71,7 +89,10 @@ export default function FollowComponent({
               {count ?? 0}&nbsp;{count == 1 ? 'follower' : 'followers'}
             </p>
           </PrefetchLink>
+          {isFriend && <p>and follows you</p>}
         </>
+      ) : (
+        <span className="loader-transition"></span>
       )}
     </>
   );
