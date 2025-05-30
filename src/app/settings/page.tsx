@@ -20,7 +20,7 @@ export default async function SettingsPage() {
 
   return (
     <main className="settings">
-      <h2>Profile Settings</h2>
+      <h1>Profile Settings</h1>
       <p>Logged in as {username?.username}. Not you?</p>
       <LogoutButton />
       <SettingsForm />

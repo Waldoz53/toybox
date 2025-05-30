@@ -73,11 +73,11 @@ export default function EditPostForm({ id }: { id: string }) {
       {originalPost && (
         <>
           <form onSubmit={handleSubmit}>
-            <h3>
+            <h2>
               {originalPost
                 ? `${originalPost.figures.toylines.brands.name} ${originalPost.figures.toylines.name} ${originalPost.figures.name}`
                 : 'Loading...'}
-            </h3>
+            </h2>
             <input type="hidden" name="postId" value={id} />
             <label htmlFor="rating">Rating, out of 10 (optional):</label>
             <input

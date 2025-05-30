@@ -76,7 +76,7 @@ export default async function UserPage({ params }: Props) {
     <main className="collection">
       {isValidUsername ? (
         <>
-          <h2>{isOwner ? `Your collection` : `${username}'s collection`}</h2>
+          <h1>{isOwner ? `Your collection` : `${username}'s collection`}</h1>
           {errorMessage && <p className="error">{errorMessage}</p>}
 
           <section className="follower-container">

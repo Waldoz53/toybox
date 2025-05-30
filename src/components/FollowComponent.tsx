@@ -84,12 +84,12 @@ export default function FollowComponent({
               {following ? 'Following' : 'Follow'}
             </button>
           )}
+          {isFriend && <p>Follows you |</p>}
           <PrefetchLink href={`/user/${username}/followers`}>
             <p>
               {count ?? 0}&nbsp;{count == 1 ? 'follower' : 'followers'}
             </p>
           </PrefetchLink>
-          {isFriend && <p>and follows you</p>}
         </>
       ) : (
         <span className="loader-transition"></span>

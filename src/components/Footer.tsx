@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        Issues? Feature requests? Contact me{' '}
+        Contact me{' '}
         <a href="https://bsky.app/profile/waleed-webdev.bsky.social" target="_blank">
           here.
         </a>

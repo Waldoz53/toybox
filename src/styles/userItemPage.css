@@ -29,6 +29,7 @@
 }
 .user-item-page .likes p {
   color: var(--medium-color);
+  font-size: 13px;
 }
 .likes svg path {
   fill: var(--medium-color);

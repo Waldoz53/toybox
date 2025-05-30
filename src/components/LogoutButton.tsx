@@ -14,7 +14,7 @@ export default function LogoutButton() {
     await logOut().then((res) => {
       console.log(res);
       setUser(null);
-      router.push('/');
+      router.refresh();
       setLoading(false);
     });
   }

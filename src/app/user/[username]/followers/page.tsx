@@ -36,7 +36,7 @@ export default async function FollowersPage({ params }: Props) {
 
   return (
     <main className="followers">
-      <h2>{username}&apos;s followers</h2>
+      <h1>{username}&apos;s followers</h1>
       {!error ? (
         <>
           {followers.length > 0 ? (

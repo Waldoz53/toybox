@@ -1,12 +1,12 @@
 'use client';
 
-import LogoutButton from '@/components/LogoutButton';
 import LoadingEffect from './LoadingEffect';
 import { Bebas_Neue } from 'next/font/google';
 import useUser from '@/app/context/UserContext';
 import '@/styles/components/header.css';
 import PrefetchLink from './PrefetchLink';
 import { usePathname } from 'next/navigation';
+import HeaderModal from './HeaderModal';
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -31,12 +31,10 @@ export default function Header() {
       <LoadingEffect />
       <div className="spacer"></div>
       {user?.username ? (
-        <>
-          <PrefetchLink href={`/user/${user?.username}`}>
-            <p title="View your collection">{user?.username}</p>
-          </PrefetchLink>
-          <LogoutButton />
-        </>
+        <div className="header-logged-in">
+          <p>{user?.username}</p>
+          <HeaderModal username={user?.username} />
+        </div>
       ) : (
         <>
           <PrefetchLink

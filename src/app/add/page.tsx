@@ -20,7 +20,7 @@ export default async function Post() {
   }
   return (
     <main className="post-page">
-      <h2>Add to your collection</h2>
+      <h1>Add to your collection</h1>
       <AddPage />
     </main>
   );

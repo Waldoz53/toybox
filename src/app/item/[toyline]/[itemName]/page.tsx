@@ -49,10 +49,10 @@ export default async function ItemPage({ params }: Props) {
 
   return (
     <main className="item-page">
-      <h3>{figure?.name}</h3>
-      <p>
+      <h1>{figure?.name}</h1>
+      <h2>
         {toylines.brands.name}&nbsp;{toylines.name}
-      </p>
+      </h2>
       {calcAverage(figure?.posts) > 0 && (
         <p>
           Average rating: <strong>{calcAverage(figure?.posts).toFixed(1)}/10</strong>&nbsp;(

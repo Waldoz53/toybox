@@ -2,7 +2,7 @@
 .collection {
   padding-top: 0.5em;
 }
-.collection h2 {
+.collection h1 {
   text-align: center;
   margin-bottom: 0.5em;
 }
@@ -58,6 +58,7 @@
 }
 .collection .icon-container {
   color: var(--medium-color);
+  font-size: 13px;
 }
 .collection-item .icon-container svg {
   width: 12px;

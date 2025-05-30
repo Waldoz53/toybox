@@ -8,12 +8,15 @@
   width: 300px;
   margin: 0 auto;
 }
-.login-page h2,
-.signup-page h2,
-.post-page h2,
-.edit-page h2,
-.edit-page h3 {
+.login-page h1,
+.signup-page h1,
+.post-page h1,
+.edit-page h1,
+.edit-page h2 {
   margin-bottom: 0.5em;
+}
+.edit-page h2 {
+  font-size: 20px;
 }
 .login-page form,
 .signup-page form,

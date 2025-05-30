@@ -1,5 +1,7 @@
 .toast {
-  transition: transform 0.3s ease, background-color;
+  transition:
+    transform 0.3s ease,
+    background-color;
   position: absolute;
   top: 0;
   left: 0;

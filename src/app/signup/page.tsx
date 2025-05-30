@@ -37,7 +37,7 @@ export default function SignUpPage() {
 
   return (
     <main className="signup-page">
-      <h2>Sign Up</h2>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSignUp}>
         <label htmlFor="username">Username:</label>
         <input id="username" name="username" type="text" required />

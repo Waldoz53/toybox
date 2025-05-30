@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   return (
     <main className="login-page">
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
         <input id="email" name="email" type="email" required />

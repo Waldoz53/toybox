@@ -192,16 +192,22 @@ export default async function UserItem({ params }: Props) {
               </div>
             ))
           : 'No comments yet'}
-        {userData.user?.id && (
+        {userData.user?.id ? (
           <>
             {isFriend ? (
               <CommentForm postId={itemId} />
             ) : (
               <div className="follower-message">
-                <p>This user limits who can comment on their posts.</p>
+                <p>This user limits who can comment on their review</p>
               </div>
             )}
           </>
+        ) : (
+          <div className="follower-message">
+            <PrefetchLink href={`/login?redirectTo=/user/${item.profiles.username}/item/${itemId}`}>
+              <p>Log in to comment on this review</p>
+            </PrefetchLink>
+          </div>
         )}
       </section>
     </main>

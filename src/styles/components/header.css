@@ -13,3 +13,31 @@
   text-decoration: none;
   color: var(--dark-color);
 }
+.header-logged-in {
+  position: relative;
+}
+.header-logged-in p {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.header-logged-in .header-modal {
+  display: none;
+  position: absolute;
+  right: 0px;
+  z-index: 9999;
+  box-shadow: 1px 1px 1px black;
+}
+.header-logged-in:hover .header-modal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95px;
+  gap: 0.5em;
+  background: var(--primary-color-light);
+  color: white;
+  border-radius: 6px;
+  padding-bottom: 0.5em;
+}
+.header-modal a {
+  padding: 0.5em 1em;
+}
