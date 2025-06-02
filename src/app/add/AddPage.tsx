@@ -26,6 +26,7 @@ type Figure = {
 
 export default function PostPage() {
   const [message, setMessage] = useState('');
+  const [toastType, setToastType] = useState<'success' | 'error'>('error');
   const supabase = createClientBrowser();
   const [brands, setBrands] = useState<Brand[] | null>(null);
   const [fetchedBrands, setFetchedBrands] = useState(false);
@@ -114,9 +115,11 @@ export default function PostPage() {
     const formData = new FormData(e.currentTarget);
     await addItem(formData).then((res) => {
       setMessage(res ?? '');
-      if (res !== '') {
+      if (res !== 'Item successfully added!') {
         console.log('Submit post error:', message);
       }
+      setMessage(message);
+      setToastType('success');
       setLoading(false);
     });
 
@@ -186,7 +189,7 @@ export default function PostPage() {
         </>
       )}
 
-      <Toast message={message} toastType="error" />
+      <Toast message={message} toastType={toastType} />
     </form>
   );
 }

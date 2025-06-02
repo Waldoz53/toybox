@@ -21,7 +21,7 @@ export async function login(formData: FormData) {
     console.log('a user successfully logged in.');
   }
 
-  return '';
+  return 'Logged in!';
 }
 
 // Sign up
@@ -56,7 +56,7 @@ export async function signup(formData: FormData) {
     console.log('a user has signed up');
   }
 
-  return '';
+  return 'Successfully signed up!';
 }
 
 // Log out
@@ -94,7 +94,7 @@ export async function addItem(formData: FormData) {
     console.log('user added an item');
   }
 
-  return '';
+  return 'Item successfully added!';
 }
 
 // Deletes an item
@@ -139,7 +139,7 @@ export async function editPost(formData: FormData) {
     return postsError.message;
   } else {
     console.log('user edited a post');
-    return '';
+    return 'Successfully edited!';
   }
 }
 

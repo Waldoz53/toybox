@@ -4,16 +4,15 @@ import PrefetchLink from './PrefetchLink';
 export default function Footer() {
   return (
     <footer className="footer">
+      <PrefetchLink href="/blog">
+        <p>Update Blog</p>
+      </PrefetchLink>
+      |
       <p>
-        Contact me{' '}
         <a href="https://bsky.app/profile/waleed-webdev.bsky.social" target="_blank">
-          here.
+          Contact Me
         </a>
       </p>
-      |
-      <PrefetchLink href="/blog">
-        <p>Blog</p>
-      </PrefetchLink>
     </footer>
   );
 }

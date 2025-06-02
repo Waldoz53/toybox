@@ -9,31 +9,24 @@ export const revalidate = 300;
 export default function Blog() {
   return (
     <main className="blog">
-      <h1>Blog</h1>
+      <h1>Update Blog</h1>
       <section className="blog-section">
-        <h3>Latest updates only</h3>
-        <p>May 28, 2025</p>
+        <h3>Latest update</h3>
+        <p>June 2, 2025</p>
         <ul>
           <li>
-            Log out no longer redirects to the home page, instead it just refreshes the current
-            page, then the page handles redirects if not logged in, etc
+            Follower Component: reworked so that its a server component, and doesn&apos;t have to
+            have a loading animation
           </li>
-          <li>
-            Added a new (basic, unanimated) modal in place of a logout button: Modal displays links
-            to /user/[username], /settings and includes the logout button
-          </li>
-          <li>Slightly reduced font sizes of the likes/comment counter + icons</li>
-          <li>CSS/HTML overhaul: use more semantic elements + improve hierarchy of pages</li>
+          <li>Added a hover style to the header modal</li>
+          <li>Settings page is now a proper server page!</li>
         </ul>
       </section>
 
       <section className="blog-section">
         <h3>Features (& fixes) in development:</h3>
         <ul>
-          <li>Refactor most anchor links so they underline on hover</li>
-          <li>
-            Tweak Toast message on other pages (currently only the settings page has the new Toast)
-          </li>
+          <li>Refactor a lot of client/server pages/components to be more efficient</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
           <li>Refactor front page so that the following tab is default</li>
@@ -50,8 +43,7 @@ export default function Blog() {
       <section className="blog-section">
         <h3>Known issues:</h3>
         <ul>
-          <li>Follower system MIGHT not work correctly. Still needs testing</li>
-          <li>Toggle button on settings page, when &quot;on&quot; looks odd on mobile</li>
+          <li>Odd flickering text on the home page sometimes</li>
         </ul>
       </section>
     </main>

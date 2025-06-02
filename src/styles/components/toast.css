@@ -11,6 +11,7 @@
   background-color: #af1717;
   color: white;
   transform: translateY(-100%);
+  border-radius: 0 0 6px 6px;
 }
 .toast.success {
   background-color: #006239;

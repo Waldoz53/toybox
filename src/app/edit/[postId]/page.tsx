@@ -26,7 +26,9 @@ export default async function EditPostPage({ params }: Props) {
 
   const { data: postData } = await supabase
     .from('posts')
-    .select('*')
+    .select(
+      '*, description, rating, profiles(username), figures(name, toylines(name, brands(name)))',
+    )
     .eq('id', postId)
     .eq('user_id', data.user?.id)
     .single();
@@ -47,7 +49,7 @@ export default async function EditPostPage({ params }: Props) {
   return (
     <main className="edit-page">
       <h1>Editing review</h1>
-      {validUser ? <EditPostForm id={postId} /> : <p>You are not allowed here!</p>}
+      {validUser ? <EditPostForm postData={postData} /> : <p>You are not allowed here!</p>}
     </main>
   );
 }

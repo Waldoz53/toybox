@@ -10,6 +10,7 @@ import PrefetchLink from '@/components/PrefetchLink';
 
 export default function LoginPage() {
   const [message, setMessage] = useState('');
+  const [toastType, setToastType] = useState<'success' | 'error'>('error');
   const { setLoading } = useLoading();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -25,8 +26,17 @@ export default function LoginPage() {
     const formData = new FormData(e.currentTarget);
     await login(formData).then((res) => {
       setMessage(res ?? '');
-      if (message !== '') {
-        console.log('Login message:', message);
+      if (res == 'Logged in!') {
+        setToastType('success');
+
+        if (path?.startsWith('/login') || path?.startsWith('/signup')) {
+          path = '/';
+        }
+        if (path) {
+          router.replace(`${path}`);
+        } else {
+          router.push('/');
+        }
       }
       setLoading(false);
     });
@@ -34,14 +44,6 @@ export default function LoginPage() {
     setTimeout(() => {
       setMessage('');
     }, 3000);
-    if (path?.startsWith('/login') || path?.startsWith('/signup')) {
-      path = '/';
-    }
-    if (path) {
-      router.replace(`${path}`);
-    } else {
-      router.push('/');
-    }
   }
 
   return (
@@ -57,7 +59,7 @@ export default function LoginPage() {
       <p>
         Don&apos;t have an account?&nbsp;<PrefetchLink href="/signup">Sign up!</PrefetchLink>
       </p>
-      <Toast message={message} toastType="error" />
+      <Toast message={message} toastType={toastType} />
     </main>
   );
 }

@@ -81,6 +81,7 @@ export default async function UserPage({ params }: Props) {
 
           <section className="follower-container">
             <FollowComponent
+              key={data.user?.id}
               isOwner={isOwner}
               isFollowing={isFollowing}
               userId={profile?.id}

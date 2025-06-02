@@ -31,13 +31,24 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 95px;
-  gap: 0.5em;
+  width: 125px;
   background: var(--primary-color-light);
   color: white;
   border-radius: 6px;
-  padding-bottom: 0.5em;
 }
 .header-modal a {
-  padding: 0.5em 1em;
+  padding: 0.25em 1em;
+  flex-grow: 1;
+  text-align: center;
+}
+.header-modal a:first-child {
+  border-radius: 6px 6px 0 0;
+}
+.header-modal button {
+  margin: 0.5em 0.5em;
+  flex-grow: 1;
+}
+.header-modal a:hover {
+  background: var(--dark-color);
+  color: white;
 }

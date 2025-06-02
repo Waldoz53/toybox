@@ -10,6 +10,7 @@ import PrefetchLink from '@/components/PrefetchLink';
 
 export default function SignUpPage() {
   const [message, setMessage] = useState<string | undefined>('');
+  const [toastType, setToastType] = useState<'success' | 'error'>('error');
   const { setLoading } = useLoading();
   const router = useRouter();
 
@@ -22,11 +23,11 @@ export default function SignUpPage() {
     setLoading(true);
     const formData = new FormData(e.currentTarget);
     await signup(formData).then((res) => {
-      if (res != '') {
-        setMessage(res);
-      } else {
+      if (res == 'Successfully signed up!') {
+        setToastType('success');
         router.push('/');
       }
+      setMessage(res ?? '');
       setLoading(false);
     });
 
@@ -50,7 +51,7 @@ export default function SignUpPage() {
       <p>
         Already have an account?&nbsp;<PrefetchLink href="/login">Log in here!</PrefetchLink>
       </p>
-      <Toast message={message} toastType="error" />
+      <Toast message={message} toastType={toastType} />
     </main>
   );
 }
