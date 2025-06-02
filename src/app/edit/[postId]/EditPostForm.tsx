@@ -27,7 +27,7 @@ type Post = {
 
 export default function EditPostForm({ postData }: { postData: Post }) {
   const [message, setMessage] = useState('');
-  const [toastType, setToastType] = useState<'success' | 'error'>('error');
+  const [toastType, setToastType] = useState<'success' | 'error'>('success');
   const [originalPost] = useState<Post>(postData);
   const { setLoading } = useLoading();
   const router = useRouter();
@@ -37,12 +37,12 @@ export default function EditPostForm({ postData }: { postData: Post }) {
     setLoading(true);
     const formData = new FormData(e.currentTarget);
     await editPost(formData).then((res) => {
-      setMessage(res ?? '');
-      if (message == 'Successfully edited!') {
+      if (res == 'Successfully edited!') {
         setToastType('success');
       } else {
         console.log('Submit post error:', message);
       }
+      setMessage(res ?? '');
       setLoading(false);
       router.push(
         `/user/${encodeURIComponent(originalPost.profiles.username)}/item/${encodeURIComponent(originalPost.id)}`,
@@ -62,7 +62,7 @@ export default function EditPostForm({ postData }: { postData: Post }) {
             ? `${originalPost.figures.toylines.brands.name} ${originalPost.figures.toylines.name} ${originalPost.figures.name}`
             : 'Loading...'}
         </h2>
-        <input type="hidden" name="postId" value={postData.id} />
+        <input type="hidden" name="postId" value={originalPost.id} />
         <label htmlFor="rating">Rating, out of 10 (optional):</label>
         <input
           type="number"
@@ -81,7 +81,7 @@ export default function EditPostForm({ postData }: { postData: Post }) {
         />
         <div className="spacer"></div>
         <button>Submit Edit</button>
-        <DeletePostButton id={postData.id} />
+        <DeletePostButton id={originalPost.id} />
 
         <Toast message={message} toastType={toastType} />
       </form>

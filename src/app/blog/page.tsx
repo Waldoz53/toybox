@@ -20,13 +20,14 @@ export default function Blog() {
           </li>
           <li>Added a hover style to the header modal</li>
           <li>Settings page is now a proper server page!</li>
+          <li>Refactored some of client/server pages/components to be more efficient</li>
         </ul>
       </section>
 
       <section className="blog-section">
         <h3>Features (& fixes) in development:</h3>
         <ul>
-          <li>Refactor a lot of client/server pages/components to be more efficient</li>
+          <li>Padding/spacing pass through</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
           <li>Refactor front page so that the following tab is default</li>
@@ -43,7 +44,7 @@ export default function Blog() {
       <section className="blog-section">
         <h3>Known issues:</h3>
         <ul>
-          <li>Odd flickering text on the home page sometimes</li>
+          <li>Some pages might look a little cramped on mobile</li>
         </ul>
       </section>
     </main>

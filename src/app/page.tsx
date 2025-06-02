@@ -26,7 +26,13 @@ export default async function HomePage() {
   }));
 
   return (
-    <Suspense fallback={<p>Loading posts...</p>}>
+    <Suspense
+      fallback={
+        <main className="home">
+          <p>Loading posts...</p>
+        </main>
+      }
+    >
       <ClientPostList defaultPosts={posts} />
     </Suspense>
   );

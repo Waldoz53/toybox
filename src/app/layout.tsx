@@ -9,7 +9,6 @@ import SetUserClient from '@/components/SetUserClient';
 
 export const metadata: Metadata = {
   title: 'Toybox',
-  description: 'Keep a record of your action figure collection',
 };
 
 const nunito = Nunito_Sans({
