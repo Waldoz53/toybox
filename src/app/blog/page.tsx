@@ -30,14 +30,9 @@ export default function Blog() {
           <li>Padding/spacing pass through</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
-          <li>Refactor front page so that the following tab is default</li>
           <li>Paginate posts (once there are more posts)</li>
           <li>New favicon</li>
           <li>WCAG accessibility</li>
-          {/* Dev Access Only: */}
-          {/* <li>Long term/scaling goal: Sanitize data from some network requests</li> */}
-          {/* <li>ONGOING: improve server logging messages</li> */}
-          {/* <li>ONGOING: reduce usage of network requests</li> */}
         </ul>
       </section>
 

@@ -194,7 +194,7 @@ export default async function UserItem({ params }: Props) {
           : 'No comments yet'}
         {userData.user?.id ? (
           <>
-            {isFriend ? (
+            {isFriend || userData.user.id == item.user_id ? (
               <CommentForm postId={itemId} />
             ) : (
               <div className="follower-message">
