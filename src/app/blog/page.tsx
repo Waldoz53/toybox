@@ -11,16 +11,18 @@ export default function Blog() {
     <main className="blog">
       <h1>Update Blog</h1>
       <section className="blog-section">
-        <h3>Latest update</h3>
-        <p>June 2, 2025</p>
+        <h3>Latest updates</h3>
+        <p>June 3, 2025</p>
         <ul>
+          <li>Some misc. CSS tweaks</li>
           <li>
-            Follower Component: reworked so that its a server component, and doesn&apos;t have to
-            have a loading animation
+            Tweaked css of toast component on desktop version of most form pages so it should be
+            easier to read and see
           </li>
-          <li>Added a hover style to the header modal</li>
-          <li>Settings page is now a proper server page!</li>
-          <li>Refactored some of client/server pages/components to be more efficient</li>
+          <li>
+            Added an admin only page (/admin) + admin only tool to manually add figures (sorry
+            non-admin LOSERS)
+          </li>
         </ul>
       </section>
 
@@ -40,6 +42,7 @@ export default function Blog() {
         <h3>Known issues:</h3>
         <ul>
           <li>Some pages might look a little cramped on mobile</li>
+          <li>The toast looks really odd on desktop login/signup pages</li>
         </ul>
       </section>
     </main>

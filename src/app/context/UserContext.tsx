@@ -5,6 +5,7 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 type User = {
   id: string;
   username: string;
+  isAdmin: boolean;
 } | null;
 
 const UserContext = createContext<{ user: User; setUser: (user: User) => void }>({

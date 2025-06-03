@@ -3,8 +3,8 @@
 }
 .rating {
   display: flex;
-  gap: 0.25em;
-  margin-bottom: 1.5em;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 .rating .rating-hidden {
   opacity: 0.5;

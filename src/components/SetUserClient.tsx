@@ -6,6 +6,7 @@ import useUser from '@/app/context/UserContext';
 type User = {
   id: string;
   username: string;
+  isAdmin: boolean;
 };
 
 export default function SetUserClient({ user }: { user: User | null }) {

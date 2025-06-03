@@ -6,8 +6,8 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  gap: 0.5em;
-  padding: 0.5em;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 .header .title {
   text-decoration: none;
@@ -37,7 +37,7 @@
   border-radius: 6px;
 }
 .header-modal a {
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   flex-grow: 1;
   text-align: center;
 }
@@ -45,7 +45,7 @@
   border-radius: 6px 6px 0 0;
 }
 .header-modal button {
-  margin: 0.5em 0.5em;
+  margin: 0.5rem 0.5rem;
   flex-grow: 1;
 }
 .header-modal a:hover {

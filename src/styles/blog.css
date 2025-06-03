@@ -3,19 +3,19 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  padding: 0.5em;
+  padding: 0.5rem;
 }
 .blog .blog-section {
-  margin-top: 1em;
-  margin-bottom: 2em;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 .blog-section h3,
 .blog-section p {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 .blog-section ul {
-  padding-left: 1em;
+  padding-left: 1rem;
 }
 .blog-section li {
-  padding-bottom: 0.5em;
+  padding-bottom: 0.5rem;
 }

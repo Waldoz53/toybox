@@ -1,0 +1,48 @@
+main.admin {
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.admin h1 {
+  margin-bottom: 0.5em;
+}
+
+details {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+details p {
+  margin-bottom: 0.5rem;
+}
+
+.admin form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+form label,
+form input,
+form select,
+form p {
+  width: 100%;
+  max-width: 500px;
+}
+
+form select,
+form input {
+  padding: 0.5rem 0;
+  padding-left: 0.5rem;
+  border: 1px solid var(--dark-color);
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+form p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -23,15 +23,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   let username = '';
+  let isAdmin = false;
   const supabase = await createClientServer();
   const { data } = await supabase.auth.getUser();
   if (data.user != null) {
     const { data: userProfile } = await supabase
       .from('profiles')
-      .select('*')
+      .select('username, is_admin')
       .eq('id', data.user?.id)
       .single();
-    username = userProfile?.username;
+    if (userProfile) {
+      username = userProfile?.username;
+      isAdmin = userProfile?.is_admin;
+    }
   }
 
   return (
@@ -39,7 +43,11 @@ export default async function RootLayout({
       <body>
         <ClientLayout>
           <SetUserClient
-            user={data.user ? { id: data.user?.id, username: username ?? 'Unknown' } : null}
+            user={
+              data.user
+                ? { id: data.user?.id, username: username ?? 'Unknown', isAdmin: isAdmin }
+                : null
+            }
           />
           <Header />
           {children}

@@ -6,16 +6,25 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1em;
+  padding: 1rem;
   z-index: 999999;
   background-color: #af1717;
   color: white;
   transform: translateY(-100%);
-  border-radius: 0 0 6px 6px;
 }
 .toast.success {
   background-color: #006239;
 }
 .toast.show {
   transform: translateY(0);
+}
+@media screen and (min-width: 550px) {
+  .toast {
+    border-radius: 6px;
+    max-width: 500px;
+    left: auto;
+  }
+  .toast.show {
+    top: 1em;
+  }
 }

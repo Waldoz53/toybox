@@ -13,7 +13,7 @@
 .post-page h1,
 .edit-page h1,
 .edit-page h2 {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 .edit-page h2 {
   font-size: 20px;
@@ -23,7 +23,7 @@
 .post-page form,
 .edit-page form {
   width: 100%;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
 }
 .login-page form label,
 .signup-page form label,
@@ -39,9 +39,9 @@
 .post-page form textarea,
 .edit-page form textarea {
   width: 300px;
-  margin-bottom: 1em;
-  padding: 0.5em 0;
-  padding-left: 0.5em;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  padding-left: 0.5rem;
   font-size: 16px;
   border-style: none;
   border: 1px solid var(--dark-color);
@@ -49,6 +49,12 @@
 }
 .post-page form .rating,
 .edit-page form .rating {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
   width: 50px;
+}
+
+@media screen and (min-width: 550px) {
+  .toast {
+    max-width: 300px;
+  }
 }

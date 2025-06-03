@@ -2,10 +2,10 @@
 .footer {
   margin: auto auto 0 auto;
   max-width: 1200px;
-  padding: 3em 0 1em;
+  padding: 3rem 0 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
 }

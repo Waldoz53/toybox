@@ -293,9 +293,37 @@ export async function saveUserSettings(formData: FormData) {
   return 'Settings changed successfully!';
 }
 
-// function slugify(str: string) {
-//   return str.toLowerCase().trim().replace(/[\s_]+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-').replace(/^-+|-+$/g, '');
-// }
+function slugify(str: string) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+export async function adminAddFigure(formData: FormData) {
+  const supabase = await createClientServer();
+
+  const toylineId = formData.get('toylines') as string;
+  const name = formData.get('figureName') as string;
+  const slug = slugify(name);
+
+  const { error } = await supabase.from('figures').insert([
+    {
+      name: name,
+      toyline_id: toylineId,
+      slug: slug,
+    },
+  ]);
+
+  if (error) {
+    return error.message;
+  } else {
+    return 'Successfully added an item!';
+  }
+}
 
 // server scripts to update db
 // export function updateFigureSlugs() {

@@ -1,5 +1,5 @@
 .followers {
-  padding: 0.5em;
+  padding: 0.5rem;
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
@@ -8,12 +8,12 @@
 }
 
 .followers h1 {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
 .followers .follower {
-  padding: 1em 0.5em;
+  padding: 1rem 0.5rem;
   border-bottom: 1px solid black;
   width: 100%;
 }

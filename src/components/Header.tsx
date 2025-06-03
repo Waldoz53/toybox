@@ -33,7 +33,7 @@ export default function Header() {
       {user?.username ? (
         <div className="header-logged-in">
           <p>{user?.username}</p>
-          <HeaderModal username={user?.username} />
+          <HeaderModal username={user?.username} isAdmin={user.isAdmin} />
         </div>
       ) : (
         <>
