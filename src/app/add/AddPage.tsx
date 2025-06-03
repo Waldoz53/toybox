@@ -91,7 +91,8 @@ export default function PostPage() {
     const { data, error } = await supabase
       .from('figures')
       .select('*')
-      .eq('toyline_id', e.target.value);
+      .eq('toyline_id', e.target.value)
+      .order('name', { ascending: true });
     if (data || !error) {
       setFigures(data);
     } else {
