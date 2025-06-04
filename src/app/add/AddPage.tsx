@@ -71,7 +71,8 @@ export default function PostPage() {
     const { data, error } = await supabase
       .from('toylines')
       .select('*')
-      .eq('brand_id', e.target.value);
+      .eq('brand_id', e.target.value)
+      .order('name', { ascending: true });
     if (data || !error) {
       setToylines(data);
     } else {

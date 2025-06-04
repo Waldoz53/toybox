@@ -54,7 +54,8 @@
 }
 
 @media screen and (min-width: 550px) {
-  .toast {
+  .login-page .toast,
+  .signup-page .toast {
     max-width: 300px;
   }
 }

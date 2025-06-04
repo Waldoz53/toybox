@@ -1,39 +1,25 @@
-import { Suspense } from 'react';
-import { fetchHomePosts } from '@/lib/fetchHomePosts';
-import ClientPostList from '@/components/ClientPostList';
+import '@/styles/home.css';
+import HomeAddButton from '@/components/HomeAddButton';
+import { createClientServer } from '@/utils/supabase/server';
+import HomeFeed from '@/components/HomeFeed';
 
 // forces nextjs to cache this page for 15 seconds
 export const revalidate = 15;
 
 export default async function HomePage() {
-  const data = await fetchHomePosts();
+  let loggedIn = false;
+  const supabase = await createClientServer();
+  const { data: user } = await supabase.auth.getUser();
 
-  // converts data shape in case the data is a slightly different shape
-  const posts = (data ?? []).map((post) => ({
-    id: post.id,
-    created_at: post.created_at,
-    profiles: Array.isArray(post.profiles) ? post.profiles[0] : post.profiles,
-    figures: Array.isArray(post.figures)
-      ? {
-          name: post.figures[0]?.name ?? '[noname]',
-          toylines: Array.isArray(post.figures[0]?.toylines)
-            ? post.figures[0].toylines[0]
-            : (post.figures[0]?.toylines ?? { name: '[noname]' }),
-        }
-      : post.figures,
-    likes: post.likes ?? [],
-    comments: post.comments ?? [],
-  }));
+  if (user.user?.id) {
+    loggedIn = true;
+  }
 
   return (
-    <Suspense
-      fallback={
-        <main className="home">
-          <p>Loading posts...</p>
-        </main>
-      }
-    >
-      <ClientPostList defaultPosts={posts} />
-    </Suspense>
+    <main className="home">
+      <HomeAddButton />
+
+      <HomeFeed loggedIn={loggedIn} />
+    </main>
   );
 }

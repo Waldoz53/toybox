@@ -51,8 +51,8 @@ export default async function AddFigureAdmin() {
         </p>
         <p>
           As a result, figure names should be organized with the name, THEN the subline/toy size
-          (Fuzors, Transmetals, etc), instead of Cheetor, its Cheetor (Deluxe), Cheetor (Transmetals
-          Deluxe), Cheetor (Transmetals 2 Deluxe)
+          (Fuzor, Transmetal, etc), instead of Cheetor, its Cheetor (Deluxe), Cheetor (Transmetal
+          Deluxe), Cheetor (Transmetal 2 Deluxe)
         </p>
       </details>
 

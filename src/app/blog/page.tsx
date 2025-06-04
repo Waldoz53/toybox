@@ -12,17 +12,10 @@ export default function Blog() {
       <h1>Update Blog</h1>
       <section className="blog-section">
         <h3>Latest updates</h3>
-        <p>June 3, 2025</p>
+        <p>June 4, 2025</p>
         <ul>
-          <li>Some misc. CSS tweaks</li>
-          <li>
-            Tweaked css of toast component on desktop version of most form pages so it should be
-            easier to read and see
-          </li>
-          <li>
-            Added an admin only page (/admin) + admin only tool to manually add figures (sorry
-            non-admin LOSERS)
-          </li>
+          <li>Maybe fixed? Toast message on login/signup pages should look way better</li>
+          <li>Reworked home page so that following is the default tab</li>
         </ul>
       </section>
 
@@ -42,7 +35,6 @@ export default function Blog() {
         <h3>Known issues:</h3>
         <ul>
           <li>Some pages might look a little cramped on mobile</li>
-          <li>The toast looks really odd on desktop login/signup pages</li>
         </ul>
       </section>
     </main>
