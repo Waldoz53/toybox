@@ -14,7 +14,7 @@ export default function Blog() {
         <h3>Latest updates</h3>
         <p>June 4, 2025</p>
         <ul>
-          <li>Maybe fixed? Toast message on login/signup pages should look way better</li>
+          <li>Toast message on most pages should look way better</li>
           <li>Reworked home page so that following is the default tab</li>
         </ul>
       </section>
@@ -22,12 +22,15 @@ export default function Blog() {
       <section className="blog-section">
         <h3>Features (& fixes) in development:</h3>
         <ul>
+          <li>Add images: Profiles</li>
+          <li>Add images: Figures</li>
           <li>Padding/spacing pass through</li>
           <li>Improve item pages</li>
           <li>Improve follower list</li>
           <li>Paginate posts (once there are more posts)</li>
           <li>New favicon</li>
           <li>WCAG accessibility</li>
+          <li>Ongoing: add more figures/toylines/brands</li>
         </ul>
       </section>
 

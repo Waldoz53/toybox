@@ -17,7 +17,7 @@ export async function fetchHomePosts(feed: 'following' | 'everyone') {
       return [];
     }
 
-    const { data: posts } = await supabase
+    const { data: posts, error } = await supabase
       .from('posts')
       .select(
         'id, created_at, profiles(username), figures(name, toylines(name)), comments(count), likes(count)',
@@ -25,14 +25,22 @@ export async function fetchHomePosts(feed: 'following' | 'everyone') {
       .in('user_id', followedIds)
       .order('created_at', { ascending: false });
 
+    if (!posts || error) {
+      return [];
+    }
+
     return posts;
   } else {
-    const { data: posts } = await supabase
+    const { data: posts, error } = await supabase
       .from('posts')
       .select(
         'id, created_at, profiles(username), figures(name, toylines(name)), comments(count), likes(count)',
       )
       .order('created_at', { ascending: false });
+
+    if (!posts || error) {
+      return [];
+    }
 
     return posts;
   }

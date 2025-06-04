@@ -28,8 +28,11 @@ export default async function AdminPage() {
   return (
     <main className="admin">
       <h1>Admin Page</h1>
-
-      <PrefetchLink href="/admin/add-figure">Add Figure (by Brand + Toyline)</PrefetchLink>
+      <p>WIP: Add Brand</p>
+      <p>WIP: Add Toyline (requires existing Brand)</p>
+      <PrefetchLink href="/admin/add-figure">
+        Add Figure (requires existing Brand + Toyline)
+      </PrefetchLink>
     </main>
   );
 }

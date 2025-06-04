@@ -26,6 +26,8 @@ export default function SignUpPage() {
       if (res == 'Successfully signed up!') {
         setToastType('success');
         router.push('/');
+      } else {
+        setToastType('error');
       }
       setMessage(res ?? '');
       setLoading(false);

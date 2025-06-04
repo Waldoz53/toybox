@@ -119,6 +119,7 @@ export default function PostPage() {
       setMessage(res ?? '');
       if (res !== 'Item successfully added!') {
         console.log('Submit post error:', message);
+        setToastType('error');
       }
       setMessage(message);
       setToastType('success');

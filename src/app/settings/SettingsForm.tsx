@@ -23,6 +23,8 @@ export default function SettingsForm({ initialAllowComments }: Props) {
     saveUserSettings(formData).then((res) => {
       if (res == 'Settings changed successfully!') {
         setToastType('success');
+      } else {
+        setToastType('error');
       }
       setMessage(res);
     });

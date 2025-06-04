@@ -9,13 +9,14 @@ main.admin {
   margin-bottom: 0.5em;
 }
 
-details {
+.admin p {
+  margin-bottom: 0.5rem;
+}
+
+.admin details {
   margin-top: 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
-}
-details p {
-  margin-bottom: 0.5rem;
 }
 
 .admin form {
@@ -24,16 +25,16 @@ details p {
   align-items: center;
 }
 
-form label,
-form input,
-form select,
-form p {
+.admin form label,
+.admin form input,
+.admin form select,
+.admin form p {
   width: 100%;
   max-width: 500px;
 }
 
-form select,
-form input {
+.admin form select,
+.admin form input {
   padding: 0.5rem 0;
   padding-left: 0.5rem;
   border: 1px solid var(--dark-color);
@@ -42,7 +43,7 @@ form input {
   margin-bottom: 0.5rem;
 }
 
-form p {
+.admin form p {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }

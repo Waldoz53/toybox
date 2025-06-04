@@ -96,6 +96,8 @@ export default function AdminAddFigure() {
     await adminAddFigure(formData).then((res) => {
       if (res == 'Successfully added an item!') {
         setToastType('success');
+      } else {
+        setToastType('error');
       }
       setMessage(res);
     });

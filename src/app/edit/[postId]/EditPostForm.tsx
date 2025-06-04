@@ -41,6 +41,7 @@ export default function EditPostForm({ postData }: { postData: Post }) {
         setToastType('success');
       } else {
         console.log('Submit post error:', message);
+        setToastType('error');
       }
       setMessage(res ?? '');
       setLoading(false);

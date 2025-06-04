@@ -37,6 +37,8 @@ export default function LoginPage() {
         } else {
           router.push('/');
         }
+      } else {
+        setToastType('error');
       }
       setLoading(false);
     });
