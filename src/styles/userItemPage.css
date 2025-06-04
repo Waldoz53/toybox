@@ -20,7 +20,7 @@
 }
 .user-item-page .description {
   min-height: 50px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 .user-item-page .likes {
   display: flex;
