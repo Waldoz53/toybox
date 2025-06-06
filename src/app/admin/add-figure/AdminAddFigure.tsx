@@ -27,6 +27,8 @@ export default function AdminAddFigure() {
   const [toylines, setToylines] = useState<Toylines[] | null>(null);
   const [selectedLine, setSelectedLine] = useState(false);
   const [name, setName] = useState('');
+  const [slug, setSlug] = useState('');
+  const [manualSlug, setManualSlug] = useState(false);
   const { setLoading } = useLoading();
 
   useEffect(() => {
@@ -139,10 +141,29 @@ export default function AdminAddFigure() {
       {selectedLine && (
         <>
           <label htmlFor="figureName">Figure Name:</label>
-          <input type="text" name="figureName" onChange={(e) => setName(e.currentTarget.value)} />
-          <p>
-            URL Slug Preview: <strong>{name && <>/{slugify(name)}</>}</strong>
-          </p>
+          <input
+            type="text"
+            name="figureName"
+            value={name}
+            onChange={(e) => {
+              const newName = e.currentTarget.value;
+              setManualSlug(false);
+              setName(e.currentTarget.value);
+              if (!manualSlug) {
+                setSlug(slugify(newName));
+              }
+            }}
+          />
+          <label htmlFor="figureSlug">Customize URL Slug:</label>
+          <input
+            type="text"
+            name="figureSlug"
+            value={slug}
+            onChange={(e) => {
+              setSlug(e.currentTarget.value);
+              setManualSlug(true);
+            }}
+          />
           <button>Add Figure</button>
         </>
       )}

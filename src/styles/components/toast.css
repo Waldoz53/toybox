@@ -25,6 +25,7 @@
     left: auto;
   }
   .toast.show {
+    box-shadow: 1px 1px 1px black;
     top: 1em;
   }
 }

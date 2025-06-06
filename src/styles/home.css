@@ -90,6 +90,11 @@
   font-size: 11px;
   color: var(--medium-color);
 }
+.post .toyline-name {
+  color: inherit;
+  font-size: inherit;
+  display: none;
+}
 .post .added-text {
   font-size: 16px;
   color: black;
@@ -100,6 +105,7 @@
 }
 .post span:last-child {
   text-align: right;
+  min-width: 30px;
 }
 span svg path {
   fill: var(--medium-color);
@@ -108,8 +114,8 @@ span svg path {
   .post .icons {
     display: block;
   }
-  .post span:last-child {
-    min-width: 30px;
+  .post .toyline-name {
+    display: inline-block;
   }
 }
 @media screen and (min-width: 810px) {

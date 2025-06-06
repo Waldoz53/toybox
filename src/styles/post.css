@@ -21,3 +21,10 @@
 .edit-page .delete-post {
   margin-left: 0.5rem;
 }
+
+@media screen and (min-width: 550px) {
+  .edit-page .toast,
+  .post-page .toast {
+    max-width: 300px;
+  }
+}

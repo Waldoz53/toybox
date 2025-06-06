@@ -12,10 +12,12 @@ export default function Blog() {
       <h1>Update Blog</h1>
       <section className="blog-section">
         <h3>Latest updates</h3>
-        <p>June 4, 2025</p>
+        <p>June 6, 2025</p>
         <ul>
-          <li>Toast message on most pages should look way better</li>
-          <li>Reworked home page so that following is the default tab</li>
+          <li>Some css tweaks</li>
+          <li>Some html tweaks</li>
+          <li>Home posts: hides the toyline name if a screen size is small enough</li>
+          <li>Tweaked admin addfigure page functionality</li>
         </ul>
       </section>
 

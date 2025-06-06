@@ -308,13 +308,13 @@ export async function adminAddFigure(formData: FormData) {
 
   const toylineId = formData.get('toylines') as string;
   const name = formData.get('figureName') as string;
-  const slug = slugify(name);
+  const slug = formData.get('figureSlug') as string;
 
   const { error } = await supabase.from('figures').insert([
     {
       name: name,
       toyline_id: toylineId,
-      slug: slug,
+      slug: slugify(slug),
     },
   ]);
 
@@ -326,18 +326,4 @@ export async function adminAddFigure(formData: FormData) {
 }
 
 // server scripts to update db
-// export function updateFigureSlugs() {
-//   console.log('updating figure slugs...')
-//   const supabase = await createClientServer()
-
-//   const { data: figures, error } = await supabase.from('figures').select('id, name');
-
-//   if (error) throw new Error(error.message)
-
-//   for (const figure of figures) {
-//     const slug = slugify(figure.name)
-
-//     await supabase.from('figures').update({ slug }).eq('id', figure.id)
-//     console.log('updated item:', figure.name)
-//   }
-// }
+// empty

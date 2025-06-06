@@ -8,11 +8,9 @@ export default function Footer() {
         <p>Update Blog</p>
       </PrefetchLink>
       |
-      <p>
-        <a href="https://bsky.app/profile/waleed-webdev.bsky.social" target="_blank">
-          Contact Me
-        </a>
-      </p>
+      <a href="https://bsky.app/profile/waleed-webdev.bsky.social" target="_blank">
+        <p>Contact Me</p>
+      </a>
     </footer>
   );
 }

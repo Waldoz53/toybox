@@ -82,7 +82,8 @@ export default function HomeFeed({ loggedIn }: Props) {
                 <p>
                   {post.profiles?.username}&nbsp;added
                   <strong>
-                    &nbsp;{post.figures.toylines.name} {post.figures.name}
+                    &nbsp;<span className="toyline-name">{post.figures.toylines.name}&nbsp;</span>
+                    {post.figures.name}
                   </strong>
                 </p>
                 <span className="icons">
