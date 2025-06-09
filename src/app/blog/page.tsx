@@ -12,12 +12,9 @@ export default function Blog() {
       <h1>Update Blog</h1>
       <section className="blog-section">
         <h3>Latest updates</h3>
-        <p>June 6, 2025</p>
+        <p>June 9, 2025</p>
         <ul>
-          <li>Some css tweaks</li>
-          <li>Some html tweaks</li>
-          <li>Home posts: hides the toyline name if a screen size is small enough</li>
-          <li>Tweaked admin addfigure page functionality</li>
+          <li>On individual item pages, fixed how the average is calculated</li>
         </ul>
       </section>
 

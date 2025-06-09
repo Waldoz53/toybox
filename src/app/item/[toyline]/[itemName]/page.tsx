@@ -34,14 +34,24 @@ export default async function ItemPage({ params }: Props) {
     );
   }
 
-  function calcAverage(ratings: { rating: number }[]): number {
+  function calcAverage(ratings: { rating: number }[]) {
     if (!ratings) return 0;
     let sum = 0;
-    for (let i = 0; i < ratings.length; i++) {
-      sum += ratings[i].rating;
+    let ratingsLength = ratings.length;
+    for (let i = 0; i < ratingsLength; i++) {
+      if (ratings[i].rating != null) {
+        sum += ratings[i].rating;
+      } else {
+        ratingsLength = ratingsLength - 1;
+      }
     }
-    const average = sum / ratings.length;
-    return average;
+    const average = sum / ratingsLength;
+
+    return (
+      <>
+        <strong>{average.toFixed(1)}&nbsp;</strong>({ratingsLength} ratings)
+      </>
+    );
   }
 
   // FIX: Sanitize this better
@@ -53,12 +63,7 @@ export default async function ItemPage({ params }: Props) {
       <h2>
         {toylines.brands.name}&nbsp;{toylines.name}
       </h2>
-      {calcAverage(figure?.posts) > 0 && (
-        <p>
-          Average rating: <strong>{calcAverage(figure?.posts).toFixed(1)}/10</strong>&nbsp;(
-          {figure?.posts.length} ratings)
-        </p>
-      )}
+      <p>Average rating: {calcAverage(figure.posts)}</p>
     </main>
   );
 }
